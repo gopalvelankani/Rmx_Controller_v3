@@ -1,0 +1,1955 @@
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+channel_id=1&client_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+channel_id=1&client_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+channel_id=1&client_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+Mysql error while adding ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMChannelSetup
+Mysql error while adding ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.1&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=8&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=1&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+channel_id=2&supercas_id=0x27a00001&data_id=1&bw=100&port=5000&stream_id=1&access_criteria=0x1234&cp_number=20&ecm_id=1&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+channel_id=2&supercas_id=0x27a00001&data_id=2&bw=100&port=5000&stream_id=2&access_criteria=0x1235&cp_number=20&ecm_id=2&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- addECMStreamSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=2&bw=100&port=5000&stream_id=2&access_criteria=0x1235&cp_number=20&ecm_id=2&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=2&bw=100&port=5000&stream_id=2&access_criteria=0x1235&cp_number=20&ecm_id=2&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Mysql error while updating ECM channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=9&supercas_id=0x27a00001&data_id=2&bw=100&port=5000&stream_id=2&access_criteria=0x1235&cp_number=20&ecm_id=2&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=3&supercas_id=0x27a00001&data_id=2&bw=100&port=5000&stream_id=2&access_criteria=0x1235&cp_number=20&ecm_id=2&ip=127.0.0.3&old_channel_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+channel_id=2&supercas_id=0x27a00001&data_id=2&bw=100&port=5000&stream_id=2&access_criteria=0x1235&cp_number=20&ecm_id=2&ip=127.0.0.3&old_channel_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- updateECMChannelSetup
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIfrequency
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+rmx_no=1&input=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+rmx_no=1&input=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+rmx_no=1&input=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=4
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=4
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=4
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=3
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=4
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=1&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+rmx_no=1&input=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+rmx_no=1&input=1&output=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+rmx_no=1&input=1&output=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+rmx_no=1&input=1&output=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getInputOutput
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=4
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demod_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+demodId=0&lnbId=0&standard=DVB-S&frequency=1760000000&rate=295000000&modulation=AUTO&fec=AUTO&rollOff=AUTO&pilots=AUTO&spectumInverted=0&scramblingIndex=0&searchRange=0&mxl_id=1&rmx_id=0&demode_id=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+address=8
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+address=00&cs=00&data=00&mode=1&mxl_id=1&rmx_id=0&demode_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readWrite32bUdpCpu
+rmx_no=1&input=1&output=1&mxl_id=1&rmx_id=0&demode_id=1&address=8&enable1=1&volt1=0&enable2=1&volt2=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+address=8
+-------------------------------------------------------------

@@ -1,0 +1,16 @@
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_router_test.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_cookie_test.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/src/CMakeFiles/net_static.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_headers_test.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/googletest-release-1.7.0/CMakeFiles/gtest.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/examples/CMakeFiles/hello_server.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/src/CMakeFiles/net.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_mime_test.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/examples/CMakeFiles/http_client.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_async_test.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/examples/CMakeFiles/custom_header.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/examples/CMakeFiles/rest_server.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/googletest-release-1.7.0/CMakeFiles/gtest_main.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/examples/CMakeFiles/http_server.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_view_test.dir
+/home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests/CMakeFiles/run_typeid_test.dir
