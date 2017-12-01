@@ -10,12 +10,12 @@
 #include "callcommand.h"
 
 	
-	int rmx_ports[]={4660,4660,4660,4660,4660,4660};
+	//int rmx_ports[]={4660,4660,4660,4660,4660,4660};
 	Callcommand:: Callcommand(){    
 		
 	}
 
-	int Callcommand :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,Json::Value json,int readWriteMode,int rmx_no)
+	int Callcommand :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,Json::Value json,int readWriteMode)
 	{
 		std::cout << "gimme something: ";
 		Json::Reader reader;
@@ -24,7 +24,7 @@
 		unsigned short uProg;
 		std::string strProg;
 		int up;
-		port = rmx_ports[rmx_no-1];
+		port = 4660;
 		struct timeval tv;
 		tv.tv_sec = 1;  /* 1 Secs Timeout */
 		tv.tv_usec = 0;

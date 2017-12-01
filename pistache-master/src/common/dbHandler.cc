@@ -81,9 +81,13 @@ using namespace std;
 		mysql_query (connect,query.c_str());
 		return mysql_affected_rows(connect);
 	}
-	int dbHandler :: addActivatedPrograms(std::string input,std::string output,std::string program_number,int rmx_no) 
+	int dbHandler :: addActivatedPrograms(std::string input,std::string output,std::string program_number,int rmx_no,int includeflag) 
 	{
-		string query = "Insert into active_service_list (in_channel,out_channel,channel_num,rmx_id) VALUES ('"+input+"','"+output+"','"+program_number+"','"+std::to_string(rmx_no)+"') ON DUPLICATE KEY UPDATE channel_num = '"+program_number+"'  ;";  
+		string query="";
+		if(includeflag)
+			query = "Insert into active_service_list (in_channel,out_channel,channel_num,rmx_id) VALUES ('"+input+"','"+output+"','"+program_number+"','"+std::to_string(rmx_no)+"') ON DUPLICATE KEY UPDATE channel_num = '"+program_number+"'  ;";  
+		else
+			query = "DELETE FROM active_service_list WHERE in_channel = '"+input+"' AND out_channel = '"+output+"' AND channel_num = '"+program_number+"' AND rmx_id = '"+std::to_string(rmx_no)+"';";  
 		mysql_query (connect,query.c_str());
 		return mysql_affected_rows(connect);
 	}

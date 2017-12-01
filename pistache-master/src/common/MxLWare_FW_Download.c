@@ -176,9 +176,9 @@ MXL_STATUS_E MxLWare_FW_Download(UINT8 devId, UINT32 mbinBufferSize, const UINT8
 
 #ifdef _MXL_BRING_UP__
         mxlStatus |= MxLWare_HYDRA_ReadRegister(devId, HYDRA_CPU_RESET_REG, &data);
-        MXL_HYDRA_PRINT("%s: Before Segment = %d SegAddr = 0x%X\n", __FUNCTION__, index, segAddress);
+        // MXL_HYDRA_PRINT("%s: Before Segment = %d SegAddr = 0x%X\n", __FUNCTION__, index, segAddress);
 #endif
-        MXL_HYDRA_PRINT("%s: Segment = %d SegAddr = 0x%X SegLength = %d\n", __FUNCTION__, index, segAddress, segLength);
+        // MXL_HYDRA_PRINT("%s: Segment = %d SegAddr = 0x%X SegLength = %d\n", __FUNCTION__, index, segAddress, segLength);
 
 
 #if defined (MXL_HYDRA_568_ENABLE)

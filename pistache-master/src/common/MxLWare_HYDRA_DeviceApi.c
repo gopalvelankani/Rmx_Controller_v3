@@ -67,8 +67,8 @@ static MXL_BOOL_E MxL_Ctrl_ValidateSku(MXL_HYDRA_CONTEXT_T * devHandlePtr)
   mxlStatus |= GET_REG_FIELD_DATA(devHandlePtr->devId, PRCM_PRCM_CHIP_ID, &prcmChipId);
   mxlStatus |= GET_REG_FIELD_DATA(devHandlePtr->devId, PRCM_AFE_SOC_ID, &prcmSoCId);
 //padMuxBond =1;
-  MXLDBG1(MXL_HYDRA_PRINT("SKU Validation %d \n", devHandlePtr->deviceType););
-   MXLDBG1(MXL_HYDRA_PRINT("SKU Validation %d \n", devHandlePtr->devId););
+  //MXLDBG1(MXL_HYDRA_PRINT("SKU Validation %d \n", devHandlePtr->deviceType););
+   //MXLDBG1(MXL_HYDRA_PRINT("SKU Validation %d \n", devHandlePtr->devId););
   if (mxlStatus == MXL_SUCCESS)
   {
     if (prcmChipId != 0x560)
@@ -81,12 +81,12 @@ static MXL_BOOL_E MxL_Ctrl_ValidateSku(MXL_HYDRA_CONTEXT_T * devHandlePtr)
           {
             devHandlePtr->deviceType = MXL_HYDRA_DEVICE_581;
           }
-          MXLDBG1(MXL_HYDRA_PRINT("SKU selection MxL581 %s\n", (skuOK == MXL_TRUE)?"correct":"incorrect"););
+          //MXLDBG1(MXL_HYDRA_PRINT("SKU selection MxL581 %s\n", (skuOK == MXL_TRUE)?"correct":"incorrect"););
           break;
 
         case MXL_HYDRA_SKU_ID_584:
           skuOK = (devHandlePtr->deviceType == MXL_HYDRA_DEVICE_584)?MXL_TRUE:MXL_FALSE;
-          MXLDBG1(MXL_HYDRA_PRINT("SKU selection MxL584 %s\n", (skuOK == MXL_TRUE)?"correct":"incorrect"););
+          // MXLDBG1(MXL_HYDRA_PRINT("SKU selection MxL584 %s\n", (skuOK == MXL_TRUE)?"correct":"incorrect"););
           break;
 
         case MXL_HYDRA_SKU_ID_585:
@@ -935,7 +935,7 @@ MXL_STATUS_E MxLWare_HYDRA_API_CfgDevOverwriteDefault(UINT8 devId)
   {
     if(MxL_Ctrl_ValidateSku(devHandlePtr) == MXL_TRUE)
     {
-      MXLDBG1(MXL_HYDRA_PRINT("SKU Validated"););
+      //MXLDBG1(MXL_HYDRA_PRINT("SKU Validated"););
       // Enable AFE
       status |= SET_REG_FIELD_DATA(devId, PRCM_AFE_REG_CLOCK_ENABLE, 1);
 

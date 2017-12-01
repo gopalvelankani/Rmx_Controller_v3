@@ -1,4 +1,4 @@
-# Install script for directory: /home/mahesh/Music/rmx_mxl_api/pistache-master/examples
+# Install script for directory: /home/user/Music/rmx_mxl_api/pistache-master/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

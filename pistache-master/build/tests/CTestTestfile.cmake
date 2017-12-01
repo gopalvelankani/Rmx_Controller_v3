@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/mahesh/Music/rmx_mxl_api/pistache-master/tests
-# Build directory: /home/mahesh/Music/rmx_mxl_api/pistache-master/build/tests
+# Source directory: /home/user/Music/rmx_mxl_api/pistache-master/tests
+# Build directory: /home/user/Music/rmx_mxl_api/pistache-master/build/tests
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

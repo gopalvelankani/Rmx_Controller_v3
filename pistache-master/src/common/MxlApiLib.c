@@ -11,6 +11,8 @@
 
 #define MXL_XTAL_CAP_VALUE 12
 
+#define addr_I2C 24
+
 oem_data_t oemPtr;
 
 //char *standard[MXL_HYDRA_DVBS2 + 1] = { ("DSS"), ("DVB-S"), ("DVB-S2") };
@@ -38,16 +40,58 @@ oem_data_t oemPtr;
 // 	read32bCPU = (unsigned int(__cdecl *)(unsigned char, unsigned char))fnctCallBackPtr;
 // 	return 0;
 // }
+int write32bI2C(unsigned char cCs, unsigned char addr, unsigned int data){
+    unsigned int sData[6];
+    sData[0] = cCs;
+    sData[1] = (data&0xFF000000)>>24;
+    sData[2] = (data&0x00FF0000)>>16;
+    sData[3] = (data&0x0000FF00)>>8;
+    sData[4] = (data&0x000000FF)>>0;
+    unsigned int value = read32bCPU(I2C_CS,8);
+    unsigned int size =6;
+    unsigned int word0 = (value&0x00010000) | size;  // passage en mode write
+    write32bCPU (I2C_CS,8,word0);
+    int index_out = 2;
+    int i=0;
+
+    unsigned long long data_out =((addr_I2C << 8) | addr);
+    for (i=0;i<5;i++) {
+          data_out =  ((data_out << 8) + sData[i]);
+          if ( index_out == 3 ) {
+             write32bCPU (I2C_CS,4,data_out);
+             index_out = 0;
+          } else {
+             index_out = index_out+1;
+          }
+
+       }
+       // print $index_out
+        if (index_out == 1 ) {
+         data_out = data_out<<24;
+          write32bCPU(I2C_CS,4,data_out);
+        } else if (index_out == 2) {
+          data_out = data_out<<16;
+          write32bCPU(I2C_CS,4,data_out);
+        } else if (index_out == 3 ) {
+          data_out = data_out<<8;
+          write32bCPU(I2C_CS,4,data_out);
+        }
+        word0 = (1<<18)|word0;
+        write32bCPU(I2C_CS,8,word0);
+}
 int confAllegro8297(unsigned char i2cAddr,unsigned short enable1,unsigned short voltage1,unsigned short enable2,unsigned short voltage2) {
-   int reg =(enable2<<7) | (voltage2<<4) | (enable1<<3) | (voltage1<<0);
-   return writeI2C(i2cAddr,0,reg);
+    unsigned char reg[2];
+    reg[0] = 0; // Register address
+    reg[1]  =(enable2<<7) | (voltage2<<4) | (enable1<<3) | (voltage1<<0);  // value of the register
+    return writeI2C(i2cAddr,2,reg);
 }
 
 int readAllegro8297(unsigned char i2cAddr,unsigned int reg){
-   writeI2C(i2cAddr,0,reg);
-   unsigned char buffer;
-   readI2C(i2cAddr,1,&buffer);
-   return 1;
+    unsigned char buffer[2];
+    buffer[0] = 0;
+    buffer[1] = reg;
+    readI2C(i2cAddr,1,buffer);
+    return buffer[0];
 }
 
 int writeI2C(unsigned char i2cAddress, unsigned short length, unsigned char *buffer) {
@@ -132,7 +176,25 @@ MXL_STATUS_E MxL_GetVersion(MXL_HYDRA_VER_INFO_T *versionInfo) {
 	mxlStatus = MxLWare_HYDRA_API_ReqDevVersionInfo(MXL_DEVICE_ID, versionInfo);
 	return mxlStatus;
 }
-
+int setEthernet_MULT(unsigned int cCs) {
+    int i=0;
+    for  ( i=0 ;i < 4;i++){
+        //destination ip
+        write32bI2C (cCs,36,4026466561+i);
+        usleep(1000);
+        //Source Port
+        write32bI2C(cCs,40, 10001+i);
+        usleep(1000);
+        // Destination Port
+        write32bI2C(cCs,44,10001+i);
+        usleep(1000);
+        //Validation
+        write32bI2C(cCs,48,i+1);
+        usleep(1000);
+    }
+   printf("Ethernet OK");
+   return 1;
+}
 MXL_STATUS_E MxL_HYDRA_DevInitilization(MXL_HYDRA_DEVICE_E devSku, MXL_BOOL_E forceFirmwareDownload, MXL_HYDRA_AUX_CTRL_MODE_E lnbInterface, MXL_HYDRA_TS_MUX_TYPE_E tsMuxType, MXL_HYDRA_MPEG_MODE_E tsInterfaceMode, UINT8 maxTsInterfaceClkRate) {
 	// 1. Init MxlWare Driver
 	// 2. Overwrite defaults
