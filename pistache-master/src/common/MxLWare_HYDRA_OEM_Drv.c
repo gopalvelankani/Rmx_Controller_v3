@@ -467,59 +467,46 @@ int write32bCPU(unsigned char ucCs, unsigned char ucUaddress, unsigned int uiDat
     unsigned short port = 62000;
     unsigned char msgBuf[20];
     unsigned char RxBuffer[105]={0};
-    unsigned char MAJOR;
-    unsigned char MINOR;
-    unsigned char INPUT;
-    unsigned char OUTPUT;
-    unsigned short FIFOSIZE;
-    unsigned char PRESENCE_SFN;
-    double clk;
-
-
     unsigned short len=0;
     struct timeval tv;
 
-    tv.tv_sec = 1;  /* 1 Secs Timeout */
-    tv.tv_usec = 0;
+    tv.tv_sec = 0;  /* 0.5 Secs Timeout */
+    tv.tv_usec = 300000;
     int socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
     setsockopt(socketHandle, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
-      if (socketHandle<0)
-      {
-          printf("could not make socket\n");
-          return 0;
-      }
-      memset(&serverAddress, 0, sizeof(serverAddress));
-      memset(&clientAddress, 0, sizeof(clientAddress));
-      serverAddress.sin_family = AF_INET;
-      serverAddress.sin_port = htons(port);
-      serverAddress.sin_addr.s_addr = inet_addr("192.168.1.20");
+    if (socketHandle<0)
+    {
+        printf("could not make socket\n");
+        return 0;
+    }
+    memset(&serverAddress, 0, sizeof(serverAddress));
+    memset(&clientAddress, 0, sizeof(clientAddress));
+    serverAddress.sin_family = AF_INET;
+    serverAddress.sin_port = htons(port);
+    serverAddress.sin_addr.s_addr = inet_addr("192.168.1.20");
 
-      clientAddress.sin_family = AF_INET;
+    clientAddress.sin_family = AF_INET;
     clientAddress.sin_addr.s_addr = htonl(INADDR_ANY);
-      clientAddress.sin_port = htons(port);
+    clientAddress.sin_port = htons(port);
 
     if(bind(socketHandle,(struct sockaddr*)&clientAddress,sizeof(clientAddress))<0){
-     printf("bind failed\n");
+      printf("bind failed\n");
     }
 
     len = 0;
-       msgBuf[0] = 0x4D;
-      msgBuf[1] = 0x56;
+    msgBuf[0] = 0x4D;
+    msgBuf[1] = 0x56;
     msgBuf[2] = 0x44;
-     msgBuf[3] = 0x01;
-      msgBuf[4] = (0xFF00&ucCs)>>8;
-      msgBuf[5] = (0x00FF&ucCs)>>0;
-      //int address  =0;
+    msgBuf[3] = 0x01;
+    msgBuf[4] = (0xFF00&ucCs)>>8;
+    msgBuf[5] = (0x00FF&ucCs)>>0;
     unsigned short uProg;
-
-          msgBuf[6] = 0xF0;
-            msgBuf[7] = ucUaddress;
-            msgBuf[8] = MMSB_32_8(uiData32);//dont care
-            msgBuf[9] = MLSB_32_8(uiData32);//dont care
-            msgBuf[10]= LMSB_32_8(uiData32);//dont care
-            msgBuf[11]= LLSB_32_8(uiData32);//dont care
-      //  }
-
+    msgBuf[6] = 0xF0;
+    msgBuf[7] = ucUaddress;
+    msgBuf[8] = MMSB_32_8(uiData32);
+    msgBuf[9] = MLSB_32_8(uiData32);
+    msgBuf[10]= LMSB_32_8(uiData32);
+    msgBuf[11]= LLSB_32_8(uiData32);
     len += 12;
     int x=0;
     unsigned int count;
@@ -541,18 +528,11 @@ unsigned int read32bCPU(unsigned char ucCs, unsigned char ucUaddress)
     unsigned short port = 62000;
     unsigned char msgBuf[20];
     unsigned char RxBuffer[105]={0};
-    unsigned char MAJOR;
-    unsigned char MINOR;
-    unsigned char INPUT;
-    unsigned char OUTPUT;
-    unsigned short FIFOSIZE;
-    unsigned char PRESENCE_SFN;
-    double clk;
     unsigned short len=0;
     struct timeval tv;
     unsigned int status;
-    tv.tv_sec = 1;  /* 1 Secs Timeout */
-    tv.tv_usec = 0;
+    tv.tv_sec = 0;  /* 0.5 Secs Timeout */
+    tv.tv_usec = 300000;
     int socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
     setsockopt(socketHandle, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
     if (socketHandle<0)
@@ -560,43 +540,38 @@ unsigned int read32bCPU(unsigned char ucCs, unsigned char ucUaddress)
         printf("could not make socket\n");
         return 0;
     }
-      memset(&serverAddress, 0, sizeof(serverAddress));
-      memset(&clientAddress, 0, sizeof(clientAddress));
-      serverAddress.sin_family = AF_INET;
-      serverAddress.sin_port = htons(port);
-      serverAddress.sin_addr.s_addr = inet_addr("192.168.1.20");
-
+    memset(&serverAddress, 0, sizeof(serverAddress));
+    memset(&clientAddress, 0, sizeof(clientAddress));
+    serverAddress.sin_family = AF_INET;
+    serverAddress.sin_port = htons(port);
+    serverAddress.sin_addr.s_addr = inet_addr("192.168.1.20");
     clientAddress.sin_family = AF_INET;
     clientAddress.sin_addr.s_addr = htonl(INADDR_ANY);
     clientAddress.sin_port = htons(port);
 
     if(bind(socketHandle,(struct sockaddr*)&clientAddress,sizeof(clientAddress))<0){
-     printf("bind failed\n");
+      printf("bind failed\n");
     }
-
     len = 0;
-       msgBuf[0] = 0x4D;
-      msgBuf[1] = 0x56;
+    msgBuf[0] = 0x4D;
+    msgBuf[1] = 0x56;
     msgBuf[2] = 0x44;
-      msgBuf[3] = 0x01;
-      msgBuf[4] = (0xFF00&ucCs)>>8;
-      msgBuf[5] = (0x00FF&ucCs)>>0;
+    msgBuf[3] = 0x01;
+    msgBuf[4] = (0xFF00&ucCs)>>8;
+    msgBuf[5] = (0x00FF&ucCs)>>0;
     unsigned short uProg;
-          msgBuf[6] = 0x01;
-            msgBuf[7] =ucUaddress;
-            msgBuf[8] = 0x00;//dont care
-            msgBuf[9] = 0x00;//dont care
-            msgBuf[10]= 0x00;//dont care
-            msgBuf[11]= 0x00;//dont care
-      //  }
-
+    msgBuf[6] = 0x01;
+    msgBuf[7] =ucUaddress;
+    msgBuf[8] = 0x00;//dont care
+    msgBuf[9] = 0x00;//dont care
+    msgBuf[10]= 0x00;//dont care
+    msgBuf[11]= 0x00;//dont care
     len += 12;
     int x=0;
     int count;
     while (x == 0)
     {
           int n = sendto(socketHandle,msgBuf, len, 0,(struct sockaddr*)&serverAddress, sizeof(serverAddress));
-
           int serv_addr_size = sizeof(clientAddress);
           count=recvfrom(socketHandle,RxBuffer,32, 0, (struct sockaddr*)&clientAddress,(socklen_t*) &serv_addr_size);
           int i=0;
@@ -619,7 +594,6 @@ void mvdReadI2C(oem_data_t *oemDataPtr, UINT16 dataLen, UINT8 *buffPtr) {
 	write32bCPU(I2C_CS, 8, I2C_DELAY | (I2C_RMODE << 16) | dataLen);
 	write32bCPU(I2C_CS, 4, (((oemDataPtr->i2cAddress*2)|1)<<24));
 	write32bCPU(I2C_CS, 8, (I2C_DELAY | (1 << 18) | (1 << 17) | (I2C_RMODE << 16) | dataLen));
-
 	// Boucle jusqu' not busy
 	// Check I2C core is not busy
 	do {

@@ -61,6 +61,7 @@ private:
     template<typename Method>
     void serveImpl(Method method)
     {
+    //std::cout<<"\n serveImp \n\n";
 #define CALL_MEMBER_FN(obj, pmf)  ((obj).*(pmf))
         if (!handler_)
             throw std::runtime_error("Must call setHandler() prior to serve()");

@@ -90,5 +90,4 @@ class Callcommand{
 	std::string hexStr(unsigned char *data, int len);
 	long string2long(const std::string &str, int base = 10);
 	std::string getCurrentTime();
-
 };

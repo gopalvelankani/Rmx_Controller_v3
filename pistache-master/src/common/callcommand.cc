@@ -17,7 +17,6 @@
 
 	int Callcommand :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,Json::Value json,int readWriteMode)
 	{
-		std::cout << "gimme something: ";
 		Json::Reader reader;
 		unsigned char msgBuf[msgBLen];
 		unsigned short len=0;
@@ -26,8 +25,8 @@
 		int up;
 		port = 4660;
 		struct timeval tv;
-		tv.tv_sec = 1;  /* 1 Secs Timeout */
-		tv.tv_usec = 0;
+		tv.tv_sec = 0;  /* 0.3 Secs Timeout */
+		tv.tv_usec = 300000;
 		SOCKET_TYPE socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
 		setsockopt(socketHandle, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
 	    if (SOCKET_INVALID(socketHandle))
@@ -43,11 +42,11 @@
 	    clientAddress.sin_family = AF_INET;
 		clientAddress.sin_addr.s_addr = htonl(INADDR_ANY);
 	    clientAddress.sin_port = htons(port);
-		if(bind(socketHandle,(struct sockaddr*)&clientAddress,sizeof(clientAddress))<0){
+		if(bind(socketHandle,(struct sockaddr*)&clientAddress,sizeof(clientAddress)) == -1){
 			std ::cout << "bind failed";
 			return 0;
 		}
-		std::cout << "gimme something: ";
+
 		std::cout << sizeof(RxBuffer);
 		len = 0;
 	    msgBuf[0] = STX;
@@ -865,4 +864,4 @@ std::string Callcommand :: getCurrentTime()
         ss << result;
         return ss.str();
     }
-// };
+

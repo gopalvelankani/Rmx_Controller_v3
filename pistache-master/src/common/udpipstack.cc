@@ -15,8 +15,8 @@
 		unsigned short len=0;
 		 struct timeval tv;
 
-		tv.tv_sec = 1;  /* 1 Secs Timeout */
-		tv.tv_usec = 0;
+		tv.tv_sec = 0;  /* 0.5 Secs Timeout */
+		tv.tv_usec = 500000;
 		SOCKET_TYPE socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
 		setsockopt(socketHandle, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
 	    if (SOCKET_INVALID(socketHandle))

@@ -421,37 +421,3 @@ MXL_STATUS_E MxLWare_HYDRA_API_CfgDrvUnInit(UINT8 devId)
   MXLEXITAPISTR(devId, status);
   return status;
 }
-/*int main()
-{
-//MxLWare_HYDRA_API_CfgDrvInit(UINT8 devId, void * oemDataPtr, MXL_HYDRA_DEVICE_E deviceType)
-    MXL_STATUS_E mxlStatus = MXL_SUCCESS;
-	MXL_HYDRA_DEVICE_E hydraDevSku = 1;
-    oem_data_t oemPtr;
-    int MXL_DEVICE_ID =0;
-	//MxLWare_HYDRA_OEM_DeviceReset((131072 * 200) / 25000);
-	oemPtr.i2cAddress = 63;
-	oemPtr.drvIndex = 0;
-	//mxlStatus = MxLWare_HYDRA_API_CfgDrvInit(MXL_DEVICE_ID, &oemPtr, hydraDevSku);
-    MXL_HYDRA_VER_INFO_T versionInfo;
-    //mxlStatus = MxLWare_HYDRA_API_CfgDevOverwriteDefault(MXL_DEVICE_ID);
-	//mxlStatus = MxLWare_HYDRA_API_ReqDevVersionInfo(MXL_DEVICE_ID, &versionInfo);
-	//printf("CHIP VER %d ",versionInfo.chipVer);
-	//printf("CHIP loaded %d ",versionInfo.firmwareDownloaded);
-	//MxL_HYDRA_DevInitilization(hydraDevSku, 0,0,0, 200);
-	/*write32bCPU(0,0,1);
-	read32bCPU(0,0);
-	write32bCPU(0,0,15);
-	read32bCPU(0,0);
-	write32bCPU(7,0,0);*/
-	/*write32bCPU(0,0,14);
-	//read32bCPU(0,0);
-	//write32bCPU(4,0,0);
-	MxL_Connect(0X60, 200, 125000);
-	MxL_GetVersion(&versionInfo);
-	read32bCPU(0,0);
-    //printf("CHIP VER %d ",versionInfo.chipVer);
-    //printf("Status %d",&status);
-    printf("Hello MXL");
-    return 0;
-}*/
-

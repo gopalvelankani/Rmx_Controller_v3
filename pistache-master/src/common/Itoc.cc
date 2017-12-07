@@ -39,8 +39,8 @@ int Itoc :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,J
           unsigned short len=0;
           struct timeval tv;
 
-          tv.tv_sec = 5;  /* 1 Secs Timeout */
-          tv.tv_usec = 0;
+          tv.tv_sec = 0;  /* 0.5 Secs Timeout */
+          tv.tv_usec = 500000;
           
           // reader.parse(json);
           SOCKET_TYPE socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
@@ -167,8 +167,8 @@ int Itoc :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,J
                     int i=std::stoi(tmp);
                     int x = (int)((4294967296*i)/2141.772152303);
                     msgBuf[6] = WRITEMODE; 
-                   msgBuf[7] = FOUR;
-                   msgBuf[8] = 0x1a;  
+                    msgBuf[7] = FOUR;
+                    msgBuf[8] = 0x1a;  
                     msgBuf[9] = 0x00; 
                     msgBuf[10] = 0x04; 
                     msgBuf[11] = MMSB_32_8(x); 
@@ -181,8 +181,8 @@ int Itoc :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,J
                     int i1=std::stoi(tmp1);
                     int x1 = (int)((4294967296*i1)/2141.772152303);
                     msgBuf[6] = WRITEMODE;
-                   msgBuf[7] = FOUR;
-                   msgBuf[8] = MLSB_32_8(x1);   
+                    msgBuf[7] = FOUR;
+                    msgBuf[8] = MLSB_32_8(x1);   
                     msgBuf[9] = LMSB_32_8(x1);  
                     msgBuf[10] = LLSB_32_8(x1)+1;  
                     msgBuf[11] = 0x00;
@@ -199,7 +199,15 @@ int Itoc :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,J
                     msgBuf[10] = 0x00; 
                     msgBuf[11] = 0x06;
                     }
-                    break;         
+                    break;   
+              case 14:
+                 msgBuf[6] = WRITEMODE;
+                 msgBuf[7] = 0x14;
+                 msgBuf[8] = 0x00;  
+                  msgBuf[9] = 0x00; 
+                  msgBuf[10] = 0x00; 
+                  msgBuf[11] = 0x00;
+                  break;      
          }
           len += 12;
           int x=0;

@@ -28,7 +28,7 @@ extern "C" {
 #define STX 0x02
 #define ETX 0x03
 #define RMX_COUNT 6
-#define INPUT_COUNT 3
+#define INPUT_COUNT 7
 #define OUTPUT_COUNT 3
 #define CMD_VER_FIMWARE  0x00
 using namespace std;
@@ -74,7 +74,9 @@ public:
 
     StatsEndpoint(Net::Address addr)
         : httpEndpoint(std::make_shared<Net::Http::Endpoint>(addr))
-    { }
+    {
+    
+    }
     void init(size_t thr = 2,std::string config_file_path="config.conf") {
         cnf.readConfig(config_file_path);
         db = new dbHandler(config_file_path);
@@ -89,9 +91,8 @@ public:
         // forkEMMChannels();
         // forkChannels();
         // forkCWthread();
-        // runBootupscript();
+       //runBootupscript();
     }
- 
     void start() {
         
         httpEndpoint->setHandler(router.handler());
@@ -371,45 +372,49 @@ private:
 
 	            MXL_STATUS_E mxlStatus = MXL_SUCCESS;
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-	            connectI2Clines(target);
-	            //Configuring allgro 
-	           	if(dvb_standard==2){
-	           		if(lnb_id==0 || lnb_id==1){
-	           			json["allegro"] = confAllegro(8,1,5,1,5);
-	           			callReadAllegro(8);
-	           			printf("callReadAllegro(8) DVB S2\n");
-	           		}
-	           		else{
-	           			json["allegro"] = confAllegro(9,1,5,1,5);
-	           			callReadAllegro(9);
-	           		}
-	           	}else{
-	           		if(lnb_id==0 || lnb_id==1){
-	           			json["allegro"] = confAllegro(8,1,0,1,0);
-	           			callReadAllegro(8);
-	           			printf("callReadAllegro(8) DVB S\n");
-	           		}
-	           		else{
-	           			json["allegro"] = confAllegro(9,1,0,1,0);
-	           			callReadAllegro(9);
-	           		}
-	           	}
-	           	//Set demod 
-	           	usleep(10000000);
-	           	json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
-	        	//get Demod
-	        	usleep(1500000);
-	        	unsigned char locked=0,modulation=MXL_HYDRA_MOD_AUTO,standard= MXL_HYDRA_DVBS,Fec=MXL_HYDRA_FEC_AUTO,roll_off=MXL_HYDRA_ROLLOFF_AUTO,pilot=MXL_HYDRA_PILOTS_AUTO,spectrums= MXL_HYDRA_SPECTRUM_AUTO;
-				unsigned int freq,RxPwr,rate,SNR;
-				mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &Fec, &roll_off, &pilot,&spectrums, &RxPwr,&SNR);
-	        	json["locked"]=locked;
-	        	//Set Output
-	        	usleep(3000000);
-	        	setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
-	        	//Set RF authorization
-	        	usleep(3000000);
-	        	write32bCPU(0,0,12);
-	        	write32bI2C(32, 0 ,1);
+	            if(connectI2Clines(target)){
+	               //Configuring allgro 
+    	           	if(dvb_standard==2){
+    	           		if(lnb_id==0 || lnb_id==1){
+    	           			json["allegro"] = confAllegro(8,1,5,1,5);
+    	           			callReadAllegro(8);
+    	           			printf("callReadAllegro(8) DVB S2\n");
+    	           		}
+    	           		else{
+    	           			json["allegro"] = confAllegro(9,1,5,1,5);
+    	           			callReadAllegro(9);
+    	           		}
+    	           	}else{
+    	           		if(lnb_id==0 || lnb_id==1){
+    	           			json["allegro"] = confAllegro(8,1,0,1,0);
+    	           			callReadAllegro(8);
+    	           			printf("callReadAllegro(8) DVB S\n");
+    	           		}
+    	           		else{
+    	           			json["allegro"] = confAllegro(9,1,0,1,0);
+    	           			callReadAllegro(9);
+    	           		}
+    	           	}
+    	           	//Set demod 
+    	           	usleep(10000000);
+    	           	json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
+    	        	//get Demod
+    	        	usleep(1500000);
+    	        	unsigned char locked=0,modulation=MXL_HYDRA_MOD_AUTO,standard= MXL_HYDRA_DVBS,Fec=MXL_HYDRA_FEC_AUTO,roll_off=MXL_HYDRA_ROLLOFF_AUTO,pilot=MXL_HYDRA_PILOTS_AUTO,spectrums= MXL_HYDRA_SPECTRUM_AUTO;
+    				unsigned int freq,RxPwr,rate,SNR;
+    				mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &Fec, &roll_off, &pilot,&spectrums, &RxPwr,&SNR);
+    	        	json["locked"]=locked;
+    	        	//Set Output
+    	        	usleep(3000000);
+    	        	setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
+    	        	//Set RF authorization
+    	        	usleep(3000000);
+    	        	write32bCPU(0,0,12);
+    	        	write32bI2C(32, 0 ,1);
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
 	        }
         }else{
             json["error"]= true;
@@ -493,9 +498,12 @@ private:
 	            // MXL_STATUS_E mxlStatus = MXL_SUCCESS;
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
 	           
-	            connectI2Clines(target);
-	            json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
-	           
+	            if(connectI2Clines(target)){
+                    json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
 	        }
         }else{
             json["error"]= true;
@@ -566,29 +574,33 @@ private:
 	            
 	            MXL_STATUS_E mxlStatus = MXL_FAILURE;
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-	            connectI2Clines(target);
-		        mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &fec, &rolloff, &pilots,&spectrum, &RxPwr,&SNR);
-		        if(mxlStatus == MXL_SUCCESS){
-		            printf("\nStatus Get demode success");
-		            json["error"] = false;
-		            json["message"] = "Get demode success!";
-		        }else{
-		            printf("\nStatus Get demode fail");
-		            json["error"] = true;
-		            json["message"] = "Get demode failed!";
-		        }
-		        json["locked"] = locked;
-		       	json["demod_id"] = demod_id;
-		       	json["dvb_standard"] = standard;
-		       	json["frequency"] = freq;
-		       	json["rate"] = rate;
-		       	json["fec"] =fec;
-		       	json["modulation"] = modulation;
-		       	json["rolloff"] = rolloff;
-		       	json["spectrum"] =spectrum;
-		       	json["pilots"] = pilots;
-		       	json["snr"] = SNR;
-		       	json["rx_pwr"] = RxPwr;
+	            if(connectI2Clines(target)){
+    		        mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &fec, &rolloff, &pilots,&spectrum, &RxPwr,&SNR);
+    		        if(mxlStatus == MXL_SUCCESS){
+    		            printf("\nStatus Get demode success");
+    		            json["error"] = false;
+    		            json["message"] = "Get demode success!";
+    		        }else{
+    		            printf("\nStatus Get demode fail");
+    		            json["error"] = true;
+    		            json["message"] = "Get demode failed!";
+    		        }
+    		        json["locked"] = locked;
+    		       	json["demod_id"] = demod_id;
+    		       	json["dvb_standard"] = standard;
+    		       	json["frequency"] = freq;
+    		       	json["rate"] = rate;
+    		       	json["fec"] =fec;
+    		       	json["modulation"] = modulation;
+    		       	json["rolloff"] = rolloff;
+    		       	json["spectrum"] =spectrum;
+    		       	json["pilots"] = pilots;
+    		       	json["snr"] = SNR;
+    		       	json["rx_pwr"] = RxPwr;
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
 		    }
         }else{
             json["error"]= true;
@@ -643,9 +655,12 @@ private:
 	            int rmx_no=std::stoi(str_rmx_no); 
 	            
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-	            connectI2Clines(target);
-	            
-	            json = confAllegro(std::stoi(address),std::stoi(enable1),std::stoi(volt1),std::stoi(enable2),std::stoi(volt2));
+	            if(connectI2Clines(target)){
+	               json = confAllegro(std::stoi(address),std::stoi(enable1),std::stoi(volt1),std::stoi(enable2),std::stoi(volt2));
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
 	        }
         }else{
             json["error"]= true;
@@ -750,9 +765,13 @@ private:
 	            int demod_id=std::stoi(str_demod_id); 
 
 		        int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-		        connectI2Clines(target);      
-		        setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
-		        json["message"]= "Set OutPut";
+		        if(connectI2Clines(target)){
+                    setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
+                    json["message"]= "Set OutPut";
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
 		    }
         }else{
             json["error"]= true;
@@ -767,9 +786,10 @@ private:
     void  authorizeRFout(const Rest::Request& request, Net::Http::ResponseWriter response){
         Json::Value json;
         Json::FastWriter fastWriter;  
-        
+        int value =std::stoi(getParameter(request.body(),"value"));
         write32bCPU(0,0,12);
-        write32bI2C(32, 0 ,1);
+        write32bI2C(32, 0 ,value);
+        std::cout<<value<<"\n";
         json["message"] = "Authorize RF out!";
 		
         std::string resp = fastWriter.write(json);
@@ -821,12 +841,13 @@ private:
 	            int rmx_no=std::stoi(str_rmx_no); 
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
 	            if(connectI2Clines(target)){
+                    json["error"]= false;
 	            	json["message"]= "Mxl Connected!";	
-	            }else
-	            	json["message"]= "Mxl Connection failed!";	
+	            }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }	
 	            json["target"]= target;
-	            json["error"]= false;
-
 	        }
         }else{
             json["error"]= true;
@@ -840,25 +861,27 @@ private:
         MXL_STATUS_E mxlStatus = MXL_FAILURE;
         MXL_HYDRA_VER_INFO_T versionInfo;
 
-        write32bCPU(0,0,target);/**select interface**/
+        if(write32bCPU(0,0,target) == -1)/**select interface**/
+            return 0;
         write32bCPU(7,0,0);
         
         mxlStatus =  MxL_Connect(0X60, 200, 125000);//i2caddress,i2c_speed,i2c_baudrate
         if(mxlStatus != MXL_SUCCESS){
             printf("Status NOT Connected");
-        }else{
-            // printf("Status connected\n");
-        }
-        MxL_GetVersion(&versionInfo);
-        if(versionInfo.chipId != MXL_HYDRA_DEVICE_584){
-            printf("Status chip connection failed");
             return 0;
         }else{
-        	printf("\n Status OK  chip version %d ",versionInfo.chipVer);
-            // printf("\n Status chip connection successfull! ");
-            // printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
-    		// printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
-    	return 1;
+            // printf("Status connected\n");
+            MxL_GetVersion(&versionInfo);
+            if(versionInfo.chipId != MXL_HYDRA_DEVICE_584){
+                printf("Status chip connection failed");
+                return 0;
+            }else{
+            	printf("\n Status OK  chip version %d ",versionInfo.chipVer);
+                // printf("\n Status chip connection successfull! ");
+                // printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
+        		// printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
+        	return 1;
+            }
         }
     }
     /*****************************************************************************/
@@ -944,49 +967,53 @@ private:
     	MXL_STATUS_E mxlStatus = MXL_SUCCESS;
         MXL_HYDRA_VER_INFO_T versionInfo;
         int target =((0&0x3)<<8) | ((rmx_no&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-        connectI2Clines(target);
-        char cwd[1024];
-        if(getcwd(cwd,sizeof(cwd)) != NULL)
-            printf("CWD %s\n",cwd);
-        else
-            printf("CWD error\n");
-        strcat(cwd,"/FW/MxL_5xx_FW.mbin");
-        if (std::ifstream(cwd))
-		{
-		    printf("\n\n \t\t\t Downloading Firmware please wait.... \n");
-	        mxlStatus = App_FirmwareDownload(cwd);
-	        if(mxlStatus != MXL_SUCCESS){
-	            printf("Status FW download");
-	        }else{
-	            printf("Status FW download fail");
-	        }
-	        MxL_GetVersion(&versionInfo);
-	        if(versionInfo.chipId != MXL_HYDRA_DEVICE_584){
-	            printf("Status chip connection failed");
-	            json["message"] = "MxL not connected!";
-	            json["error"]= true;
-	        }else{
-	            printf("\n Status chip connection successfull! ");
-	            printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
-	            printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
-	            json["message"] = "MxL connected!";
-	    		json["chip_version"] =versionInfo.chipVer;
-	    		json["mxlware_vers"] = std::to_string(versionInfo.mxlWareVer[0])+'.'+std::to_string(versionInfo.mxlWareVer[1])+'.'+std::to_string(versionInfo.mxlWareVer[2])+'.'+std::to_string(versionInfo.mxlWareVer[3])+'.'+std::to_string(versionInfo.mxlWareVer[4]);
-	    		json["firmware_vers"] = std::to_string(versionInfo.firmwareVer[0])+'.'+std::to_string(versionInfo.firmwareVer[1])+'.'+std::to_string(versionInfo.firmwareVer[2])+'.'+std::to_string(versionInfo.firmwareVer[3])+'.'+std::to_string(versionInfo.firmwareVer[4]);
-	            if(versionInfo.firmwareDownloaded){
-	                printf("\n Firmware Loaded True");
-	                json["FW Downloaded"] = true; 
-	            }else{
-	                printf("\n Firmware Loaded False");
-	                json["FW Downloaded"] = false; 
-	            }
-	            json["error"]= false;
-	        }
+        if(connectI2Clines(target)){
+            char cwd[1024];
+            if(getcwd(cwd,sizeof(cwd)) != NULL)
+                printf("CWD %s\n",cwd);
+            else
+                printf("CWD error\n");
+            strcat(cwd,"/FW/MxL_5xx_FW.mbin");
+            if (std::ifstream(cwd))
+    		{
+    		    printf("\n\n \t\t\t Downloading Firmware please wait.... \n");
+    	        mxlStatus = App_FirmwareDownload(cwd);
+    	        if(mxlStatus != MXL_SUCCESS){
+    	            printf("Status FW download");
+    	        }else{
+    	            printf("Status FW download fail");
+    	        }
+    	        MxL_GetVersion(&versionInfo);
+    	        if(versionInfo.chipId != MXL_HYDRA_DEVICE_584){
+    	            printf("Status chip connection failed");
+    	            json["message"] = "MxL not connected!";
+    	            json["error"]= true;
+    	        }else{
+    	            printf("\n Status chip connection successfull! ");
+    	            printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
+    	            printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
+    	            json["message"] = "MxL connected!";
+    	    		json["chip_version"] =versionInfo.chipVer;
+    	    		json["mxlware_vers"] = std::to_string(versionInfo.mxlWareVer[0])+'.'+std::to_string(versionInfo.mxlWareVer[1])+'.'+std::to_string(versionInfo.mxlWareVer[2])+'.'+std::to_string(versionInfo.mxlWareVer[3])+'.'+std::to_string(versionInfo.mxlWareVer[4]);
+    	    		json["firmware_vers"] = std::to_string(versionInfo.firmwareVer[0])+'.'+std::to_string(versionInfo.firmwareVer[1])+'.'+std::to_string(versionInfo.firmwareVer[2])+'.'+std::to_string(versionInfo.firmwareVer[3])+'.'+std::to_string(versionInfo.firmwareVer[4]);
+    	            if(versionInfo.firmwareDownloaded){
+    	                printf("\n Firmware Loaded True");
+    	                json["FW Downloaded"] = true; 
+    	            }else{
+    	                printf("\n Firmware Loaded False");
+    	                json["FW Downloaded"] = false; 
+    	            }
+    	            json["error"]= false;
+    	        }
+            }else{
+            	string str(cwd);
+    	    	json["message"]= "FirmWare file path "+str+" does not exists!";
+    	    	json["error"]= true;
+            	printf("\n FW file path not exists \n");
+            }
         }else{
-        	string str(cwd);
-	    	json["message"]= "FirmWare file path "+str+" does not exists!";
-	    	json["error"]= true;
-        	printf("\n FW file path not exists \n");
+            json["error"]= true;
+            json["message"]= "Connection error!";
         }
         json["target"]= target;
         return json;
@@ -1164,8 +1191,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetFirmwareVersion(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetFirmwareVersion(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1249,8 +1281,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetHardwareVersion(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetHardwareVersion(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1347,8 +1384,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetInputOutput(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetInputOutput(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1391,8 +1433,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);     
-            json = callGetInputMode(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetInputMode(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }     
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1554,25 +1601,29 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){   
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            int uLen = c1.callCommand(06,RxBuffer,20,5,json,0);
-            if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 0x06 || uLen != 9 || RxBuffer[8] != ETX ) {
-                json["error"]= true;
-                json["message"]= "STATUS COMMAND ERROR!";
-                addToLog("getGPIO","Error");
-            }else{
-                uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
-                if (uLen != 4 ) {
+			if(connectI2Clines(target)){
+                int uLen = c1.callCommand(06,RxBuffer,20,5,json,0);
+                if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 0x06 || uLen != 9 || RxBuffer[8] != ETX ) {
                     json["error"]= true;
                     json["message"]= "STATUS COMMAND ERROR!";
                     addToLog("getGPIO","Error");
                 }else{
-                    json["error"] = false;
-                    json["message"] = "GET GPIO!";
-                    json["data"] = (RxBuffer[4] << 24) |(RxBuffer[5] << 16) |(RxBuffer[6] << 8) |(RxBuffer[7]);  
-                    addToLog("getGPIO","Success");
+                    uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
+                    if (uLen != 4 ) {
+                        json["error"]= true;
+                        json["message"]= "STATUS COMMAND ERROR!";
+                        addToLog("getGPIO","Error");
+                    }else{
+                        json["error"] = false;
+                        json["message"] = "GET GPIO!";
+                        json["data"] = (RxBuffer[4] << 24) |(RxBuffer[5] << 16) |(RxBuffer[6] << 8) |(RxBuffer[7]);  
+                        addToLog("getGPIO","Success");
+                    }
+                    
                 }
-                
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
             }
         }else{
             json["error"]= true;
@@ -1617,16 +1668,20 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            int uLen = c1.callCommand(8,RxBuffer,10,10,json,0);
-            if (!uLen || RxBuffer[0] != STX || RxBuffer[3] != 07 || uLen != 5 || RxBuffer[4] != ETX ) {
-                json["error"]= true;
-                json["message"]= "STATUS COMMAND ERROR!";
-                addToLog("readSFN","Error");
+			if(connectI2Clines(target)){
+                int uLen = c1.callCommand(8,RxBuffer,10,10,json,0);
+                if (!uLen || RxBuffer[0] != STX || RxBuffer[3] != 07 || uLen != 5 || RxBuffer[4] != ETX ) {
+                    json["error"]= true;
+                    json["message"]= "STATUS COMMAND ERROR!";
+                    addToLog("readSFN","Error");
+                }else{
+                    json["error"] = false;
+                    json["message"] = "Read SNF!";
+                    addToLog("readSFN","Success");
+                }
             }else{
-                json["error"] = false;
-                json["message"] = "Read SNF!";
-                addToLog("readSFN","Success");
+                json["error"]= true;
+                json["message"]= "Connection error!";
             }
         }else{
             json["error"]= true;
@@ -1646,8 +1701,12 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(0 < rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetNITmode(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetNITmode(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1730,8 +1789,12 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetLCN(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetLCN(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1815,26 +1878,30 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            int uLen = c1.callCommand(12,RxBuffer,6,6,json,0);
-            string stx=getDecToHex((int)RxBuffer[0]);
-            string cmd = getDecToHex((int)RxBuffer[3]);
-            if (!uLen || std::stoi(stx) != STX || std::stoi(cmd) != 12 || uLen != 6 || RxBuffer[5] != ETX) {
-                json["error"]= true;
-                json["message"]= "STATUS COMMAND ERROR!";
-                addToLog("getHostNIT","Error");
-            }else{
-                uLen = ((RxBuffer[1] << 8) | RxBuffer[2]);
-                if (uLen != 1 ) {
+			if(connectI2Clines(target)){
+                int uLen = c1.callCommand(12,RxBuffer,6,6,json,0);
+                string stx=getDecToHex((int)RxBuffer[0]);
+                string cmd = getDecToHex((int)RxBuffer[3]);
+                if (!uLen || std::stoi(stx) != STX || std::stoi(cmd) != 12 || uLen != 6 || RxBuffer[5] != ETX) {
                     json["error"]= true;
                     json["message"]= "STATUS COMMAND ERROR!";
                     addToLog("getHostNIT","Error");
                 }else{
-                    json["error"] = false;
-                    json["message"] = "GET HOST NIT!";
-                    json["data"] = RxBuffer[4];
-                    addToLog("getHostNIT","Success");
+                    uLen = ((RxBuffer[1] << 8) | RxBuffer[2]);
+                    if (uLen != 1 ) {
+                        json["error"]= true;
+                        json["message"]= "STATUS COMMAND ERROR!";
+                        addToLog("getHostNIT","Error");
+                    }else{
+                        json["error"] = false;
+                        json["message"] = "GET HOST NIT!";
+                        json["data"] = RxBuffer[4];
+                        addToLog("getHostNIT","Success");
+                    }
                 }
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
             }
         }else{
             json["error"]= true;
@@ -1911,8 +1978,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetTsId(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetTsId(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -1998,8 +2070,13 @@ private:
          int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetDvbSpiOutputMode(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetDvbSpiOutputMode(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -2091,8 +2168,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetPsiSiInterval(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetPsiSiInterval(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";
@@ -2179,8 +2261,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-           json = callGetNetworkName(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetNetworkName(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+           
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";   
@@ -2270,9 +2357,14 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            std::string progNumber = request.param(":uProg").as<std::string>();
-            json = callGetServiceName(rmx_no,progNumber);
+			if(connectI2Clines(target)){
+                std::string progNumber = request.param(":uProg").as<std::string>();
+                json = callGetServiceName(rmx_no,progNumber);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"]= true;
             json["message"]= "Invalid remux id!";   
@@ -2305,7 +2397,7 @@ private:
                 nName=nName+getDecToHex((int)RxBuffer[4 + i]);
             }
             if(nName == "")
-            	json["nName"] = "noName";
+            	json["nName"] = -1;
             else
             	json["nName"] = hex_to_string(nName);
             addToLog("getServiceName","Success");
@@ -2366,8 +2458,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-           	json = callGetDynamicStateWinSize(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetDynamicStateWinSize(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+           	
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -2443,8 +2540,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetFilterCA(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetFilterCA(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -2536,8 +2638,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetServiceID(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetServiceID(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -2688,8 +2795,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetTablesVersion(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetTablesVersion(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -2786,8 +2898,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetSmoothFilterInfo(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetSmoothFilterInfo(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -2871,8 +2988,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetDataflowRates(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetDataflowRates(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3158,8 +3280,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if( rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetCryptedProg(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetCryptedProg(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3333,9 +3460,14 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            auto uProg = request.param(":uProg").as<std::string>();
-            json = callGetPrograminfo(uProg,rmx_no);
+			if(connectI2Clines(target)){
+                auto uProg = request.param(":uProg").as<std::string>();
+                json = callGetPrograminfo(uProg,rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3429,8 +3561,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){  
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);     
-            json = callGetAllReferencedPIDInfo(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetAllReferencedPIDInfo(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3518,8 +3655,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetEraseCAMod(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetEraseCAMod(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3698,8 +3840,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json =  callEraseCAMod(rmx_no);
+			if(connectI2Clines(target)){
+                json =  callEraseCAMod(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3791,29 +3938,33 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            int uLen = c1.callCommand(39,RxBuffer,4090,7,json,0);
-            string stx=getDecToHex((int)RxBuffer[0]);
-            string cmd = getDecToHex((int)RxBuffer[3]);
+			if(connectI2Clines(target)){
+                int uLen = c1.callCommand(39,RxBuffer,4090,7,json,0);
+                string stx=getDecToHex((int)RxBuffer[0]);
+                string cmd = getDecToHex((int)RxBuffer[3]);
 
-            if (!uLen || std::stoi(stx) != STX || std::stoi(cmd) != 39) {
-                json["error"]= true;
-                json["message"]= "STATUS COMMAND ERROR!";
-                addToLog("getStatPID","Error");       
-            }else{
-                uLen = ((RxBuffer[1] << 8) | RxBuffer[2]);
-                num_prog = uLen/9;
-                for(int i=0; i<num_prog; i++) {
-                    pNbOccurence[i] = (RxBuffer[9*i+4]<<16)|RxBuffer[9*i+5]<<8|RxBuffer[9*i+6];
-                    pNbCrypt[i] = (RxBuffer[9*i+7]<<16)|RxBuffer[9*i+8]<<8|RxBuffer[9*i+9];
-                    pNbCCnt[i] = (RxBuffer[9*i+10]<<16)|RxBuffer[9*i+11]<<8|RxBuffer[9*i+12];
+                if (!uLen || std::stoi(stx) != STX || std::stoi(cmd) != 39) {
+                    json["error"]= true;
+                    json["message"]= "STATUS COMMAND ERROR!";
+                    addToLog("getStatPID","Error");       
+                }else{
+                    uLen = ((RxBuffer[1] << 8) | RxBuffer[2]);
+                    num_prog = uLen/9;
+                    for(int i=0; i<num_prog; i++) {
+                        pNbOccurence[i] = (RxBuffer[9*i+4]<<16)|RxBuffer[9*i+5]<<8|RxBuffer[9*i+6];
+                        pNbCrypt[i] = (RxBuffer[9*i+7]<<16)|RxBuffer[9*i+8]<<8|RxBuffer[9*i+9];
+                        pNbCCnt[i] = (RxBuffer[9*i+10]<<16)|RxBuffer[9*i+11]<<8|RxBuffer[9*i+12];
+                    }
+                    json["pNbOccurence"] = pNbOccurence;
+                    json["pNbCrypt"] = pNbCrypt;
+                    json["pNbCCnt"] = pNbCCnt;
+                    json["error"] = false;
+                    json["message"] = "Get stat PID!";
+                    addToLog("getStatPID","Success");       
                 }
-                json["pNbOccurence"] = pNbOccurence;
-                json["pNbCrypt"] = pNbCrypt;
-                json["pNbCCnt"] = pNbCCnt;
-                json["error"] = false;
-                json["message"] = "Get stat PID!";
-                addToLog("getStatPID","Success");       
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
             }
         }else{
             json["error"] = false;
@@ -3832,8 +3983,12 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target); 
-            json =callGetProgActivation(rmx_no);
+			if(connectI2Clines(target)){
+                json =callGetProgActivation(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -3869,7 +4024,7 @@ private:
                 if(jpnames["error"] == false){
                 	jsondata["original_name"] = jpnames["name"];
                 }else{
-                	jsondata["original_name"] = "NoName";
+                	jsondata["original_name"] = -1;
                 }
                 jservName = callGetServiceName(rmx_no,std::to_string(pnum));
                 if(jservName["error"]==false){
@@ -3954,8 +4109,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target); 
-            json = callGetLockedPIDs(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetLockedPIDs(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4039,8 +4199,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json =callFlushLockedPIDs(rmx_no);
+			if(connectI2Clines(target)){
+                json =callFlushLockedPIDs(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4126,8 +4291,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);         
-            json = callGetHighPriorityServices(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetHighPriorityServices(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4211,8 +4381,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-           json = callFlushHighPriorityServices(rmx_no);
+			if(connectI2Clines(target)){
+                json = callFlushHighPriorityServices(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+           
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4298,8 +4473,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);        
-            json = callGetPsiSiDecodingStatus(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetPsiSiDecodingStatus(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4393,8 +4573,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetTSFeatures(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetTSFeatures(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4489,8 +4674,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-           json = callGetLcnProvider(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetLcnProvider(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+           
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4565,9 +4755,14 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            auto uProg = request.param(":uProg").as<std::string>();
-            json = callGetProgramOriginalName(uProg,rmx_no);
+			if(connectI2Clines(target)){
+                auto uProg = request.param(":uProg").as<std::string>();
+                json = callGetProgramOriginalName(uProg,rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4650,9 +4845,14 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            auto uProg = request.param(":uProg").as<std::string>();
-            json = callGetProgramOriginalProviderName(uProg,rmx_no);
+			if(connectI2Clines(target)){
+                auto uProg = request.param(":uProg").as<std::string>();
+                json = callGetProgramOriginalProviderName(uProg,rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4737,9 +4937,14 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            auto uProg = request.param(":uProg").as<std::string>();
-            json = callGetProgramOriginalNetworkName(rmx_no,uProg);
+			if(connectI2Clines(target)){
+                auto uProg = request.param(":uProg").as<std::string>();
+                json = callGetProgramOriginalNetworkName(rmx_no,uProg);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -4842,24 +5047,28 @@ private:
                 {
                     if(verifyJsonArray(root,"service_list",1)){
                     	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-						connectI2Clines(target);
-                        jsonMsg["service_list"] = root["service_list"];
-                        uLen = c1.callCommand(29,RxBuffer,1024,1024,jsonMsg,0);
-                        string cmd = getDecToHex((int)RxBuffer[3]);
-                        if (!uLen|| RxBuffer[0] != STX || std::stoi(cmd) != 29 ) {
-                            json["error"]= true;
-                            json["message"]= "STATUS COMMAND ERROR!";
-                            addToLog("getAffectedOutputServices","Error"); 
-                        }else{
-                            uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
-                            json["error"]= parsedSuccess;
-                            json["message"]= "Affected service list.";
-                            uLen /= 2;
-                            for (int i = 0; i<uLen; i++) {
-                                progNum[i] = ((RxBuffer[4 + i * 2] << 8) | RxBuffer[4 + i * 2 + 1]);
+						if(connectI2Clines(target)){
+                            jsonMsg["service_list"] = root["service_list"];
+                            uLen = c1.callCommand(29,RxBuffer,1024,1024,jsonMsg,0);
+                            string cmd = getDecToHex((int)RxBuffer[3]);
+                            if (!uLen|| RxBuffer[0] != STX || std::stoi(cmd) != 29 ) {
+                                json["error"]= true;
+                                json["message"]= "STATUS COMMAND ERROR!";
+                                addToLog("getAffectedOutputServices","Error"); 
+                            }else{
+                                uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
+                                json["error"]= parsedSuccess;
+                                json["message"]= "Affected service list.";
+                                uLen /= 2;
+                                for (int i = 0; i<uLen; i++) {
+                                    progNum[i] = ((RxBuffer[4 + i * 2] << 8) | RxBuffer[4 + i * 2 + 1]);
+                                }
+                                json["services"] = progNum; 
+                                addToLog("getAffectedOutputServices","Success"); 
                             }
-                            json["services"] = progNum; 
-                            addToLog("getAffectedOutputServices","Success"); 
+                        }else{
+                            json["error"]= true;
+                            json["message"]= "Connection error!";
                         }
                     }else{
                         json["error"]= true;
@@ -4933,27 +5142,32 @@ private:
         Json::FastWriter fastWriter;
 
         if(is_numeric(in) && is_numeric(out)){
-            if(std::stoi(in)<4 && std::stoi(out)<4){
+            if(std::stoi(in)<=INPUT_COUNT && std::stoi(out)<=OUTPUT_COUNT){
                 jsonMsg["input"]=in;
                 jsonMsg["output"]=out;
                 int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((0)&0xF)<<1) | (0&0x1);
-                connectI2Clines(target);
-                uLen = c1.callCommand(02,RxBuffer,6,7,jsonMsg,1);
-                if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 02 || uLen != 6 || RxBuffer[4]!=1 || RxBuffer[5] != ETX ) {
-                    json["error"]= true;
-                    json["message"]= "STATUS COMMAND ERROR!";
-                }else{
-                    uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
-                    if (uLen != 1 ) {
+
+                if(connectI2Clines(target)){
+                    uLen = c1.callCommand(02,RxBuffer,6,7,jsonMsg,1);
+                    if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 02 || uLen != 6 || RxBuffer[4]!=1 || RxBuffer[5] != ETX ) {
                         json["error"]= true;
                         json["message"]= "STATUS COMMAND ERROR!";
-                        addToLog("setInputOutput","Error");
                     }else{
-                        json["status"] = RxBuffer[4]; 
-                        json["error"]= false;
-                        json["message"]= "SET input/output!";  
-                        addToLog("setInputOutput","Success");        
+                        uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
+                        if (uLen != 1 ) {
+                            json["error"]= true;
+                            json["message"]= "STATUS COMMAND ERROR!";
+                            addToLog("setInputOutput","Error");
+                        }else{
+                            json["status"] = RxBuffer[4]; 
+                            json["error"]= false;
+                            json["message"]= "SET input/output!";  
+                            addToLog("setInputOutput","Success");        
+                        }
                     }
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
                 }
             }else{
                 json["error"]= true;
@@ -5077,8 +5291,12 @@ private:
                 pro_id = getParameter(request.body(),"provId");
                 if(verifyInteger(pro_id)){
                 	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-					connectI2Clines(target);
-                    json = callSetLcnProvider(pro_id,std::stoi(rmx_no));
+                    if(connectI2Clines(target)){
+                        json = callSetLcnProvider(pro_id,std::stoi(rmx_no));
+                    }else{
+                        json["error"]= true;
+                        json["message"]= "Connection error!";
+                    }
                 }else{
                     json["error"]= true;
                     json["provId"]= "Required Integer!";
@@ -5157,8 +5375,12 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				connectI2Clines(target);
-                json = callCreateAlarmFlags(FIFO_Threshold0,FIFO_Threshold1,FIFO_Threshold2,FIFO_Threshold3,mode,std::stoi(rmx_no));
+                if(connectI2Clines(target)){
+                    json = callCreateAlarmFlags(FIFO_Threshold0,FIFO_Threshold1,FIFO_Threshold2,FIFO_Threshold3,mode,std::stoi(rmx_no));
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
             }
         }else{
             json["error"]= true;
@@ -5677,8 +5899,12 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				connectI2Clines(target);
-                json=callSetTableTimeout(table,timeout,std::stoi(rmx_no)); 
+                if(connectI2Clines(target)){
+                    json=callSetTableTimeout(table,timeout,std::stoi(rmx_no)); 
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
             }   
         }else{
             json["error"]= true;
@@ -5836,8 +6062,12 @@ private:
             if(all_para_valid){
             	
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				connectI2Clines(target);
-                json = callSetDvbSpiOutputMode(rate,falling,mode,output,std::stoi(rmx_no));
+                if(connectI2Clines(target)){
+                    json = callSetDvbSpiOutputMode(rate,falling,mode,output,std::stoi(rmx_no));
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
             }
         }else{
             json["error"]= true;
@@ -6109,25 +6339,29 @@ private:
         if(verifyInteger(rmx_no,1,1,RMX_COUNT)==1)
         {
         	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            uLen = c1.callCommand(241,RxBuffer,20,200,paraJson,1);      
-            if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != CMD_CHANGE_SID || RxBuffer[4]!=1 || RxBuffer[5] != ETX ){
-                json["error"]= true;
-                json["message"]= "STATUS COMMAND ERROR!";
-            }            
-            else{
-                uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
-                if (uLen != 1 ) {
+            if(connectI2Clines(target)){
+                uLen = c1.callCommand(241,RxBuffer,20,200,paraJson,1);      
+                if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != CMD_CHANGE_SID || RxBuffer[4]!=1 || RxBuffer[5] != ETX ){
                     json["error"]= true;
                     json["message"]= "STATUS COMMAND ERROR!";
-                    addToLog("flushServiceIDs","Error");
-                }else{
-                    json["status"] = RxBuffer[4];
-                    json["error"]= false;
-                    json["message"]= "All service IDs reinitiated!!!";
-                    addToLog("flushServiceIDs","Success");  
-                    db->flushServiceId();        
+                }            
+                else{
+                    uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
+                    if (uLen != 1 ) {
+                        json["error"]= true;
+                        json["message"]= "STATUS COMMAND ERROR!";
+                        addToLog("flushServiceIDs","Error");
+                    }else{
+                        json["status"] = RxBuffer[4];
+                        json["error"]= false;
+                        json["message"]= "All service IDs reinitiated!!!";
+                        addToLog("flushServiceIDs","Success");  
+                        db->flushServiceId();        
+                    }
                 }
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
             }
         }else{
             json["error"] = true;
@@ -6170,8 +6404,12 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				connectI2Clines(target);
-                json = callSetCore(cs,address,data,std::stoi(rmx_no));
+				if(connectI2Clines(target)){
+                    json = callSetCore(cs,address,data,std::stoi(rmx_no));
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
             }
         }else{
             json["error"]= true;
@@ -6313,8 +6551,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            json = callGetPmtAlarm(rmx_no);
+			if(connectI2Clines(target)){
+                json = callGetPmtAlarm(rmx_no);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
+            
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -6633,9 +6876,13 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            auto programNumber = request.param(":uProg").as<std::string>();
-            json = callGetNewProvName(rmx_no , programNumber);
+			if(connectI2Clines(target)){
+                auto programNumber = request.param(":uProg").as<std::string>();
+                json = callGetNewProvName(rmx_no , programNumber);
+            }else{
+                json["error"]= true;
+                json["message"]= "Connection error!";
+            }
         }else{
             json["error"] = false;
             json["message"] = "Invalid remux id";
@@ -6857,36 +7104,39 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				connectI2Clines(target);
-                uLen = c1.callCommand(85,RxBuffer,255 * 1024,11,jsonMsg,1);
-                             
-                if (!uLen|| RxBuffer[0] != STX || std::stoi(getDecToHex((int)RxBuffer[3])) != 55){
-                    json["error"]= true;
-                    json["message"]= "STATUS COMMAND ERROR!1";
-                }            
-                else{
-                    uLen = ((RxBuffer[1]<<8) | RxBuffer[2]); 
-                    int num_prog = uLen;
-                    std::stringstream ss;
-                    std::string res;
-                    
-                    if (uLen == 0 ) {
-                        json["error"]= uLen;
-                        json["message"]= "STATUS COMMAND ERROR!";
-                        addToLog("downloadTables","Error");
-                    }else{
-                        for(int i=0; i<uLen; i++) {
-                            std::string byte;
-                            byte = getDecToHex((int)RxBuffer[i+4]);
-                            if(byte.length()<2)
-                                byte='0'+byte;
-                            res+=byte;
+				if(connectI2Clines(target)){
+                    uLen = c1.callCommand(85,RxBuffer,255 * 1024,11,jsonMsg,1);
+                    if (!uLen|| RxBuffer[0] != STX || std::stoi(getDecToHex((int)RxBuffer[3])) != 55){
+                        json["error"]= true;
+                        json["message"]= "STATUS COMMAND ERROR!1";
+                    }            
+                    else{
+                        uLen = ((RxBuffer[1]<<8) | RxBuffer[2]); 
+                        int num_prog = uLen;
+                        std::stringstream ss;
+                        std::string res;
+                        
+                        if (uLen == 0 ) {
+                            json["error"]= uLen;
+                            json["message"]= "STATUS COMMAND ERROR!";
+                            addToLog("downloadTables","Error");
+                        }else{
+                            for(int i=0; i<uLen; i++) {
+                                std::string byte;
+                                byte = getDecToHex((int)RxBuffer[i+4]);
+                                if(byte.length()<2)
+                                    byte='0'+byte;
+                                res+=byte;
+                            }
+                            json["data"] = res;
+                            json["error"]=false;
+                            json["message"]= "download Done";
+                            addToLog("downloadTables","Success");          
                         }
-                        json["data"] = res;
-                        json["error"]=false;
-                        json["message"]= "download Done";
-                        addToLog("downloadTables","Success");          
                     }
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
                 }
             }
         }else{
@@ -7754,30 +8004,34 @@ private:
             std::string frequency = getParameter(request.body(),"frequency"); 
             std::string rmx_no = getParameter(request.body(),"rmx_no"); 
             int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			connectI2Clines(target);
-            if(verifyInteger(frequency) && verifyInteger(rmx_no)){
-                json["frequency"] = frequency;
-            
-                c3.callCommand(9,RxBuffer,20,20,json,0);
-                c3.callCommand(10,RxBuffer,20,20,json,1);
-                c3.callCommand(11,RxBuffer,20,20,json,1);
-                c3.callCommand(12,RxBuffer,20,20,json,1);
-                uLen=c3.callCommand(13,RxBuffer,20,20,json,1);
-                 if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
-                    json["error"]= true;
-                    json["message"]= "STATUS COMMAND ERROR!";
-                    addToLog("setIfrequency","Error");
+			if(connectI2Clines(target)){
+                if(verifyInteger(frequency) && verifyInteger(rmx_no)){
+                    json["frequency"] = frequency;
+                
+                    c3.callCommand(9,RxBuffer,20,20,json,0);
+                    c3.callCommand(10,RxBuffer,20,20,json,1);
+                    c3.callCommand(11,RxBuffer,20,20,json,1);
+                    c3.callCommand(12,RxBuffer,20,20,json,1);
+                    uLen=c3.callCommand(13,RxBuffer,20,20,json,1);
+                     if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
+                        json["error"]= true;
+                        json["message"]= "STATUS COMMAND ERROR!";
+                        addToLog("setIfrequency","Error");
+                    }else{
+                        json["status"] = RxBuffer[4];
+                        json["error"]= false;
+                        json["message"]= "Set frequency!";
+                        db->addFrequency(std::stoi(frequency));
+                        addToLog("setIfrequency","Success");
+                    }
+                    //json = callsetIfrequency(frequency);
                 }else{
-                    json["status"] = RxBuffer[4];
-                    json["error"]= false;
-                    json["message"]= "Set frequency!";
-                    db->addFrequency(std::stoi(frequency));
-                    addToLog("setIfrequency","Success");
+                    json["error"]= true;
+                    json["message"]= "Required frequency, rmx_no integer!";
                 }
-                //json = callsetIfrequency(frequency);
             }else{
-                json["error"]= true;
-                json["message"]= "Required frequency, rmx_no integer!";
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
             }
         }else{
             json["error"]= true;
@@ -8753,29 +9007,32 @@ private:
     }
     void runBootupscript(){
         Json::Value json,NewService_names,NewService_ids,network_details,lcn_json,high_prior_ser,pmt_alarm_json,active_progs,locked_progs,freeca_progs,input_mode_json,fifo_flags,table_ver_json,table_timeout_json,dvb_output_json,psisi_interval,serv_provider_json,nit_mode;
-        printf("\n\n Downloding Mxl 1 \n");
-        downloadMxlFW(1,0);
-        usleep(1000000);
-        printf("\n\n Downloding Mxl 2 \n");
-        downloadMxlFW(2,0);
-        usleep(1000000);
-        printf("\n\n Downloding Mxl 3 \n");
-        downloadMxlFW(3,0);
-        usleep(1000000);
-        printf("\n\n Downloding Mxl 4 \n");
-        downloadMxlFW(4,0);
-        usleep(1000000);
-        printf("\n\n Downloding Mxl 5 \n");
-        downloadMxlFW(5,0);
-        usleep(1000000);
-        printf("\n\n Downloding Mxl 6 \n");
-        downloadMxlFW(6,0);
-        printf("\n\n MXL Downlod Completed! \n\n");
-        for(int k=0;k<4;k++){
-            Json::Value iojson =callGetProgramList(k,1);
-            if(iojson["error"]==false)
-                std::cout<<"-----------Services has been restored from channel "<<k<<"---------------- "<<std::endl;
-        }
+        // printf("\n\n Downloding Mxl 1 \n");
+        // downloadMxlFW(1,0);
+        // usleep(1000000);
+        // printf("\n\n Downloding Mxl 2 \n");
+        // downloadMxlFW(2,0);
+        // usleep(1000000);
+        // printf("\n\n Downloding Mxl 3 \n");
+        // downloadMxlFW(3,0);
+        // usleep(1000000);
+        // printf("\n\n Downloding Mxl 4 \n");
+        // downloadMxlFW(4,0);
+        // usleep(1000000);
+        // printf("\n\n Downloding Mxl 5 \n");
+        // downloadMxlFW(5,0);
+        // usleep(1000000);
+        // printf("\n\n Downloding Mxl 6 \n");
+        // downloadMxlFW(6,0);
+        // printf("\n\n MXL Downlod Completed! \n\n");
+        for (int rmx = 1; rmx <= RMX_COUNT; rmx++)
+        {
+		    for(int input=0;input<4;input++){
+		        Json::Value iojson =callGetProgramList(input,rmx);
+		        if(iojson["error"] == false)
+		            std::cout<<"-----------Services has been restored from channel RMX "<<rmx<<">---------------->CH "<<input<<std::endl;
+		    }
+		}
         active_progs = db->getActivePrograms();
         if(active_progs["error"]==false){
             for (int i = 0; i < active_progs["list"].size(); ++i)
@@ -9293,75 +9550,9 @@ private:
        delete [] pStart;
        return sResult;
     }
-    void doRecordMetric(const Rest::Request& request, Net::Http::ResponseWriter response) {
-        auto name = request.param(":name").as<std::string>();
+    
 
-        Guard guard(metricsLock);
-        auto it = std::find_if(metrics.begin(), metrics.end(), [&](const Metric& metric) {
-            return metric.name() == name;
-        });
-
-        int val = 1;
-        if (request.hasParam(":value")) {
-            auto value = request.param(":value");
-            val = value.as<int>();
-        }
-
-        if (it == std::end(metrics)) {
-            metrics.push_back(Metric(std::move(name), val));
-            response.send(Http::Code::Created, request.body());
-        }
-        else {
-            auto &metric = *it;
-            metric.incr(val);
-            response.send(Http::Code::Ok, std::to_string(metric.value()));
-        }
-
-    }
-
-    void doGetMetric(const Rest::Request& request, Net::Http::ResponseWriter response) {
-        auto name = request.param(":name").as<std::string>();
-
-        Guard guard(metricsLock);
-        auto it = std::find_if(metrics.begin(), metrics.end(), [&](const Metric& metric) {
-            return metric.name() == name;
-        });
-
-        if (it == std::end(metrics)) {
-            response.send(Http::Code::Not_Found, "Metric does not exist");
-        } else {
-            const auto& metric = *it;
-            response.send(Http::Code::Ok, std::to_string(metric.value()));
-        }
-
-    }
-
-    void doAuth(const Rest::Request& request, Net::Http::ResponseWriter response) {
-        printCookies(request);
-        response.cookies()
-            .add(Http::Cookie("lang", "en-US"));
-            auto name = request.param(":flag").as<std::string>();
-                shutdown();
-                usleep(100000000);
-                int thr = 3;
-                Net::Port port(9080);
-              
-                Net::Address addr(Net::Ipv4::any(), port);
-
-                cout << "Cores = " << hardware_concurrency() << endl;
-                    
-                StatsEndpoint stats(addr);
-                
-                stats.init(thr);
-               
-                stats.start();
-                
-                
-                stats.shutdown(); 
-            
-
-        response.send(Http::Code::Ok);
-    }
+   
     std::string hexStr(unsigned char *data, int len)
     {
       std::string s(len * 2, ' ');
@@ -9550,5 +9741,6 @@ int main(int argc, char *argv[]) {
     stats.init(thr,config_file_path);
    
     stats.start();
+    cout << "M here \n"  << endl;
     stats.shutdown(); 
 }

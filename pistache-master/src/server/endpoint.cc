@@ -41,7 +41,8 @@ Endpoint::Endpoint()
 
 Endpoint::Endpoint(const Net::Address& addr)
     : listener(addr)
-{ }
+{
+ }
 
 void
 Endpoint::init(const Endpoint::Options& options) {
