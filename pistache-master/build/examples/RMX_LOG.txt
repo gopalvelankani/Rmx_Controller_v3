@@ -15578,3 +15578,578 @@ output=0&rmx_no=1&input=0
 Function Name:- getProgramsList
 output=0&rmx_no=1&input=0
 -------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIfrequency
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=239.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut port Source
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut Port Destination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut port Source
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut Port Destination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOutOff ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setMxlTuner
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+output=0&rmx_no=1&input=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+output=0&rmx_no=1&input=0&mxl_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+output=0&rmx_no=1&input=0&mxl_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+output=0&rmx_no=1&input=0&mxl_id=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getMxlVersion
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------

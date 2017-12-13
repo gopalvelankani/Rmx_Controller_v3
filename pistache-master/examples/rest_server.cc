@@ -91,7 +91,7 @@ public:
         // forkEMMChannels();
         // forkChannels();
         // forkCWthread();
-       //runBootupscript();
+        // runBootupscript();
     }
     void start() {
         
@@ -266,6 +266,9 @@ private:
         Routes::Post(router, "/setUDPportDestination", Routes::bind(&StatsEndpoint::setUDPportDestination, this));
         Routes::Post(router, "/setUDPChannelNumber", Routes::bind(&StatsEndpoint::setUDPChannelNumber, this));
         Routes::Post(router, "/setIGMPChannelNumber", Routes::bind(&StatsEndpoint::setIGMPChannelNumber, this));
+        Routes::Post(router, "/setEthernetOut", Routes::bind(&StatsEndpoint::setEthernetOut, this));
+        Routes::Post(router, "/setEthernetOutOff", Routes::bind(&StatsEndpoint::setEthernetOutOff, this));
+
         //Maxlinear api's
         Routes::Post(router, "/connectMxl", Routes::bind(&StatsEndpoint::connectMxl, this));
         Routes::Post(router, "/setDemodMxl", Routes::bind(&StatsEndpoint::setDemodMxl, this));
@@ -370,7 +373,7 @@ private:
             	scr_index = std::stoi(str_scr_index);
             	search_range = std::stoi(str_search_range);
 
-	            MXL_STATUS_E mxlStatus = MXL_SUCCESS;
+	            MXL_STATUS_E mxlStatus;
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
 	            if(connectI2Clines(target)){
 	               //Configuring allgro 
@@ -516,7 +519,7 @@ private:
     Json::Value tuneMxl(int demod_id,int lnb_id,int dvb_standard,int frequency,int symbol_rate,int mod,int fec,int rolloff,int pilots,int spectrum,int scr_index,int search_range){
     	unsigned char enable=1,low_hihg=1;
     	Json::Value json;
-    	MXL_STATUS_E mxlStatus = MXL_SUCCESS;
+    	MXL_STATUS_E mxlStatus;
 
         mxlStatus = configureLNB(0,enable,low_hihg);
         mxlStatus = getLNB(0,&enable,&low_hihg);
@@ -572,7 +575,7 @@ private:
 	            int rmx_no=std::stoi(str_rmx_no); 
 	            int demod_id=std::stoi(str_demod_id); 
 	            
-	            MXL_STATUS_E mxlStatus = MXL_FAILURE;
+	            MXL_STATUS_E mxlStatus;
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
 	            if(connectI2Clines(target)){
     		        mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &fec, &rolloff, &pilots,&spectrum, &RxPwr,&SNR);
@@ -858,7 +861,7 @@ private:
     }
     int connectI2Clines(int target){
         
-        MXL_STATUS_E mxlStatus = MXL_FAILURE;
+        MXL_STATUS_E mxlStatus;
         MXL_HYDRA_VER_INFO_T versionInfo;
 
         if(write32bCPU(0,0,target) == -1)/**select interface**/
@@ -891,7 +894,7 @@ private:
         
     	Json::Value json;
         Json::FastWriter fastWriter;     
-        MXL_STATUS_E mxlStatus = MXL_FAILURE;
+        MXL_STATUS_E mxlStatus;
         MXL_HYDRA_VER_INFO_T versionInfo;
         char *mxl_ware_ver,*frm_ware_version;
         /***mxl connect***/
@@ -964,7 +967,7 @@ private:
     }
     Json::Value downloadMxlFW(int mxl_id,int rmx_no){
     	Json::Value json;
-    	MXL_STATUS_E mxlStatus = MXL_SUCCESS;
+    	MXL_STATUS_E mxlStatus;
         MXL_HYDRA_VER_INFO_T versionInfo;
         int target =((0&0x3)<<8) | ((rmx_no&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
         if(connectI2Clines(target)){
@@ -976,35 +979,47 @@ private:
             strcat(cwd,"/FW/MxL_5xx_FW.mbin");
             if (std::ifstream(cwd))
     		{
-    		    printf("\n\n \t\t\t Downloading Firmware please wait.... \n");
-    	        mxlStatus = App_FirmwareDownload(cwd);
-    	        if(mxlStatus != MXL_SUCCESS){
-    	            printf("Status FW download");
-    	        }else{
-    	            printf("Status FW download fail");
-    	        }
-    	        MxL_GetVersion(&versionInfo);
-    	        if(versionInfo.chipId != MXL_HYDRA_DEVICE_584){
-    	            printf("Status chip connection failed");
-    	            json["message"] = "MxL not connected!";
-    	            json["error"]= true;
-    	        }else{
-    	            printf("\n Status chip connection successfull! ");
-    	            printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
-    	            printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
-    	            json["message"] = "MxL connected!";
-    	    		json["chip_version"] =versionInfo.chipVer;
-    	    		json["mxlware_vers"] = std::to_string(versionInfo.mxlWareVer[0])+'.'+std::to_string(versionInfo.mxlWareVer[1])+'.'+std::to_string(versionInfo.mxlWareVer[2])+'.'+std::to_string(versionInfo.mxlWareVer[3])+'.'+std::to_string(versionInfo.mxlWareVer[4]);
-    	    		json["firmware_vers"] = std::to_string(versionInfo.firmwareVer[0])+'.'+std::to_string(versionInfo.firmwareVer[1])+'.'+std::to_string(versionInfo.firmwareVer[2])+'.'+std::to_string(versionInfo.firmwareVer[3])+'.'+std::to_string(versionInfo.firmwareVer[4]);
-    	            if(versionInfo.firmwareDownloaded){
-    	                printf("\n Firmware Loaded True");
-    	                json["FW Downloaded"] = true; 
-    	            }else{
-    	                printf("\n Firmware Loaded False");
-    	                json["FW Downloaded"] = false; 
-    	            }
-    	            json["error"]= false;
-    	        }
+                MxL_GetVersion(&versionInfo);
+                if(versionInfo.chipId == MXL_HYDRA_DEVICE_584 && versionInfo.firmwareDownloaded){
+                    printf("\n MXL already downloaded! ");
+                    printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
+                    printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
+                    json["message"] = "MxL connected!";
+                    json["chip_version"] =versionInfo.chipVer;
+                    json["mxlware_vers"] = std::to_string(versionInfo.mxlWareVer[0])+'.'+std::to_string(versionInfo.mxlWareVer[1])+'.'+std::to_string(versionInfo.mxlWareVer[2])+'.'+std::to_string(versionInfo.mxlWareVer[3])+'.'+std::to_string(versionInfo.mxlWareVer[4]);
+                    json["firmware_vers"] = std::to_string(versionInfo.firmwareVer[0])+'.'+std::to_string(versionInfo.firmwareVer[1])+'.'+std::to_string(versionInfo.firmwareVer[2])+'.'+std::to_string(versionInfo.firmwareVer[3])+'.'+std::to_string(versionInfo.firmwareVer[4]); 
+                    json["FW Downloaded"] = true; 
+                }else{
+        		    printf("\n\n \t\t\t Downloading Firmware please wait.... \n");
+        	        mxlStatus = App_FirmwareDownload(cwd);
+        	        if(mxlStatus != MXL_SUCCESS){
+        	            printf("Status FW download");
+        	        }else{
+        	            printf("Status FW download fail");
+        	        }
+        	        MxL_GetVersion(&versionInfo);
+        	        if(versionInfo.chipId != MXL_HYDRA_DEVICE_584){
+        	            printf("Status chip connection failed");
+        	            json["message"] = "MxL not connected!";
+        	            json["error"]= true;
+        	        }else{
+        	            printf("\n Status chip connection successfull! ");
+        	            printf("\n Status OK \n chip version %d \n MxlWare vers %d.%d.%d.%d.%d",versionInfo.chipVer,versionInfo.mxlWareVer[0],versionInfo.mxlWareVer[1],versionInfo.mxlWareVer[2],versionInfo.mxlWareVer[3],versionInfo.mxlWareVer[4]);
+        	            printf("\n \n Firmware Vers %d.%d.%d.%d.%d",versionInfo.firmwareVer[0],versionInfo.firmwareVer[1],versionInfo.firmwareVer[2],versionInfo.firmwareVer[3],versionInfo.firmwareVer[4]);
+        	            json["message"] = "MxL connected!";
+        	    		json["chip_version"] =versionInfo.chipVer;
+        	    		json["mxlware_vers"] = std::to_string(versionInfo.mxlWareVer[0])+'.'+std::to_string(versionInfo.mxlWareVer[1])+'.'+std::to_string(versionInfo.mxlWareVer[2])+'.'+std::to_string(versionInfo.mxlWareVer[3])+'.'+std::to_string(versionInfo.mxlWareVer[4]);
+        	    		json["firmware_vers"] = std::to_string(versionInfo.firmwareVer[0])+'.'+std::to_string(versionInfo.firmwareVer[1])+'.'+std::to_string(versionInfo.firmwareVer[2])+'.'+std::to_string(versionInfo.firmwareVer[3])+'.'+std::to_string(versionInfo.firmwareVer[4]);
+        	            if(versionInfo.firmwareDownloaded){
+        	                printf("\n Firmware Loaded True");
+        	                json["FW Downloaded"] = true; 
+        	            }else{
+        	                printf("\n Firmware Loaded False");
+        	                json["FW Downloaded"] = false; 
+        	            }
+        	            json["error"]= false;
+        	        }
+                }
             }else{
             	string str(cwd);
     	    	json["message"]= "FirmWare file path "+str+" does not exists!";
@@ -1012,6 +1027,7 @@ private:
             	printf("\n FW file path not exists \n");
             }
         }else{
+            printf("\n Download failed: Connection error! \n");
             json["error"]= true;
             json["message"]= "Connection error!";
         }
@@ -3089,7 +3105,7 @@ private:
         int is_error=0;
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
-            for (int input = 0; input < 4; ++input)
+            for (int input = 0; input <= INPUT_COUNT; ++input)
             {
                 iojson=callSetInputOutput(std::to_string(input),"0",rmx_no);
                 if(iojson["error"]==false){
@@ -7176,7 +7192,146 @@ private:
         response.send(Http::Code::Ok, resp);
     }
 
-
+    /*****************************************************************************/
+    /*  UDP Ip Stack Command 0x24,0x28,0x2C,0x30   function setEthernetOut                      */
+    /*****************************************************************************/
+    void  setEthernetOut(const Rest::Request& request, Net::Http::ResponseWriter response){
+        unsigned char RxBuffer[20]={0};
+        
+        int uLen;
+        Json::Value json,jsonMsg;
+        Json::FastWriter fastWriter;        
+        std::string para[] = {"ip_address","port","channel_no"};  
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;      
+        addToLog("setEthernetOut",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){        
+            connectI2Clines(14);
+            std::string ip_address = getParameter(request.body(),"ip_address"); 
+            std::string port = getParameter(request.body(),"port"); 
+            std::string channel_no= getParameter(request.body(),"channel_no");
+            error[0] = isValidIpAddress(ip_address.c_str());
+            error[1] = verifyInteger(port,0,0,65535,1000);
+            error[2] = verifyInteger(channel_no,1,1,9,1);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i == 0)? "Invalid IP address!" :((i == 2)?"Require Integer between 1 to 9!":"Require Integer between 1000 to 65535!");
+            }
+            if(all_para_valid){
+                jsonMsg["ip_address"] = ip_address;
+                uLen = c2.callCommand(24,RxBuffer,20,20,jsonMsg,1);
+                if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
+                    json["error"]= true;
+                    json["ip"]= "STATUS COMMAND ERROR!";
+                    addToLog("setEthernetOut IP","Error");
+                }else{
+                    json["ip_status"] = RxBuffer[6];
+                    json["error"]= false;
+                    json["ip"]= "set up IP destination!";
+                    addToLog("setEthernetOut","Success");
+                }
+                usleep(1000);
+                jsonMsg["address"] = port;
+                uLen = c2.callCommand(28,RxBuffer,1024,10,jsonMsg,1);
+                if(getDecToHex((int)RxBuffer[6]) != "f8"){
+                    json["error"]= true;
+                    json["source_port"]= RxBuffer[6];
+                    addToLog("setEthernetOut port Source","Error");
+                }else{
+                    json["error"]= false;
+                    json["source_port"]= "Set UDP port source !";
+                    addToLog("setEthernetOut port Source","Success");
+                }
+                usleep(1000);
+                jsonMsg["address"] = port;
+                uLen = c2.callCommand(44,RxBuffer,1024,10,jsonMsg,1);
+                if(getDecToHex((int)RxBuffer[6]) != "f8"){
+                    json["error"]= true;
+                    json["destination_port"]= RxBuffer[6];
+                    addToLog("setEthernetOut Port Destination","Error");
+                }else{
+                    json["error"]= false;
+                    json["destination_port"]= "Set UDP port destination !";
+                    addToLog("setEthernetOut Port Destination","Success");
+                }
+                usleep(1000);
+                jsonMsg["ch_number"] = channel_no; 
+                uLen = c2.callCommand(48,RxBuffer,1024,10,jsonMsg,1);
+                if(getDecToHex((int)RxBuffer[6]) != "f8"){
+                    json["error"]= true;
+                    json["channel_number"]= RxBuffer[6];
+                    addToLog("setEthernetOut ChannelNumber","Error");
+                }else{
+                    json["error"]= false;
+                    json["channel_number"]= "Set UDP channel number !";
+                    addToLog("setEthernetOut ChannelNumber","Success");
+                } 
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  UDP Ip Stack Command 0x24,0x30   function setEthernetOutOff                      */
+    /*****************************************************************************/
+    void  setEthernetOutOff(const Rest::Request& request, Net::Http::ResponseWriter response){
+        unsigned char RxBuffer[20]={0};
+        
+        int uLen;
+        Json::Value json,jsonMsg;
+        Json::FastWriter fastWriter;        
+        std::string para[] = {"channel_no"};  
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;      
+        addToLog("setEthernetOutOff",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){        
+            // connectI2Clines(14);
+            std::string channel_no = getParameter(request.body(),"channel_no"); 
+            
+            if(verifyInteger(channel_no,1,1,9,1)){
+                jsonMsg["ip_address"] = "0.0.0.0";
+                uLen = c2.callCommand(24,RxBuffer,20,20,jsonMsg,1);
+                if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
+                    json["error"]= true;
+                    json["message"]= "Error while torning off ethernet out!";
+                    addToLog("setEthernetOutOff IP","Error");
+                }else{
+                    json["error"]= false;
+                    addToLog("setEthernetOutOff","Success");
+                }
+                usleep(1000);
+                jsonMsg["ch_number"] = channel_no; 
+                uLen = c2.callCommand(48,RxBuffer,1024,10,jsonMsg,1);
+                if(getDecToHex((int)RxBuffer[6]) != "f8"){
+                    json["error"]= true;
+                    json["message"]= "Error while torning off ethernet out!";
+                    addToLog("setEthernetOutOff ChannelNumber","Error");
+                }else{
+                    json["error"]= false;
+                    json["message"]= "Ethernet Out torned off!";
+                    addToLog("setEthernetOutOff ChannelNumber","Success");
+                } 
+            }else{
+                json["error"]= true;
+                json["message"]= "channel_no: Required Integer!";    
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
     /*****************************************************************************/
     /*  UDP Ip Stack Command 0x24   function setIpdestination                      */
     /*****************************************************************************/
@@ -7190,6 +7345,7 @@ private:
         addToLog("setIpdestination",request.body());
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){        
+            connectI2Clines(0);
             std::string ip_address = getParameter(request.body(),"ip_address"); 
             if(isValidIpAddress(ip_address.c_str())){
                 json["ip_address"] = ip_address;
@@ -7225,6 +7381,7 @@ private:
         int uLen;
         Json::Value json;
         Json::FastWriter fastWriter;        
+        connectI2Clines(0);
         uLen = c2.callCommand(24,RxBuffer,20,20,json,0);
         if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
             json["error"]= true;
@@ -9007,24 +9164,24 @@ private:
     }
     void runBootupscript(){
         Json::Value json,NewService_names,NewService_ids,network_details,lcn_json,high_prior_ser,pmt_alarm_json,active_progs,locked_progs,freeca_progs,input_mode_json,fifo_flags,table_ver_json,table_timeout_json,dvb_output_json,psisi_interval,serv_provider_json,nit_mode;
-        // printf("\n\n Downloding Mxl 1 \n");
-        // downloadMxlFW(1,0);
-        // usleep(1000000);
-        // printf("\n\n Downloding Mxl 2 \n");
-        // downloadMxlFW(2,0);
-        // usleep(1000000);
-        // printf("\n\n Downloding Mxl 3 \n");
-        // downloadMxlFW(3,0);
-        // usleep(1000000);
-        // printf("\n\n Downloding Mxl 4 \n");
-        // downloadMxlFW(4,0);
-        // usleep(1000000);
-        // printf("\n\n Downloding Mxl 5 \n");
-        // downloadMxlFW(5,0);
-        // usleep(1000000);
-        // printf("\n\n Downloding Mxl 6 \n");
-        // downloadMxlFW(6,0);
-        // printf("\n\n MXL Downlod Completed! \n\n");
+        printf("\n\n Downloding Mxl 1 \n");
+        downloadMxlFW(1,0);
+        usleep(1000000);
+        printf("\n\n Downloding Mxl 2 \n");
+        downloadMxlFW(2,0);
+        usleep(1000000);
+        printf("\n\n Downloding Mxl 3 \n");
+        downloadMxlFW(3,0);
+        usleep(1000000);
+        printf("\n\n Downloding Mxl 4 \n");
+        downloadMxlFW(4,0);
+        usleep(1000000);
+        printf("\n\n Downloding Mxl 5 \n");
+        downloadMxlFW(5,0);
+        usleep(1000000);
+        printf("\n\n Downloding Mxl 6 \n");
+        downloadMxlFW(6,0);
+        printf("\n\n MXL Downlod Completed! \n\n");
         for (int rmx = 1; rmx <= RMX_COUNT; rmx++)
         {
 		    for(int input=0;input<4;input++){

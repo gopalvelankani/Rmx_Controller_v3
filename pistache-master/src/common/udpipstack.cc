@@ -10,7 +10,6 @@
 #include "udpipstack.h"
 	int Udpipstack::callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,Json::Value json,int readWriteMode)
 	{
-		std::cout << "gimme something: ";
 		unsigned char msgBuf[msgBLen];
 		unsigned short len=0;
 		 struct timeval tv;
@@ -37,8 +36,7 @@
 		if(bind(socketHandle,(struct sockaddr*)&clientAddress,sizeof(clientAddress))<0){
 			std ::cout << "bind failed";
 		}
-		std::cout << "gimme something: ";
-		std::cout << sizeof(RxBuffer);
+		// std::cout << sizeof(RxBuffer);
 		len = 0;
 	    msgBuf[0] = STX1;
 	    msgBuf[1] = STX2;
@@ -85,9 +83,9 @@
 				    for (int i = 0; i < 4; i=i+2)
 				    {
 				        std::string byte=tmp2.substr(i, 2);
-				        std::cout<<byte<<std::endl;
+				        // std::cout<<byte<<std::endl;
 						msgBuf[j] = (unsigned char) (int)strtol(byte.c_str(), NULL, 16); 
-						std::cout<<j<<std::endl;
+						// std::cout<<j<<std::endl;
 						j++;
 				    }
 				}
@@ -109,9 +107,9 @@
 				    for (int i = 0; i < 8; i=i+2)
 				    {
 				        std::string byte=tmp2.substr(i, 2);
-				        std::cout<<byte<<std::endl;
+				        // std::cout<<byte<<std::endl;
 						msgBuf[j] = (unsigned char) (int)strtol(byte.c_str(), NULL, 16); 
-						std::cout<<j<<std::endl;
+						// std::cout<<j<<std::endl;
 						j++;
 				    }
 				}
@@ -139,7 +137,7 @@
 					int a,b,c,d; //to store the 4 ints
 					char ch; //to temporarily store the '.'
 					s >> a >> ch >> b >> ch >> c >> ch >> d;
-					std::cout << a << "  " << b << "  " << c << "  "<< d;
+					// std::cout << a << "  " << b << "  " << c << "  "<< d;
 					
 					// unsigned int Data=(unsigned int)std::stoi(tmp2);
 					msgBuf[6] = WRITEMODE;
@@ -151,6 +149,8 @@
 				}
 				break;
 			case 24:
+					msgBuf[4] = 0x00;
+				    msgBuf[5] = 0x04;
 				if(readWriteMode==0){
 					msgBuf[6] = READMODE;
 				    msgBuf[7] = CMD_SET_DESTINATION_IP;
@@ -164,7 +164,7 @@
 					unsigned int a,b,c,d; //to store the 4 ints
 					unsigned char ch; //to temporarily store the '.'
 					s >> a >> ch >> b >> ch >> c >> ch >> d;
-					std::cout << a << "  " << b << "  " << c << "  "<< d;
+					// std::cout << a << "  " << b << "  " << c << "  "<< d;
 					msgBuf[6] = WRITEMODE;
 				    msgBuf[7] = CMD_SET_DESTINATION_IP;
 				    msgBuf[8] = a;  
@@ -205,7 +205,7 @@
 					int a,b,c,d; //to store the 4 ints
 					char ch; //to temporarily store the '.'
 					s >> a >> ch >> b >> ch >> c >> ch >> d;
-					std::cout << a << "  " << b << "  " << c << "  "<< d;
+					// std::cout << a << "  " << b << "  " << c << "  "<< d;
 					msgBuf[6] = WRITEMODE;
 				    msgBuf[7] = CMD_SET_IP_MULTICAST;
 				    msgBuf[8] = a;  
@@ -256,7 +256,7 @@
 					int a,b,c,d; //to store the 4 ints
 					char ch; //to temporarily store the '.'
 					s >> a >> ch >> b >> ch >> c >> ch >> d;
-					std::cout << a << "  " << b << "  " << c << "  "<< d;
+					// std::cout << a << "  " << b << "  " << c << "  "<< d;
 					msgBuf[6] = WRITEMODE;
 				    msgBuf[7] = CMD_SET_IP_GATEWAY;
 				    msgBuf[8] = a;  
@@ -351,7 +351,7 @@
 					unsigned int a,b,c,d; //to store the 4 ints
 					unsigned char ch; //to temporarily store the '.'
 					s >> a >> ch >> b >> ch >> c >> ch >> d;
-					std::cout << a << "  " << b << "  " << c << "  "<< d;
+					// std::cout << a << "  " << b << "  " << c << "  "<< d;
 					// unsigned int Data=(unsigned int)std::stoi(tmp2);
 					msgBuf[6] = WRITEMODE;
 				    msgBuf[7] = CMD_SET_SUBNET_MASK;
@@ -397,19 +397,15 @@
 					int n = sendto(socketHandle,msgBuf, len, 0,(struct sockaddr*)&serverAddress, sizeof(serverAddress));
 					std::cout << "sent "<<n<<" bytes of the msg\n";
 			
-				
 					int serv_addr_size = sizeof(clientAddress);
 					count=recvfrom(socketHandle,RxBuffer,rx_len, 0, (struct sockaddr*)&clientAddress,(socklen_t*) &serv_addr_size);
-
-					std::cout << "sent "<<n<<" bytes of the msg\n";
-					std ::cout << count<<"\n";
-
+					if(count<0)
+						std ::cout <<"FAILED"<<"\n";
 					// std ::cout << std::to_string(RxBuffer[0])+" -- "+std::to_string(RxBuffer[3]);
-					for(int i=0;i<12;i++){
-						std ::cout << hexStr(&RxBuffer[i],1)<<"\n" ;
-						
-						// std::cout << string2long(hexStr(&RxBuffer[i],1), 16) << std::endl;
-					}
+					// for(int i=0;i<12;i++){
+					// 	std ::cout << hexStr(&RxBuffer[i],1)<<"\n" ;
+					// 	// std::cout << string2long(hexStr(&RxBuffer[i],1), 16) << std::endl;
+					// }
 					std::cout << "done\n";
 					x=1;
 		}

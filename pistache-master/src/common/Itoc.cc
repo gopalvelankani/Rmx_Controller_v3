@@ -215,14 +215,11 @@ int Itoc :: callCommand(int cmd,unsigned char* RxBuffer,int rx_len,int msgBLen,J
           while (x == 0)
           {    
                          int n = sendto(socketHandle,msgBuf, len, 0,(struct sockaddr*)&serverAddress, sizeof(serverAddress));
-                         std::cout << "sent "<<n<<" bytes of the msg\n";
-               
-                    
+                         std::cout << "sent "<<n<<" bytes of the msg\n";                    
                          int serv_addr_size = sizeof(clientAddress);
                          count=recvfrom(socketHandle,RxBuffer,rx_len, 0, (struct sockaddr*)&clientAddress,(socklen_t*) &serv_addr_size);
-
-                         std::cout << "sent "<<n<<" bytes of the msg\n";
-                         std ::cout << count<<"\n";
+                         if(count<0)
+                            std ::cout <<"FAILED"<<"\n";
 
                          // std ::cout << std::to_string(RxBuffer[0])+" -- "+std::to_string(RxBuffer[3]);
                          // for(int i=0;i<rx_len;i++){

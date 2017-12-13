@@ -47,7 +47,7 @@
 			return 0;
 		}
 
-		std::cout << sizeof(RxBuffer);
+		// std::cout << sizeof(RxBuffer);
 		len = 0;
 	    msgBuf[0] = STX;
 	    msgBuf[1] = (unsigned char) (len>>8);
@@ -799,7 +799,8 @@
 			std::cout << "sent "<<send_resp<<" bytes of the msg\n";
 			int serv_addr_size = sizeof(clientAddress);
 			count=recvfrom(socketHandle,RxBuffer,rx_len, 0, (struct sockaddr*)&clientAddress,(socklen_t*) &serv_addr_size);
-			std ::cout <<"COUNT"<< count<<"\n";
+			if(count<0)
+				std ::cout <<"FAILED"<<"\n";
 			if(cmd==85){
 				len = ((RxBuffer[1] << 8) | RxBuffer[2]);
 				if (len != 0) {
