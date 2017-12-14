@@ -25,4 +25,6 @@ III. Linking library.
 	 	    target_link_libraries(rest_server pthread)
 
 IV. Configure database.
+
+//
 	
