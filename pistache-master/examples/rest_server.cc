@@ -310,14 +310,14 @@ private:
         int uLen;        
         Json::Value json,injson;
         Json::FastWriter fastWriter;   
-        std::string rangeMsg[] = {"Required integer between 1-6!","Required integer between 1-6!","Required integer between 0-7!","Required integer between 0-3!","Required integer between 0-2!","Required integer!","Required integer!","Required integer between 0-2!","Required integer between 0-10!","Required integer between 0-3!","Required integer between 0-2!","Required integer between 0-2!","Required integer!","Required integer!"};
-        std::string para[] = {"mxl_id","rmx_no","demod_id","lnb_id","dvb_standard","frequency","symbol_rate","mod","fec","rolloff","pilots","spectrum","scr_index","search_range"};
+        std::string rangeMsg[] = {"Required integer between 1-6!","Required integer between 1-6!","Required integer between 0-7!","Required integer between 0-3!","Required integer between 0-2!","Required integer!","Required integer!","Required integer between 0-2!","Required integer between 0-10!","Required integer between 0-3!","Required integer between 0-2!","Required integer between 0-2!","Required integer!","Required integer!","Required integer!"};
+        std::string para[] = {"mxl_id","rmx_no","demod_id","lnb_id","dvb_standard","frequency","symbol_rate","mod","fec","rolloff","pilots","spectrum","scr_index","search_range","auth_bit"};
         int error[ sizeof(para) / sizeof(para[0])];
         bool all_para_valid=true;   
         addToLog("setMxlTuner",request.body());
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){
-        	std::string str_mxl_id,str_rmx_no,str_demod_id,str_lnb_id,str_dvb_standard,str_frequency,str_symbol_rate,str_mod,str_fec,str_rolloff,str_pilots,str_spectrum,str_scr_index,str_search_range;        
+        	std::string str_mxl_id,str_rmx_no,str_demod_id,str_lnb_id,str_dvb_standard,str_frequency,str_symbol_rate,str_mod,str_fec,str_rolloff,str_pilots,str_spectrum,str_scr_index,str_search_range,auth_bit;        
             str_mxl_id = getParameter(request.body(),"mxl_id");
             str_rmx_no = getParameter(request.body(),"rmx_no");
             str_demod_id = getParameter(request.body(),"demod_id");
@@ -332,6 +332,7 @@ private:
             str_spectrum = getParameter(request.body(),"spectrum");
             str_scr_index = getParameter(request.body(),"scr_index");
             str_search_range = getParameter(request.body(),"search_range");
+            auth_bit =getParameter(request.body(),"auth_bit");
             
 			error[0] = verifyInteger(str_mxl_id,1,1,6,1);
             error[1] = verifyInteger(str_rmx_no,1,1,6,1);
@@ -347,6 +348,7 @@ private:
             error[11] = verifyInteger(str_spectrum,1,1,2);
             error[12] = verifyInteger(str_scr_index);
             error[13] = verifyInteger(str_search_range);
+            error[14] = verifyInteger(auth_bit);
             for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
             {
                if(error[i]!=0){
@@ -412,8 +414,9 @@ private:
     	        	setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
     	        	//Set RF authorization
     	        	usleep(3000000);
-    	        	write32bCPU(0,0,12);
-    	        	write32bI2C(32, 0 ,1);
+    	        	
+			        write32bCPU(0,0,12);
+			        write32bI2C(32, 0 ,std::stoi(auth_bit));
                 }else{
                     json["error"]= true;
                     json["message"]= "Connection error!";
@@ -869,7 +872,7 @@ private:
         write32bCPU(7,0,0);
         
         mxlStatus =  MxL_Connect(0X60, 200, 125000);//i2caddress,i2c_speed,i2c_baudrate
-        if(mxlStatus != MXL_SUCCESS){
+        if(mxlStatus != MXL_SUCCESS && mxlStatus != MXL_ALREADY_INITIALIZED ){
             printf("Status NOT Connected");
             return 0;
         }else{
