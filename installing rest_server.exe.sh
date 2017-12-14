@@ -13,6 +13,7 @@ sudo apt-get install redis-server
 
 edit apache config file.
 
+//
 add fallowing line to /etc/apache2/apache2.conf at the end of the file. 
 Include /etc/phpmyadmin/apache.conf
 
