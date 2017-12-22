@@ -1574,6 +1574,8 @@ private:
                 if(verifyInteger(cs) && std::stoi(cs) <=128){
                     jsonInput["address"] = getParameter(request.body(),"address"); 
                     jsonInput["cs"] = cs;
+                    int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+					write32bCPU(0,0,target);
                     int uLen = c1.callCommand(05,RxBuffer,20,20,jsonInput,0);
                     if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 05 || uLen != 9 || RxBuffer[8] != ETX ) {
                         json["error"]= true;
@@ -6987,66 +6989,77 @@ private:
       */
     /*****************************************************************************/
     void  setKeepProg(const Rest::Request& request, Net::Http::ResponseWriter response){
-        Json::Value json;
-        Json::Reader reader;
+        Json::Value json,programNumbers;
         Json::FastWriter fastWriter;
-
-        std::string para[] = {"programNumber","input","output","includeFlag","rmx_no"};
+        Json::Reader reader;
+        std::string para[] = {"programNumbers","input","output","includeFlag","rmx_no"};
         int error[ sizeof(para) / sizeof(para[0])];
         bool all_para_valid=true;
         addToLog("setKeepProg",request.body());
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){
-            std::string rmx_no =getParameter(request.body(),"rmx_no") ;
-            std::string programNumber = getParameter(request.body(),"programNumber"); 
-            std::string input = getParameter(request.body(),"input"); 
-            std::string output = getParameter(request.body(),"output"); 
-            std::string includeFlag = getParameter(request.body(),"includeFlag"); 
-            error[0] = verifyInteger(programNumber,6);
-            error[1] = verifyInteger(input,1,1);
-            error[2] = verifyInteger(output,1,1);
-            error[3] = verifyInteger(includeFlag,1,1);
-            error[4] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
-            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            
+            std::string service_list = getParameter(request.body(),"programNumbers"); 
+            std::string serviceList = UriDecode(service_list);
+            bool parsedSuccess = reader.parse(serviceList,programNumbers,false);
+            if (parsedSuccess)
             {
-               if(error[i]!=0){
-                    continue;
+                std::string rmx_no =getParameter(request.body(),"rmx_no") ;
+                // std::string programNumbers = getParameter(request.body(),"programNumbers"); 
+                std::string input = getParameter(request.body(),"input"); 
+                std::string output = getParameter(request.body(),"output"); 
+                std::string includeFlag = getParameter(request.body(),"includeFlag"); 
+                error[0] = verifyJsonArray(programNumbers,"programNumber",1);
+                error[1] = verifyInteger(input,1,1);
+                error[2] = verifyInteger(output,1,1);
+                error[3] = verifyInteger(includeFlag,1,1);
+                error[4] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+                for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+                {
+                   if(error[i]!=0){
+                        continue;
+                    }
+                    all_para_valid=false;
+                    json["error"]= true;
+                    json[para[i]]= "Require Integer!";
                 }
-                all_para_valid=false;
-                json["error"]= true;
-                json[para[i]]= "Require Integer!";
-            }
-            if(all_para_valid){
-                json = callSetKeepProg(programNumber,input,output,std::stoi(rmx_no),std::stoi(includeFlag));
+                if(all_para_valid){
+                    json = callSetKeepProg(programNumbers["programNumber"],input,output,std::stoi(rmx_no),std::stoi(includeFlag));
+                }else{
+                    json["error"]= true;
+                }
             }else{
                 json["error"]= true;
+                json["message"]= "Invalide json input!";
             }
         }else{
-             json["error"]= true;
+            json["error"]= true;
             json["message"]= res;
         }
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
-    Json::Value callSetKeepProg(std::string programNumber,std::string input,std::string output,int rmx_no, int includeFlag = 1){
+    Json::Value callSetKeepProg(Json::Value programNumbers,std::string input,std::string output,int rmx_no, int includeFlag = 1){
         unsigned char RxBuffer[261]={0};
         int uLen;
         Json::Value json,jsonMsg,root;
+        std::string prog_nos_str;
         Json::Value iojson = callSetInputOutput(input,output,rmx_no); 
-        std::cout<<input<<"-"<<output<<"----------->>"<<programNumber;
+        for(int i = 0; i<programNumbers.size();i++){
+            prog_nos_str= prog_nos_str+','+programNumbers[i].asString();
+            if(includeFlag)
+                root.append(programNumbers[i].asString());
+        }
+        prog_nos_str = prog_nos_str.substr(1);
         if(iojson["error"]==false){
-            Json::Value active_prog = db->getActivePrograms(programNumber,input,output);
-            std::cout<<input<<"-"<<output<<"----------->>"<<programNumber;
+            Json::Value active_prog = db->getActivePrograms(prog_nos_str,input,output,std::to_string(rmx_no));
             if(active_prog["error"]==false){
                 for (int i = 0; i < active_prog["list"].size(); ++i)
                 {
-                    root.append(active_prog["list"][i]["program_number"].asString());
-                    std::cout<<" "<<active_prog["list"][i]["program_number"].asString()<<" ";
+                    root.append(active_prog["list"][i].asString());
+                    // std::cout<<"-> "<<active_prog["list"][i].asString()<<" ";
                 }
             }
-            std::cout<<std::endl;
-            if(includeFlag)
-                root.append(programNumber);
             jsonMsg["programNumbers"] = root; 
             uLen = c1.callCommand(40,RxBuffer,6,4090,jsonMsg,1);
             if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != CMD_FILT_PROG_STATE || uLen != 6 || RxBuffer[4] != 1 || RxBuffer[5] != ETX ){
@@ -7059,28 +7072,22 @@ private:
                     json["error"]= true;
                     json["message"]= "STATUS COMMAND ERROR!";
                 }else{
+                    Json::Value pnameList;
+                    if(includeFlag){
+                        for(int i = 0; i<programNumbers.size();i++){
+                            Json::Value jpnames = callGetProgramOriginalName(programNumbers[i].asString(),rmx_no);
+                            if(jpnames["error"] == false){
+                                pnameList[programNumbers[i].asString()] = jpnames["name"];
+                            }else{
+                                pnameList[programNumbers[i].asString()] = -1;
+                            }
+                        }
+                    }
+                    json["names"] = pnameList;
                 	json["error"]= false;
 					addToLog("setKeepProg","Success");
-                    db->addActivatedPrograms(input,output,programNumber,rmx_no,includeFlag);
+                    db->addActivatedPrograms(input,output,programNumbers,rmx_no,includeFlag,prog_nos_str);
                     json["message"]= "Set keep programs!";    
-                    // json["input"] = RxBuffer[4];
-                    // json["error"]= false;
-                    // json["message"]= "Set keep programs!";    
-                    // uLen = c1.callCommand(02,RxBuffer,7,7,json,0); 
-                    // if (!uLen || RxBuffer[0] != STX || RxBuffer[3] != 02 || uLen != 7 || RxBuffer[6] != ETX ) {
-                    //     json["error"]= true;
-                    //     json["message"]= "STATUS COMMAND ERROR!";
-                    // }else{
-                    //     uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);
-                    //     if (uLen != 2 ) {
-                    //         json["error"]= true;
-                    //         json["message"]= "get in/out false!!";
-                    //         addToLog("setKeepProg","Error");
-                    //     }else{
-                            // addToLog("setKeepProg","Success");
-                            // db->addActivatedPrograms(input,output,programNumber,rmx_no);     
-                    //     }
-                    // }      
                 }
             }
         }
@@ -7228,6 +7235,8 @@ private:
             }
             if(all_para_valid){
                 jsonMsg["ip_address"] = ip_address;
+                jsonMsg["ch_number"] = channel_no;
+                // uLen = c2.callCommand(49,RxBuffer,20,20,jsonMsg,1);//address 4 and chennel_no[1-12]
                 uLen = c2.callCommand(24,RxBuffer,20,20,jsonMsg,1);
                 if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
                     json["error"]= true;
@@ -7264,7 +7273,7 @@ private:
                     addToLog("setEthernetOut Port Destination","Success");
                 }
                 usleep(1000);
-                jsonMsg["ch_number"] = channel_no; 
+                 
                 uLen = c2.callCommand(48,RxBuffer,1024,10,jsonMsg,1);
                 if(getDecToHex((int)RxBuffer[6]) != "f8"){
                     json["error"]= true;
@@ -7347,8 +7356,9 @@ private:
         std::string para[] = {"ip_address"};
         addToLog("setIpdestination",request.body());
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
-        if(res=="0"){        
-            connectI2Clines(0);
+        if(res=="0"){   
+        	// int target =((0&0x3)<<8) | (((0)&0x7)<<5) | (((7)&0xF)<<1) | (0&0x1);     
+         //    write32bCPU(0,0,target);
             std::string ip_address = getParameter(request.body(),"ip_address"); 
             if(isValidIpAddress(ip_address.c_str())){
                 json["ip_address"] = ip_address;
@@ -7384,7 +7394,10 @@ private:
         int uLen;
         Json::Value json;
         Json::FastWriter fastWriter;        
-        connectI2Clines(0);
+        // int target =((0&0x3)<<8) | (((0)&0x7)<<5) | (((7)&0xF)<<1) | (0&0x1);     
+        // write32bCPU(0,0,target);
+        // json["ch_number"] = "1";
+        // uLen = c2.callCommand(49,RxBuffer,20,20,json,1);//address 4 and chennel_no[1-12]
         uLen = c2.callCommand(24,RxBuffer,20,20,json,0);
         if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
             json["error"]= true;
@@ -9193,16 +9206,24 @@ private:
 		            std::cout<<"-----------Services has been restored from channel RMX "<<rmx<<">---------------->CH "<<input<<std::endl;
 		    }
 		}
-        active_progs = db->getActivePrograms();
-        if(active_progs["error"]==false){
-            for (int i = 0; i < active_progs["list"].size(); ++i)
+        for (int i = 0; i <= RMX_COUNT; ++i)
+        {
+            for (int j = 0; j <= INPUT_COUNT; ++j)
             {
-                Json::Value json = callSetKeepProg(active_progs["list"][i]["program_number"].asString(),active_progs["list"][i]["input_channel"].asString(),active_progs["list"][i]["output_channel"].asString(),std::stoi(active_progs["list"][i]["rmx_no"].asString()));
-                if(json["error"]==false){
-                    std::cout<<"------------------Active Prog has been restored--------------------- "<<active_progs["list"][i]["input"].asString()<<std::endl;
+                for (int k = 0; k <= OUTPUT_COUNT; ++k)
+                {
+                    active_progs = db->getActivePrograms("-1",std::to_string(j),std::to_string(k),std::to_string(i+1));                    
+                    if(active_progs["error"]==false){
+                        std::cout<<active_progs["list"].size();
+                        Json::Value json = callSetKeepProg(active_progs["list"],std::to_string(j),std::to_string(k),i+1);
+                        if(json["error"]==false){
+                            std::cout<<"------------------Active Prog has been restored--------------------- "<<active_progs["list"][i]["input"].asString()<<std::endl;
+                        }
+                    }   
                 }
             }
         }
+        
 
         NewService_names = db->getServiceNewnames();
         if(NewService_names["error"]==false){

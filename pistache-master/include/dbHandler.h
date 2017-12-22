@@ -25,7 +25,7 @@ public:
 	int addFirmwareDetails(int major_ver,int minor_ver,int standard,int cust_opt_id,int cust_opt_ver);
 
 	int addChannelList(int input,int channel_number,int rmx_no);
-	int addActivatedPrograms(std::string input,std::string output,std::string program_number,int rmx_no,int incFlag);
+	int addActivatedPrograms(std::string input,std::string output,Json::Value program_number,int rmx_no,int incFlag,std::string prog_list_str);
 	Json::Value getActivePrograms(int input,int output);
 	int addLcnNumbers(std::string program_number,std::string channel_number,std::string input,int rmx_no);
 	int addPmtAlarm(std::string program_number,std::string alarm,std::string input,int rmx_no);
@@ -82,7 +82,7 @@ public:
 	Json::Value getHighPriorityServices(std::string input,std::string program_number );
 	Json::Value getPmtalarm(std::string input,std::string program_number );
 	Json::Value getPmtalarm();
-	Json::Value getActivePrograms(std::string program_number,std::string input,std::string output );
+	Json::Value getActivePrograms(std::string program_number,std::string input,std::string output ,std::string rmx_no);
 	Json::Value getActivePrograms();
 	Json::Value getLockedPids(std::string input,std::string program_number);
 	Json::Value getLockedPids();

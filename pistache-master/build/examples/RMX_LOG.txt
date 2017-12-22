@@ -17063,3 +17063,3918 @@ mxl_id=2&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=143
 Function Name:- connectMxl
 mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
 -------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=4&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=12&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=4&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=4&rmx_no=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=2
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Error
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCore
+cs=10&address=0&rmx_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getCORE
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut port Source
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut port Source
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut Port Destination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setEthernetOut ChannelNumber
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getIpdestination
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- readAllegro
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setConfAllegro
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- downloadFirmware
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=1&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1060000000&symbol_rate=14368000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setMPEGOut
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=1&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=1&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=1&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=2&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=1&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=3&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=4&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=5&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=6&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=1&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B'20'%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B'20'%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B'20'%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- connectMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getDemodMxl
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramsList
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramList
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%2221%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%222%22%2C%221%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%222%22%2C%221%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%222%22%2C%221%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%222%22%2C%221%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%222%22%2C%221%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%224%22%2C%225%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%2C%224%22%2C%225%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%223%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%226%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceID
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getServiceName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgActivation
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=0&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+mxl_id=1&demod_id=0&lnb_id=0&dvb_standard=2&frequency=1274000000&symbol_rate=14300000&mod=0&fec=0&rolloff=0&pilots=2&spectrum=0&scr_index=0&search_range=0&rmx_no=1&input=0&address=8&enable1=1&volt1=5&enable2=1&volt2=5&ip=&ip_address=249.255.1.1&port=5600&channel_no=1&output=0&programNumber=7&includeFlag=1&programNumbers=%7B%22programNumber%22%3A%5B%2220%22%2C%227%22%2C%2219%22%5D%7D
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setInputOutput
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- getProgramOriginalName
+Success
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+Function Name:- setKeepProg
+Success
+-------------------------------------------------------------

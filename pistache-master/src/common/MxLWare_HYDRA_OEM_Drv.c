@@ -471,7 +471,7 @@ int write32bCPU(unsigned char ucCs, unsigned char ucUaddress, unsigned int uiDat
     struct timeval tv;
 
     tv.tv_sec = 0;  /* 0.5 Secs Timeout */
-    tv.tv_usec = 500000;
+    tv.tv_usec = 300000;
     int socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
     setsockopt(socketHandle, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
     if (socketHandle<0)
@@ -532,7 +532,7 @@ unsigned int read32bCPU(unsigned char ucCs, unsigned char ucUaddress)
     struct timeval tv;
     unsigned int status;
     tv.tv_sec = 0;  /* 0.5 Secs Timeout */
-    tv.tv_usec = 500000;
+    tv.tv_usec = 300000;
     int socketHandle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP/* or 0? */);
     setsockopt(socketHandle, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
     if (socketHandle<0)

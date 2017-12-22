@@ -81,14 +81,23 @@ using namespace std;
 		mysql_query (connect,query.c_str());
 		return mysql_affected_rows(connect);
 	}
-	int dbHandler :: addActivatedPrograms(std::string input,std::string output,std::string program_number,int rmx_no,int includeflag) 
+	int dbHandler :: addActivatedPrograms(std::string input,std::string output,Json::Value program_numbers,int rmx_no,int includeflag,std::string prog_list_str) 
 	{
-		string query="";
-		if(includeflag)
-			query = "Insert into active_service_list (in_channel,out_channel,channel_num,rmx_id) VALUES ('"+input+"','"+output+"','"+program_number+"','"+std::to_string(rmx_no)+"') ON DUPLICATE KEY UPDATE channel_num = '"+program_number+"'  ;";  
-		else
-			query = "DELETE FROM active_service_list WHERE in_channel = '"+input+"' AND out_channel = '"+output+"' AND channel_num = '"+program_number+"' AND rmx_id = '"+std::to_string(rmx_no)+"';";  
+		std::string query="";
+		if(includeflag){
+			query = "Insert into active_service_list (in_channel,out_channel,channel_num,rmx_id) VALUES ";
+			for (int i = 0; i < program_numbers.size(); ++i)
+				query = query+"('"+input+"','"+output+"','"+program_numbers[i].asString()+"','"+std::to_string(rmx_no)+"'),";  	
+			query = query.substr(0,query.length()-1);
+			query =query+" ON DUPLICATE KEY UPDATE channel_num = channel_num;";
+		}
+		else{
+			query = "DELETE FROM active_service_list WHERE in_channel = '"+input+"' AND out_channel = '"+output+"' AND channel_num IN("+ prog_list_str+") AND rmx_id = '"+std::to_string(rmx_no)+"';";  
+		}
+		// std::cout<<"addActivatedPrograms--------------------------\n"<<query;
+		// std::cout<<"\n"<<query;
 		mysql_query (connect,query.c_str());
+		
 		return mysql_affected_rows(connect);
 	}
 	
@@ -658,13 +667,12 @@ using namespace std;
 		}
 	 	return jsonObj;
 	}
-	Json::Value dbHandler :: getActivePrograms(std::string program_number,std::string input,std::string output ){
+	Json::Value dbHandler :: getActivePrograms(std::string program_numbers,std::string input,std::string output,std::string rmx_no){
 		MYSQL_RES *res_set;
 		MYSQL_ROW row;
 		Json::Value jsonList;
 		std::string query;
-
-		query="SELECT DISTINCT a.channel_num FROM active_service_list a,channel_list c WHERE c.channel_number = a.channel_num AND a.in_channel = '"+input+"' AND a.out_channel = '"+output+"' AND a.channel_num != '"+program_number+"';";
+		query="SELECT DISTINCT a.channel_num FROM active_service_list a,channel_list c WHERE c.channel_number = a.channel_num AND a.in_channel = '"+input+"' AND a.out_channel = '"+output+"' AND a.rmx_id = '"+rmx_no+"' AND a.channel_num NOT IN ("+program_numbers+");";
 		mysql_query (connect,query.c_str());
 		unsigned int i =0;
 		res_set = mysql_store_result(connect);
@@ -673,12 +681,14 @@ using namespace std;
 			if(numrows>0)
 			{
 				jsonArray["error"] = false;
+				
 				while (((row= mysql_fetch_row(res_set)) !=NULL ))
 				{ 
 					Json::Value jsonObj;
-					jsonObj["program_number"]=row[i];
-					jsonList.append(jsonObj);
+					jsonList.append(row[i]);
+					// jsonList.append(jsonObj);
 				}
+				// jsonList["program_number"]=jsonList;
 			}else{	
 				jsonArray["error"] = true;
 			}
@@ -686,6 +696,7 @@ using namespace std;
 		}else{ 		
 			jsonArray["error"] = true;
 		}
+		// std::cout<<query;
 	 	return jsonArray;
 	}
 	Json::Value dbHandler :: getActivePrograms(){

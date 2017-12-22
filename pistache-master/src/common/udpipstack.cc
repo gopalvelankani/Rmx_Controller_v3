@@ -41,9 +41,9 @@
 	    msgBuf[0] = STX1;
 	    msgBuf[1] = STX2;
 		msgBuf[2] = STX3;
-	    msgBuf[3] = UDPNUMBER;
-	    msgBuf[4] = UNUSED;
-	    msgBuf[5] = CHIPSELECT;
+	    msgBuf[3] = UNUSED;
+	    msgBuf[4] = (0xff00&CHIPSELECT)>>8;
+	    msgBuf[5] = (0x00ff&CHIPSELECT)>>0;;
 		unsigned short uProg;
 	
 	    switch(cmd){
@@ -149,8 +149,7 @@
 				}
 				break;
 			case 24:
-					msgBuf[4] = 0x00;
-				    msgBuf[5] = 0x04;
+					
 				if(readWriteMode==0){
 					msgBuf[6] = READMODE;
 				    msgBuf[7] = CMD_SET_DESTINATION_IP;
@@ -362,6 +361,26 @@
 				
 				}
 				break;
+			case 49: //SELECTING CHANNEL CHIP_SELECT 1
+					msgBuf[4] = 0x00;
+				    msgBuf[5] = 0x01;
+				if(readWriteMode==0){
+					msgBuf[6] = READMODE;
+				    msgBuf[7] = 0x04;
+				    msgBuf[8] = 0x00;//dont care
+				    msgBuf[9] = 0x00;//dont care
+				    msgBuf[10]= 0x00;//dont care
+				    msgBuf[11]= 0x00;//dont care
+				}else{
+					unsigned short ch_number=(unsigned short)std::stoi(json["ch_number"].asString());
+					msgBuf[6] = WRITEMODE;
+				    msgBuf[7] = 0x04;
+				    msgBuf[8] = 0x00;//dont care
+				    msgBuf[9] = 0x00;//dont care
+				    msgBuf[10]= 0x00;//dont care
+				    msgBuf[11]= (unsigned char)ch_number;//dont care
+				}
+				break;
 			case 90:
 				unsigned int Address=(unsigned int)std::stoi(json["address"].asString());
 	    		unsigned char CMP_ID=(unsigned char)std::stoi(json["cs"].asString());
@@ -386,7 +405,7 @@
 				
 				}
 				break;
-			
+				
 
 	    }
 		len += 12;
