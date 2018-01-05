@@ -43,3 +43,5 @@ MXL_STATUS_E setMpegMode(unsigned char demod_id, unsigned char enable,
 	unsigned char mode, unsigned char error_indic);
 int write32bI2C(unsigned char cCs, unsigned char addr, unsigned int data);
 int setEthernet_MULT(unsigned int cCs);
+int write32(unsigned char cCs, unsigned char addr, unsigned int *sData,int sDataLen);
+int read32bI2C(unsigned char cCs, unsigned char addr);

@@ -53,17 +53,22 @@ int write32bI2C(unsigned char cCs, unsigned char addr, unsigned int data){
     write32bCPU (I2C_CS,8,word0);
     int index_out = 2;
     int i=0;
-
     unsigned long long data_out =((addr_I2C << 8) | addr);
-    for (i=0;i<5;i++) {
-          data_out =  ((data_out << 8) + sData[i]);
+    int len = sizeof(sData) / sizeof(sData[0])+1;
+    for (i=0;i<len;i++) {
+    	int byte ;
+        if(i == len-1)
+            byte = cCs;
+        else
+            byte = sData[i];
+
+          data_out =  ((data_out << 8) + byte);
           if ( index_out == 3 ) {
              write32bCPU (I2C_CS,4,data_out);
              index_out = 0;
           } else {
              index_out = index_out+1;
           }
-
        }
        // print $index_out
         if (index_out == 1 ) {
@@ -78,6 +83,60 @@ int write32bI2C(unsigned char cCs, unsigned char addr, unsigned int data){
         }
         word0 = (1<<18)|word0;
         write32bCPU(I2C_CS,8,word0);
+}
+int write32(unsigned char cCs, unsigned char addr, unsigned int *sData,int sDataLen){
+	unsigned int value = read32bCPU(I2C_CS,8);
+    unsigned int size =sDataLen + 2;
+    unsigned int word0 = (value&0x00010000) | size;  // passage en mode write
+    write32bCPU (I2C_CS,8,word0);
+    int index_out = 2;
+    int i=0;
+    unsigned long long data_out =((addr_I2C << 8) | addr);
+    int len = sDataLen+1;
+    for (i=0;i<len;i++) {
+        int byte ;
+        if(i == len-1)
+            byte = cCs;
+        else
+            byte = sData[i];
+        data_out =  ((data_out << 8) + byte);
+          printf("\n data_out %d",data_out);
+          printf("\n %llu",data_out);
+          if ( index_out == 3 ) {
+             write32bCPU (I2C_CS,4,data_out);
+             printf("\n %d",data_out);
+             index_out = 0;
+          } else {
+             index_out = index_out+1;
+          }
+
+       }
+       printf("\nindex_out %d",index_out);
+       // print $index_out
+        if (index_out == 1 ) {
+         data_out = data_out<<24;
+          write32bCPU(I2C_CS,4,data_out);
+        } else if (index_out == 2) {
+          data_out = data_out<<16;
+          write32bCPU(I2C_CS,4,data_out);
+        } else if (index_out == 3 ) {
+          data_out = data_out<<8;
+          write32bCPU(I2C_CS,4,data_out);
+        }
+        word0 = (1<<18)|word0;
+        printf("\n last word0 %d",word0);
+        write32bCPU(I2C_CS,8,word0);
+}
+int read32bI2C(unsigned char cCs, unsigned char addr){
+    unsigned int sData[0];
+    //readI2C 0 addr_I2C I2C_CS cCs addr 4
+    write32(cCs, addr,sData,sizeof(sData) / sizeof(sData[0]));
+    write32bCPU(I2C_CS,8,0<<16|4);
+    unsigned int word0 = (addr_I2C|1)<<24 | addr<<16;
+    write32bCPU(I2C_CS,4,word0);
+    write32bCPU(I2C_CS,8,(1<<18|1<<17|0<<16|4));
+    usleep(10000);
+    return read32bCPU(I2C_CS,4);
 }
 int confAllegro8297(unsigned char i2cAddr,unsigned short enable1,unsigned short voltage1,unsigned short enable2,unsigned short voltage2) {
     unsigned char reg[2];

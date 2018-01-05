@@ -35,6 +35,23 @@ using namespace std;
 using namespace Net;
 #define CW_MQ_TIME_DIFF 2
 #define Invalid_json "Invalid json parameters"
+#define QAM_CS 11
+#define QAM_ADDR 12
+#define DVBC_VER_ADDR 0
+#define SPI_STATUS_ADDR 4
+#define SPI_CONF_ADDR 8
+
+#define FSYMBOLRATE_ADDR 12
+#define FDAC_ADDR 8
+#define GAIN_ADDR 16
+#define UPSAMPLER_VER_ADDR 0
+#define STATUS_REG_ADDR 4
+
+#define DVBCSA_VER_ADDR 0
+#define DVBCSA_CORE_CONTR_ADDR 4
+#define DVBCSA_LSB_KEY_ADDR 8
+#define DVBCSA_MSB_KEY_ADDR 12
+#define DVBCSA_KEY_CONTR_ADDR 16
 
 void printCookies(const Net::Http::Request& req) {
     auto cookies = req.cookies();
@@ -71,7 +88,9 @@ public:
     std::string supercas_id,ecm_ip,client_id;
     char hexmap[16] = {'0', '1', '2', '3', '4', '5', '6', '7',
                            '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
+    int DVBC_OUTPUT_CS[8] = {11,12,13,14,15,16,17,18};
+    int UPSAMPLER_OUTPUT_CS[8] = {19,20,21,22,23,24,25,26};
+    int DVBCSA_OUTPUT_CS[8] = {3,4,5,6,7,8,9,10};
     StatsEndpoint(Net::Address addr)
         : httpEndpoint(std::make_shared<Net::Http::Endpoint>(addr))
     {
@@ -298,6 +317,32 @@ private:
         Routes::Post(router, "/deleteEMMSetup", Routes::bind(&StatsEndpoint::deleteEMMSetup, this));
         Routes::Post(router, "/scrambleService", Routes::bind(&StatsEndpoint::scrambleService, this));
         Routes::Post(router, "/deScrambleService", Routes::bind(&StatsEndpoint::deScrambleService, this));
+
+        //DVBC CORE
+        Routes::Post(router, "/getDVBCCoreVersion", Routes::bind(&StatsEndpoint::getDVBCCoreVersion, this));  
+        Routes::Post(router, "/getSPIStatusReg", Routes::bind(&StatsEndpoint::getSPIStatusReg, this));   
+        Routes::Post(router, "/getSPIConfigReg", Routes::bind(&StatsEndpoint::getSPIConfigReg, this));  
+        Routes::Post(router, "/setSPIConfigReg", Routes::bind(&StatsEndpoint::setSPIConfigReg, this));   
+        Routes::Post(router, "/setQAM", Routes::bind(&StatsEndpoint::setQAM, this));
+        Routes::Post(router, "/getQAM", Routes::bind(&StatsEndpoint::getQAM, this));   
+
+        //Upsampler
+        Routes::Post(router, "/setFSymbolRate", Routes::bind(&StatsEndpoint::setFSymbolRate, this));
+        Routes::Post(router, "/getFSymbolRate", Routes::bind(&StatsEndpoint::getFSymbolRate, this));
+        Routes::Post(router, "/setFDAC", Routes::bind(&StatsEndpoint::setFDAC, this));
+        Routes::Post(router, "/getFDAC", Routes::bind(&StatsEndpoint::getFDAC, this));
+        Routes::Post(router, "/confGain", Routes::bind(&StatsEndpoint::confGain, this));
+        Routes::Post(router, "/getGain", Routes::bind(&StatsEndpoint::getGain, this));
+        Routes::Post(router, "/getUpsamplerCoreVersion", Routes::bind(&StatsEndpoint::getUpsamplerCoreVersion, this));
+        Routes::Post(router, "/setStatusReg", Routes::bind(&StatsEndpoint::setStatusReg, this));
+        Routes::Post(router, "/getStatusReg", Routes::bind(&StatsEndpoint::getStatusReg, this));
+
+        //DVB-CSA 
+        Routes::Post(router, "/getDVBCSAVersion", Routes::bind(&StatsEndpoint::getDVBCSAVersion, this));        
+        Routes::Post(router, "/getDVBCSACoreControlReg", Routes::bind(&StatsEndpoint::getDVBCSACoreControlReg, this));
+        Routes::Post(router, "/setDVBCSACoreControlReg", Routes::bind(&StatsEndpoint::setDVBCSACoreControlReg, this));
+        Routes::Post(router, "/getDVBCSAKey", Routes::bind(&StatsEndpoint::getDVBCSAKey, this));
+        Routes::Post(router, "/setDVBCSAKey", Routes::bind(&StatsEndpoint::setDVBCSAKey, this));
     }
     /*****************************************************************************/
     /*  function setMxlTuner                           
@@ -795,6 +840,7 @@ private:
         int value =std::stoi(getParameter(request.body(),"value"));
         write32bCPU(0,0,12);
         write32bI2C(32, 0 ,value);
+        json["VLAUE"] = read32bI2C(32,0);
         std::cout<<value<<"\n";
         json["message"] = "Authorize RF out!";
 		
@@ -1210,7 +1256,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetFirmwareVersion(rmx_no);
             }else{
                 json["error"]= true;
@@ -1300,7 +1346,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetHardwareVersion(rmx_no);
             }else{
                 json["error"]= true;
@@ -1403,7 +1449,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetInputOutput(rmx_no);
             }else{
                 json["error"]= true;
@@ -1452,7 +1498,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetInputMode(rmx_no);
             }else{
                 json["error"]= true;
@@ -1558,11 +1604,7 @@ private:
     /*  Commande 0x05   function getCore                          */
     /*****************************************************************************/
     void getCore(const Rest::Request& request, Net::Http::ResponseWriter response){
-        unsigned char RxBuffer[20]={0};
-       
         Json::Value json,jsonInput;
-        // jsonInput["address"] = request.param(":address").as<std::string>();
-        // jsonInput["cs"] = request.param(":cs").as<std::string>();
         Json::FastWriter fastWriter;
         std::string para[] = {"cs","address","rmx_no"};
         addToLog("getCore",request.body());
@@ -1572,27 +1614,13 @@ private:
             if(rmx_no > 0 && rmx_no <= 6) {
                  std::string cs = getParameter(request.body(),"cs"); 
                 if(verifyInteger(cs) && std::stoi(cs) <=128){
-                    jsonInput["address"] = getParameter(request.body(),"address"); 
-                    jsonInput["cs"] = cs;
+                    std::string address = getParameter(request.body(),"address"); 
                     int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-					write32bCPU(0,0,target);
-                    int uLen = c1.callCommand(05,RxBuffer,20,20,jsonInput,0);
-                    if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 05 || uLen != 9 || RxBuffer[8] != ETX ) {
-                        json["error"]= true;
-                        json["message"]= "STATUS COMMAND ERROR!";
-                        addToLog("getCORE","Error");
-                    }else{
-                        uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);    
-                        if (uLen != 4 ) {
-                            json["error"]= true;
-                            json["message"]= "STATUS COMMAND ERROR! ";
-                            addToLog("getCORE","Error");  
-                        }else{
-                            json["addr"] = (RxBuffer[4] << 24) |(RxBuffer[5] << 16) |(RxBuffer[6] << 8) |(RxBuffer[7]);
-                            json["error"]= false;
-                            json["message"]= "Get CORE!";  
-                            addToLog("getCORE","Success");
-                        }
+					if(write32bCPU(0,0,target) != -1)
+                    	json = callGetCore(cs,address);
+                    else{
+                    	json["error"]= true;
+                    	json["message"]= "Connection error!";	
                     }
                 }else{
                     json["error"]= true;
@@ -1609,6 +1637,33 @@ private:
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
+    Json::Value callGetCore(std::string cs,std::string address)
+    {
+        unsigned char RxBuffer[20]={0};
+        Json::Value jsonInput,json;
+        jsonInput["address"] = address; 
+        jsonInput["cs"] = cs;
+        int uLen = c1.callCommand(05,RxBuffer,20,20,jsonInput,0);
+        if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 05 || uLen != 9 || RxBuffer[8] != ETX ) {
+            json["error"]= true;
+            json["message"]= "STATUS COMMAND ERROR!";
+            addToLog("getCORE","Error");
+        }else{
+            uLen = ((RxBuffer[1]<<8) | RxBuffer[2]);    
+            if (uLen != 4 ) {
+                json["error"]= true;
+                json["message"]= "STATUS COMMAND ERROR! ";
+                addToLog("getCORE","Error");  
+            }else{
+                 // long unsigned int  data = (long unsigned int)(RxBuffer[4] << 24) |(RxBuffer[5] << 16) |(RxBuffer[6] << 8) |(RxBuffer[7]);
+               	json["data"] =std::to_string(((long unsigned int)(RxBuffer[4]) << 24) | ((long unsigned int)(RxBuffer[5]) << 16) | ((long unsigned int)(RxBuffer[6]) << 8) |(long unsigned int)(RxBuffer[7]));
+                json["error"]= false;
+                json["message"]= "Get CORE!";  
+                addToLog("getCORE","Success");
+            }
+        }
+        return json;
+    }
 
      /*****************************************************************************/
     /*  Commande 0x06   function getGPIO                          */
@@ -1622,7 +1677,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){   
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 int uLen = c1.callCommand(06,RxBuffer,20,5,json,0);
                 if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 0x06 || uLen != 9 || RxBuffer[8] != ETX ) {
                     json["error"]= true;
@@ -1689,7 +1744,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 int uLen = c1.callCommand(8,RxBuffer,10,10,json,0);
                 if (!uLen || RxBuffer[0] != STX || RxBuffer[3] != 07 || uLen != 5 || RxBuffer[4] != ETX ) {
                     json["error"]= true;
@@ -1722,7 +1777,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(0 < rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetNITmode(rmx_no);
             }else{
                 json["error"]= true;
@@ -1810,7 +1865,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetLCN(rmx_no);
             }else{
                 json["error"]= true;
@@ -1899,7 +1954,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 int uLen = c1.callCommand(12,RxBuffer,6,6,json,0);
                 string stx=getDecToHex((int)RxBuffer[0]);
                 string cmd = getDecToHex((int)RxBuffer[3]);
@@ -1999,7 +2054,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetTsId(rmx_no);
             }else{
                 json["error"]= true;
@@ -2091,7 +2146,7 @@ private:
          int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetDvbSpiOutputMode(rmx_no);
             }else{
                 json["error"]= true;
@@ -2189,7 +2244,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetPsiSiInterval(rmx_no);
             }else{
                 json["error"]= true;
@@ -2282,7 +2337,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetNetworkName(rmx_no);
             }else{
                 json["error"]= true;
@@ -2378,7 +2433,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 std::string progNumber = request.param(":uProg").as<std::string>();
                 json = callGetServiceName(rmx_no,progNumber);
             }else{
@@ -2479,7 +2534,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetDynamicStateWinSize(rmx_no);
             }else{
                 json["error"]= true;
@@ -2561,7 +2616,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetFilterCA(rmx_no);
             }else{
                 json["error"]= true;
@@ -2659,7 +2714,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetServiceID(rmx_no);
             }else{
                 json["error"]= true;
@@ -2816,7 +2871,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetTablesVersion(rmx_no);
             }else{
                 json["error"]= true;
@@ -2919,7 +2974,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetSmoothFilterInfo(rmx_no);
             }else{
                 json["error"]= true;
@@ -3009,7 +3064,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetDataflowRates(rmx_no);
             }else{
                 json["error"]= true;
@@ -3301,7 +3356,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if( rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetCryptedProg(rmx_no);
             }else{
                 json["error"]= true;
@@ -3481,7 +3536,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 auto uProg = request.param(":uProg").as<std::string>();
                 json = callGetPrograminfo(uProg,rmx_no);
             }else{
@@ -3582,7 +3637,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){  
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetAllReferencedPIDInfo(rmx_no);
             }else{
                 json["error"]= true;
@@ -3676,7 +3731,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetEraseCAMod(rmx_no);
             }else{
                 json["error"]= true;
@@ -3861,7 +3916,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json =  callEraseCAMod(rmx_no);
             }else{
                 json["error"]= true;
@@ -3959,7 +4014,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 int uLen = c1.callCommand(39,RxBuffer,4090,7,json,0);
                 string stx=getDecToHex((int)RxBuffer[0]);
                 string cmd = getDecToHex((int)RxBuffer[3]);
@@ -4004,7 +4059,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json =callGetProgActivation(rmx_no);
             }else{
                 json["error"]= true;
@@ -4130,7 +4185,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetLockedPIDs(rmx_no);
             }else{
                 json["error"]= true;
@@ -4220,7 +4275,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json =callFlushLockedPIDs(rmx_no);
             }else{
                 json["error"]= true;
@@ -4312,7 +4367,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetHighPriorityServices(rmx_no);
             }else{
                 json["error"]= true;
@@ -4402,7 +4457,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callFlushHighPriorityServices(rmx_no);
             }else{
                 json["error"]= true;
@@ -4494,7 +4549,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetPsiSiDecodingStatus(rmx_no);
             }else{
                 json["error"]= true;
@@ -4594,7 +4649,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetTSFeatures(rmx_no);
             }else{
                 json["error"]= true;
@@ -4695,7 +4750,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetLcnProvider(rmx_no);
             }else{
                 json["error"]= true;
@@ -4776,7 +4831,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 auto uProg = request.param(":uProg").as<std::string>();
                 json = callGetProgramOriginalName(uProg,rmx_no);
             }else{
@@ -4866,7 +4921,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 auto uProg = request.param(":uProg").as<std::string>();
                 json = callGetProgramOriginalProviderName(uProg,rmx_no);
             }else{
@@ -4958,7 +5013,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 auto uProg = request.param(":uProg").as<std::string>();
                 json = callGetProgramOriginalNetworkName(rmx_no,uProg);
             }else{
@@ -5068,7 +5123,7 @@ private:
                 {
                     if(verifyJsonArray(root,"service_list",1)){
                     	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-						if(connectI2Clines(target)){
+						if(write32bCPU(0,0,target) != -1) {
                             jsonMsg["service_list"] = root["service_list"];
                             uLen = c1.callCommand(29,RxBuffer,1024,1024,jsonMsg,0);
                             string cmd = getDecToHex((int)RxBuffer[3]);
@@ -5168,7 +5223,7 @@ private:
                 jsonMsg["output"]=out;
                 int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((0)&0xF)<<1) | (0&0x1);
 
-                if(connectI2Clines(target)){
+                if(write32bCPU(0,0,target) != -1) {
                     uLen = c1.callCommand(02,RxBuffer,6,7,jsonMsg,1);
                     if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != 02 || uLen != 6 || RxBuffer[4]!=1 || RxBuffer[5] != ETX ) {
                         json["error"]= true;
@@ -5312,7 +5367,7 @@ private:
                 pro_id = getParameter(request.body(),"provId");
                 if(verifyInteger(pro_id)){
                 	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-                    if(connectI2Clines(target)){
+                    if(write32bCPU(0,0,target) != -1) {
                         json = callSetLcnProvider(pro_id,std::stoi(rmx_no));
                     }else{
                         json["error"]= true;
@@ -5396,7 +5451,7 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-                if(connectI2Clines(target)){
+                if(write32bCPU(0,0,target) != -1) {
                     json = callCreateAlarmFlags(FIFO_Threshold0,FIFO_Threshold1,FIFO_Threshold2,FIFO_Threshold3,mode,std::stoi(rmx_no));
                 }else{
                     json["error"]= true;
@@ -5920,7 +5975,7 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-                if(connectI2Clines(target)){
+                if(write32bCPU(0,0,target) != -1) {
                     json=callSetTableTimeout(table,timeout,std::stoi(rmx_no)); 
                 }else{
                     json["error"]= true;
@@ -6083,7 +6138,7 @@ private:
             if(all_para_valid){
             	
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-                if(connectI2Clines(target)){
+                if(write32bCPU(0,0,target) != -1) {
                     json = callSetDvbSpiOutputMode(rate,falling,mode,output,std::stoi(rmx_no));
                 }else{
                     json["error"]= true;
@@ -6360,7 +6415,7 @@ private:
         if(verifyInteger(rmx_no,1,1,RMX_COUNT)==1)
         {
         	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-            if(connectI2Clines(target)){
+            if(write32bCPU(0,0,target) != -1) {
                 uLen = c1.callCommand(241,RxBuffer,20,200,paraJson,1);      
                 if (!uLen|| RxBuffer[0] != STX || RxBuffer[3] != CMD_CHANGE_SID || RxBuffer[4]!=1 || RxBuffer[5] != ETX ){
                     json["error"]= true;
@@ -6410,7 +6465,7 @@ private:
             std::string address = getParameter(request.body(),"address"); 
             std::string data = getParameter(request.body(),"data"); 
             
-            error[0] = verifyInteger(cs,1,1,128,1);
+            error[0] = verifyInteger(cs,0,0,128,1);
             error[1] = verifyInteger(address);
             error[2] = verifyInteger(data);
             error[3] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
@@ -6425,7 +6480,7 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				if(connectI2Clines(target)){
+				if(write32bCPU(0,0,target) != -1) {
                     json = callSetCore(cs,address,data,std::stoi(rmx_no));
                 }else{
                     json["error"]= true;
@@ -6462,7 +6517,7 @@ private:
             }else{
                 json["status"] = RxBuffer[4];
                 json["error"]= false;
-                json["message"]= "set input";  
+                json["message"]= "set CORE";  
                 db->addRmxRegisterData(cs,address,data,rmx_no);    
                 addToLog("setCore","Success");    
             }
@@ -6572,7 +6627,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 json = callGetPmtAlarm(rmx_no);
             }else{
                 json["error"]= true;
@@ -6897,7 +6952,7 @@ private:
         int rmx_no = request.param(":rmx_no").as<int>();
         if(rmx_no > 0 && rmx_no <= 6){
         	int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 auto programNumber = request.param(":uProg").as<std::string>();
                 json = callGetNewProvName(rmx_no , programNumber);
             }else{
@@ -7130,7 +7185,7 @@ private:
             }
             if(all_para_valid){
             	int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-				if(connectI2Clines(target)){
+				if(write32bCPU(0,0,target) != -1) {
                     uLen = c1.callCommand(85,RxBuffer,255 * 1024,11,jsonMsg,1);
                     if (!uLen|| RxBuffer[0] != STX || std::stoi(getDecToHex((int)RxBuffer[3])) != 55){
                         json["error"]= true;
@@ -7176,7 +7231,7 @@ private:
     // UDP STACK DEFINITIONS
 
     /*****************************************************************************/
-    /*  UDP Ip Stack Commande 0x08   function getUdpchannels                          */
+    /*  UDP Ip Stack Commande 0x08   function getVersionofcore                          */
     /*****************************************************************************/
     void getVersionofcore(const Rest::Request& request, Net::Http::ResponseWriter response){
         unsigned char RxBuffer[20]={0};
@@ -8158,8 +8213,785 @@ private:
         response.send(Http::Code::Ok, resp);
     }
 
-    //i2c controller commands
+    
 
+//DVBC CORE
+    /*****************************************************************************/
+    /*  Commande 0x05   function setQAM                        
+    0x0 : 16-QAM    0x1 : 32-QAM    0x2 : 64-QAM    0x3 : 128-QAM    0x4 : 256-QAM  */
+    /*****************************************************************************/
+    void  setQAM(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json;
+        Json::FastWriter fastWriter;     
+
+        std::string para[] = {"qam_no","rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setQAM",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+            std::string rmx_no =getParameter(request.body(),"rmx_no") ;
+            std::string data = getParameter(request.body(),"qam_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+            error[0] = verifyInteger(data);
+            error[1] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[2] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==1)? "Require Integer between 1 to 6!" :(i==2)?"Require Integer between 1 to 8!" : "Require Integer between 1 to 128!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1) {
+                    int value = ((std::stoi(data)&0xF)<<1) | (0&0x0);
+                    json = callSetCore(std::to_string(DVBC_OUTPUT_CS[std::stoi(output)]),std::to_string(QAM_ADDR),std::to_string(value),std::stoi(rmx_no));
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getCore             
+    0x0 : 16-QAM    0x1 : 32-QAM    0x2 : 64-QAM    0x3 : 128-QAM    0x4 : 256-QAM */
+    /*****************************************************************************/
+    void getQAM(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getQAM",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){   
+            std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(DVBC_OUTPUT_CS[std::stoi(output)]),std::to_string(QAM_ADDR));
+	                if(getcorejson["error"]==false){
+	                    json["qam"] =std::to_string(((std::stoul(getcorejson["data"].asString())&0xF)>>1));
+	                    json["error"] = false;
+	                    json["message"] ="get QAM";
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	                json["message"] ="Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+
+    /*****************************************************************************/
+    /*  Commande 0x05   function getDVBCCoreVersion(getCore)             
+     */
+    /*****************************************************************************/
+    void getDVBCCoreVersion(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getDVBCCoreVersion",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){   
+            std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(DVBC_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBC_VER_ADDR));
+	                if(getcorejson["error"]==false){
+	                    long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["core_id"] = std::to_string(((data >> 8)&0xFF));
+	                    json["minor_ver"] = std::to_string(((data >> 16)&0xFF));
+	                    json["major_ver"] = std::to_string(((data >> 24)&0xFF));
+	                    json["error"]= false;
+	                    json["message"] ="DVBC core version!";
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	                json["message"] ="Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getSPIStatusReg(getCore)             
+     */
+    /*****************************************************************************/
+    void getSPIStatusReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getSPIStatusReg",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){   
+            std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(DVBC_OUTPUT_CS[std::stoi(output)]),std::to_string(SPI_STATUS_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["frame_status"] =std::to_string((data >> 29)&0x7);
+	                    json["stream"] = std::to_string((data >> 28)&0x1);
+	                    json["bitstream"] = std::to_string((data)&0xFFFFFFF);
+	                    json["error"]= false;
+	                    json["message"] ="SPI status register!";
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	                json["message"] ="Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function setSPIConfigReg(getCore)             
+     */
+    /*****************************************************************************/
+    void setSPIConfigReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output","fpga_clock","spi_edge_input","bypass_pcr","null_packets","lost_frames"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setSPIConfigReg",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){   
+            std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+            std::string fpga_clock = getParameter(request.body(),"fpga_clock"); 
+            std::string spi_edge_input = getParameter(request.body(),"spi_edge_input"); 
+            std::string bypass_pcr = getParameter(request.body(),"bypass_pcr"); 
+            std::string null_packets = getParameter(request.body(),"null_packets"); 
+            std::string lost_frames = getParameter(request.body(),"lost_frames"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            error[2] = verifyInteger(fpga_clock);
+            error[3] = verifyInteger(spi_edge_input,1,1,1);
+            error[4] = verifyInteger(bypass_pcr,1,1,1);
+            error[5] = verifyInteger(null_packets,1,1,1);
+            error[6] = verifyInteger(lost_frames,1,1,1);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" :((i==1)? "Require Integer between 1 to 8!" : "Require Integer 0 or 1 !");
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                long unsigned int value =  (std::stoul(lost_frames)&0x1)<<31 | (std::stoul(null_packets)&0x1)<<21 | (std::stoul(bypass_pcr)&0x1)<<20 | (std::stoul(spi_edge_input)&0x1)<<19 | (std::stoul(fpga_clock)&0x7FFFF);
+                     json =callSetCore(std::to_string(DVBC_OUTPUT_CS[std::stoi(output)]),std::to_string(SPI_CONF_ADDR),std::to_string(value),std::stoi(rmx_no));
+	                if(json["error"]==false){
+	                    json["message"] ="SPI configuration register!";
+	                }
+	            }else{
+	            	json["error"]= true;
+	                json["message"] ="Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getSPIConfigReg(getCore)             
+     */
+    /*****************************************************************************/
+    void getSPIConfigReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getSPIConfigReg",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){   
+            std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(DVBC_OUTPUT_CS[std::stoi(output)]),std::to_string(SPI_CONF_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["lost_frames"] =std::to_string((data >> 31)&0x1);
+	                    json["null_packets"] = std::to_string((data >> 21)&0x1);
+	                    json["bypass_pcr"] = std::to_string((data >> 20)&0x1);
+	                    json["spi_edge_input"] = std::to_string((data >> 19)&0x1);
+	                    json["fpga_clock"] = std::to_string((data)&0x7FFFF);
+	                    json["error"]= false;
+	                    json["message"] ="SPI configuration register!";
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	                json["message"] ="Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+
+
+//UPSAMPLER COMMANDS
+    /*****************************************************************************/
+    /*  Commande 0x05   function getUpsamplerCoreVersion(getCore)              */
+    /*****************************************************************************/
+    void getUpsamplerCoreVersion(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getGain",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(UPSAMPLER_VER_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["core_id"] = std::to_string(((data >> 8)&0xFF));
+	                    json["minor_ver"] = std::to_string(((data >> 16)&0xFF));
+	                    json["major_ver"] = std::to_string(((data >> 24)&0xFF));
+	                    json["error"]= false;
+	                    json["message"] ="get Upsampler core version!";
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	            	json["message"]= "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function setStatusReg                        
+    */
+    /*****************************************************************************/
+    void  setStatusReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json;
+        Json::FastWriter fastWriter;     
+
+        std::string para[] = {"gain_satu","if_satu","rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setFDAC",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string gain_satu = getParameter(request.body(),"gain_satu"); 
+        	std::string if_satu = getParameter(request.body(),"if_satu"); 
+            std::string rmx_no =getParameter(request.body(),"rmx_no") ;
+            std::string output = getParameter(request.body(),"output"); 
+            error[0] = verifyInteger(gain_satu,1,1,1);
+            error[1] = verifyInteger(if_satu,1,1,1);
+            error[2] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[3] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==2)? "Require Integer between 1 to 6!" :(i==3)?"Require Integer between 1 to 8!" : "Require Integer 0 or 1!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1) 
+                {
+                    int value = ((std::stoi(if_satu)&0x1)<<8) | ((0&0x7F)<<1) | (std::stoi(gain_satu)&0x1);
+                    json = callSetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(STATUS_REG_ADDR),std::to_string(value),std::stoi(rmx_no));
+                	if(json["error"]==false){
+                		json["message"] ="Status register configuration!";
+                	}
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getStatusReg(getCore)              */
+    /*****************************************************************************/
+    void getStatusReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getStatusReg",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(STATUS_REG_ADDR));
+	                if(getcorejson["error"]==false){
+	                    long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["gain_satu"] = std::to_string((data&0x1));
+	                    json["if_satu"] = std::to_string(((data >> 8)&0x1));
+	                    json["message"] ="Upsampler core status register!";
+	                    json["error"]= false;
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	            	json["message"]= "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function setFSymbolRate                        
+    */
+    /*****************************************************************************/
+    void  setFSymbolRate(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json;
+        Json::FastWriter fastWriter;     
+
+        std::string para[] = {"fsymbol_rate","rolloff","rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setFSymbolRate",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string fsymbol_rate = getParameter(request.body(),"fsymbol_rate"); 
+        	std::string rolloff = getParameter(request.body(),"rolloff"); 
+            std::string rmx_no =getParameter(request.body(),"rmx_no") ;
+            std::string output = getParameter(request.body(),"output"); 
+            error[0] = verifyInteger(fsymbol_rate);
+            error[1] = verifyInteger(rolloff,1,1,3);
+            error[2] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[3] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==2)? "Require Integer between 1 to 6!" :(i==3)?"Require Integer between 1 to 8!" : "Require Integer!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1) {
+                    int value = (0&0x3F)<<26 | ((std::stoi(rolloff)&0x3)<<24) | (std::stoi(fsymbol_rate)&0xFFFFFF);
+                    json = callSetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(FSYMBOLRATE_ADDR),std::to_string(value),std::stoi(rmx_no));
+                	if(json["error"]==false){
+                		json["message"] ="FSymbol rate configuration!";
+                	}
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getFSymbolRate(getCore)              */
+    /*****************************************************************************/
+    void getFSymbolRate(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getFSymbolRate",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1) {
+	                Json::Value getcorejson = callGetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(FSYMBOLRATE_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["fsymbol_rate"] = std::to_string((data&0xFFFFFF));
+	                    json["rolloff"] = std::to_string((data >> 24)&0x3);
+	                    json["error"] = false;
+	                    json["message"] ="FSymbol rate!";
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+                    json["message"]= "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getFDAC(getCore)              */
+    /*****************************************************************************/
+    void getFDAC(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getFDAC",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(FDAC_ADDR));
+	                if(getcorejson["error"]==false){
+	                    json["fdac"] = getcorejson["data"].asString();
+	                    json["message"] ="get FDAC!";
+	                    json["error"]= false;
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	            	json["message"]= "Connection error";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function setFDAC                        
+    */
+    /*****************************************************************************/
+    void  setFDAC(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json;
+        Json::FastWriter fastWriter;     
+
+        std::string para[] = {"fdac","rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setFDAC",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string fdac = getParameter(request.body(),"fdac"); 
+            std::string rmx_no =getParameter(request.body(),"rmx_no") ;
+            std::string output = getParameter(request.body(),"output"); 
+            error[0] = verifyInteger(fdac);
+            error[1] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[2] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==1)? "Require Integer between 1 to 6!" :(i==2)?"Require Integer between 1 to 8!" : "Require Integer!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1) {
+                    int value = std::stoi(fdac);
+                    json = callSetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(FDAC_ADDR),std::to_string(value),std::stoi(rmx_no));
+                	if(json["error"]==false){
+                		json["message"] ="FDAC configuration!";
+                	}
+                }else{
+                    json["error"]= true;
+                    json["message"]= "Connection error!";
+                }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function confGain                        
+    */
+    /*****************************************************************************/
+    void  confGain(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json;
+        Json::FastWriter fastWriter;     
+
+        std::string para[] = {"gain","invert_IQ","sin","mute","rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("confGain",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string gain = getParameter(request.body(),"gain");
+        	std::string invert_IQ = getParameter(request.body(),"invert_IQ");
+        	std::string sin = getParameter(request.body(),"sin");
+        	std::string mute = getParameter(request.body(),"mute"); 
+            std::string rmx_no =getParameter(request.body(),"rmx_no") ;
+            std::string output = getParameter(request.body(),"output"); 
+            error[0] = verifyInteger(gain);
+            error[1] = verifyInteger(invert_IQ,1,1,1,0);
+            error[2] = verifyInteger(sin,1,1,1,0);
+            error[3] = verifyInteger(mute,1,1,1,0);
+            error[4] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[5] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==4)? "Require Integer between 1 to 6!" :((i==5)?"Require Integer between 1 to 8!" : ((i==0)? "Invalid GAIN (should be in 0xFF ,0x80 or 0x40)":"Require Integer between 0 and 1!"));
+            }
+            if(all_para_valid){
+            	if(std::stoi(gain)==64 || std::stoi(gain)==128 || std::stoi(gain)==255){
+	                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+	                if(write32bCPU(0,0,target) != -1) {
+	                    int value = ((std::stoi(mute)&0x1)<<10) | ((std::stoi(sin)&0x1)<<9) | ((std::stoi(invert_IQ)&0x1)<<8) | (std::stoi(gain)&0xFF);
+	                    json = callSetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(GAIN_ADDR),std::to_string(value),std::stoi(rmx_no));
+	                	if(json["error"]==false){
+	                		json["message"] ="GAIN configuration!";
+	                	}
+	                }else{
+	                    json["error"]= true;
+	                    json["message"]= "Connection error!";
+	                }
+	            }else{
+	            	 json["error"]= true;
+	            	 json["message"]= "Invalid GAIN (should be in 0xFF ,0x80 or 0x40)";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getGain(getCore)              */
+    /*****************************************************************************/
+    void getGain(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getGain",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(UPSAMPLER_OUTPUT_CS[std::stoi(output)]),std::to_string(GAIN_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["gain"] = std::to_string((data&0xFF));
+	                    json["invert_IQ"] = std::to_string(((data >> 8)&0x1));
+	                    json["sin"] = std::to_string(((data >> 9)&0x1));
+	                    json["mute"] = std::to_string(((data >> 10)&0x1));
+	                    json["message"] ="get GAIN!";
+	                    json["error"]= false;
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"]= true;
+	            	json["message"]= "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
 
     /*****************************************************************************/
     /*  I2C controller Command function setIfrequency                         */
@@ -8177,7 +9009,7 @@ private:
             std::string frequency = getParameter(request.body(),"frequency"); 
             std::string rmx_no = getParameter(request.body(),"rmx_no"); 
             int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
-			if(connectI2Clines(target)){
+			if(write32bCPU(0,0,target) != -1) {
                 if(verifyInteger(frequency) && verifyInteger(rmx_no)){
                     json["frequency"] = frequency;
                 
@@ -8272,7 +9104,281 @@ private:
         response.send(Http::Code::Ok, resp);
     }
 
-    //CAS commands
+//DVBCSA Algorithms
+    /*****************************************************************************/
+    /*  Commande 0x05   function getDVBCSAVersion(getCore)              */
+    /*****************************************************************************/
+    void getDVBCSAVersion(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getDVBCSAVersion",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_VER_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["minor_ver"] = std::to_string(((data >> 16)&0xFF));
+	                    json["major_ver"] = std::to_string(((data >> 24)&0xFF));
+	                    json["message"] ="DVB-CSA version!";
+	                    json["error"] = false;
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"] = true;
+	            	json["message"] = "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getDVBCSACoreControlReg(getCore)              */
+    /*****************************************************************************/
+    void getDVBCSACoreControlReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getDVBCSACoreControlReg",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value getcorejson = callGetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_CORE_CONTR_ADDR));
+	                if(getcorejson["error"]==false){
+	                	long unsigned int data = std::stoul(getcorejson["data"].asString());
+	                    json["enable_encryption"] = std::to_string((data&0x1));
+	                    json["parity"] = std::to_string(((data&0x2)>>1));
+	                    json["key_id"] = std::to_string(((data&0x7F)>>2));
+	                    json["pid_id"] = std::to_string(((data&0x3F00)>>8));
+	                    json["pid_value"] = std::to_string(((data&0x1FFF0000)>>16));
+	                    json["write_enable"] = std::to_string(((data&0x40000000)>>30));
+	                    json["message"] ="DVB-CSA control register!";
+	                    json["error"] = false;
+	                }else{
+	                    json = getcorejson;
+	                }
+	            }else{
+	            	json["error"] = true;
+	            	json["message"] = "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function setDVBCSACoreControlReg(getCore)              */
+    /*****************************************************************************/
+    void setDVBCSACoreControlReg(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output","enable_encryption","parity","key_id","pid_id","pid_value","write_enable"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setDVBCSACoreControlReg",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+            std::string enable_encryption = getParameter(request.body(),"enable_encryption"); 
+            std::string parity = getParameter(request.body(),"parity"); 
+            std::string key_id = getParameter(request.body(),"key_id"); 
+            std::string pid_id = getParameter(request.body(),"pid_id"); 
+            std::string pid_value = getParameter(request.body(),"pid_value"); 
+            std::string write_enable = getParameter(request.body(),"write_enable"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            error[2] = verifyInteger(enable_encryption,1,1,1);
+            error[3] = verifyInteger(parity,1,1,1);
+            error[4] = verifyInteger(write_enable,1,1,1);
+            error[5] = verifyInteger(key_id,0,0,31);
+            error[6] = verifyInteger(pid_id,0,0,63);
+            error[7] = verifyInteger(pid_value);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" :((i == 1)? "Require Integer between 1 to 8 !":((i==5)? "Require integer between 0 to 31!": ((i==6)? "Require integer between 0 to 63!" : ((i==7)? "Require integer!" : "Require Integer 0 or 1!"))));
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+                	int value =((std::stoi(write_enable)&0x1)<<30) | ((std::stoi(pid_value)&0x1FFF)<<16) | ((std::stoi(pid_id)&0x3F)<<8) | ((std::stoi(key_id)&0x1F)<<2) | ((std::stoi(parity)&0x1)<<1) | (std::stoi(enable_encryption)&0x1);
+	                json = callSetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_CORE_CONTR_ADDR),std::to_string(value),std::stoi(rmx_no));
+	                if(json["error"]==false){
+	                    json["message"] ="DVB-CSA control register!";
+	                }
+	            }else{
+	            	json["error"] = true;
+	            	json["message"] = "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function getDVBCSAKey(getCore)              */
+    /*****************************************************************************/
+    void getDVBCSAKey(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("getDVBCSAKey",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" : "Require Integer between 1 to 8!";
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+	                Json::Value lsbjson = callGetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_LSB_KEY_ADDR));
+	                Json::Value msbjson = callGetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_MSB_KEY_ADDR));
+	                Json::Value keyjson = callGetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_KEY_CONTR_ADDR));
+	                if(lsbjson["error"]==false && msbjson["error"]==false && keyjson["error"]==false){
+	                	json["key"] =getlongDecToHex(std::stoul(msbjson["data"].asString())) +""+ getlongDecToHex(std::stoul(lsbjson["data"].asString()));
+	                	// json["key_msb"] =getlongDecToHex(std::stoul(msbjson["data"].asString())); 
+	                	json["key_id"] = std::to_string(std::stoul(keyjson["data"].asString())&0x1F);
+	                    json["message"] ="DVB-CSA get key!";
+	                    json["error"] = false;
+	                }else{
+	                    json["error"] = true;
+	                    json["lsb"] = lsbjson["message"];
+	                    json["msb"] = msbjson["message"];
+	                    json["key"] = keyjson["message"];
+
+	                }
+	            }else{
+	            	json["error"] = true;
+	            	json["message"] = "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    /*****************************************************************************/
+    /*  Commande 0x05   function setDVBCSAKey(setCore)              */
+    /*****************************************************************************/
+    void setDVBCSAKey(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json,jsonInput;
+        Json::FastWriter fastWriter;
+        std::string para[] = {"rmx_no","output","key","key_id"};
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;
+        addToLog("setDVBCSAKey",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){
+        	std::string rmx_no = getParameter(request.body(),"rmx_no"); 
+            std::string output = getParameter(request.body(),"output"); 
+            std::string key = getParameter(request.body(),"key"); 
+            std::string key_id = getParameter(request.body(),"key_id"); 
+			error[0] = verifyInteger(rmx_no,1,1,RMX_COUNT,1);
+            error[1] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            error[2] = verifyInteger(key_id,0,0,31);
+            error[3] = verifyIsHex(key,18);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i==0)? "Require Integer between 1 to 6!" :((i == 1)? "Require Integer between 1 to 8 !":((i==2)? "Require integer between 0 to 31!": "Require hex string len 16!"));
+            }
+            if(all_para_valid){
+                int target =((0&0x3)<<8) | (((std::stoi(rmx_no)-1)&0x7)<<5) | ((0&0xF)<<1) | (0&0x1);
+                if(write32bCPU(0,0,target) != -1){
+                	std::string msb_key = std::to_string(getHexToLongDec(key.substr(2,8)));
+                	std::string lsb_key = std::to_string(getHexToLongDec(key.substr(10))); 
+	                json = callSetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_LSB_KEY_ADDR),lsb_key,std::stoi(rmx_no));
+	                if(json["error"]==false){
+	                	json = callSetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_MSB_KEY_ADDR),msb_key,std::stoi(rmx_no));
+	                	if(json["error"]==false){
+	                		json = callSetCore(std::to_string(DVBCSA_OUTPUT_CS[std::stoi(output)]),std::to_string(DVBCSA_KEY_CONTR_ADDR),key_id,std::stoi(rmx_no));
+	                		if(json["error"]==false){
+	                			json["message"] = "DVB-CSA encrypt key!";
+	                		}
+	                	}
+	                }
+	            }else{
+	            	json["error"] = true;
+	            	json["message"] = "Connection error!";
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+//CAS commands
 
     /*****************************************************************************/
     /*  Command    function addECMChannelSetup                          */
@@ -9658,7 +10764,7 @@ private:
     bool verifyIsHex(std::string const& hex,int range=0)
     {
         if(range > 0){
-            std::cout<<"M here "<<hex.size()<<std::endl;
+            // std::cout<<"M here "<<hex.size()<<std::endl;
             return (hex.compare(0, 2, "0x") == 0
               && hex.size() > 2
               && hex.find_first_not_of("0123456789abcdefABCDEF", 2) == std::string::npos) && hex.size() <= range;
@@ -9778,6 +10884,24 @@ private:
         ss<< std::hex << dec_num;
         std::string res (ss.str());
         return res;
+    }
+    std::string getlongDecToHex(long unsigned int dec_num)
+    {
+        std::stringstream ss;
+        ss<< std::hex << dec_num;
+        std::string res (ss.str());
+        return res;
+    }
+    long unsigned int getHexToLongDec(std::string hex_str)
+    {
+    	long unsigned int val;
+        // std::stringstream ss;
+        // ss<< std::hex << dec_num;
+        // std::string res (ss.str());
+        std::stringstream ss;
+		ss << std::hex << hex_str;
+		ss >> val;
+        return val;
     }
     std::string hex_to_string(const std::string& input)
     {
@@ -9922,6 +11046,6 @@ int main(int argc, char *argv[]) {
     stats.init(thr,config_file_path);
    
     stats.start();
-    cout << "M here \n"  << endl;
+    // cout << "M here \n"  << endl;
     stats.shutdown(); 
 }

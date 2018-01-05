@@ -134,7 +134,7 @@
 				}else{
 					unsigned int Address=(unsigned int)std::stoi(json["address"].asString());
 	    			unsigned char CMP_ID=(unsigned char)std::stoi(json["cs"].asString());
-					unsigned int Data=(unsigned int)std::stoi(json["data"].asString());				
+					long unsigned int Data=(long unsigned int)std::stoul(json["data"].asString());				
 					len = 9;
 					msgBuf[1] = (unsigned char) (len>>8);
 					msgBuf[2] = (unsigned char) len;
