@@ -110,7 +110,7 @@ public:
         // forkEMMChannels();
         // forkChannels();
         // forkCWthread();
-        // runBootupscript();
+        runBootupscript();
     }
     void start() {
         
@@ -343,6 +343,7 @@ private:
         Routes::Post(router, "/setDVBCSACoreControlReg", Routes::bind(&StatsEndpoint::setDVBCSACoreControlReg, this));
         Routes::Post(router, "/getDVBCSAKey", Routes::bind(&StatsEndpoint::getDVBCSAKey, this));
         Routes::Post(router, "/setDVBCSAKey", Routes::bind(&StatsEndpoint::setDVBCSAKey, this));
+        Routes::Post(router, "/upconverterRW", Routes::bind(&StatsEndpoint::upconverterRW, this));
     }
     /*****************************************************************************/
     /*  function setMxlTuner                           
@@ -423,6 +424,11 @@ private:
 	            MXL_STATUS_E mxlStatus;
 	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
 	            if(connectI2Clines(target)){
+	            	Json::Value fwJson = downloadMxlFW(mxl_id,rmx_no);
+	            	if(fwJson["error"]==true){
+	            		json["error"]= true;
+                    	json["message"]= "Download FW failed!";
+	            	}
 	               //Configuring allgro 
     	           	if(dvb_standard==2){
     	           		if(lnb_id==0 || lnb_id==1){
@@ -446,19 +452,19 @@ private:
     	           		}
     	           	}
     	           	//Set demod 
-    	           	usleep(10000000);
+    	           	usleep(1000000);
     	           	json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
     	        	//get Demod
-    	        	usleep(1500000);
+    	        	usleep(1000000);
     	        	unsigned char locked=0,modulation=MXL_HYDRA_MOD_AUTO,standard= MXL_HYDRA_DVBS,Fec=MXL_HYDRA_FEC_AUTO,roll_off=MXL_HYDRA_ROLLOFF_AUTO,pilot=MXL_HYDRA_PILOTS_AUTO,spectrums= MXL_HYDRA_SPECTRUM_AUTO;
     				unsigned int freq,RxPwr,rate,SNR;
     				mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &Fec, &roll_off, &pilot,&spectrums, &RxPwr,&SNR);
     	        	json["locked"]=locked;
     	        	//Set Output
-    	        	usleep(3000000);
+    	        	usleep(1000000);
     	        	setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
     	        	//Set RF authorization
-    	        	usleep(3000000);
+    	        	usleep(1000000);
     	        	
 			        write32bCPU(0,0,12);
 			        write32bI2C(32, 0 ,std::stoi(auth_bit));
@@ -1039,7 +1045,7 @@ private:
                     json["firmware_vers"] = std::to_string(versionInfo.firmwareVer[0])+'.'+std::to_string(versionInfo.firmwareVer[1])+'.'+std::to_string(versionInfo.firmwareVer[2])+'.'+std::to_string(versionInfo.firmwareVer[3])+'.'+std::to_string(versionInfo.firmwareVer[4]); 
                     json["FW Downloaded"] = true; 
                 }else{
-        		    printf("\n\n \t\t\t Downloading Firmware please wait.... \n");
+        		    printf("\n\n \t\t\t DOWNLOADING FIRMWARE PLEASE WAIT.... \n");
         	        mxlStatus = App_FirmwareDownload(cwd);
         	        if(mxlStatus != MXL_SUCCESS){
         	            printf("Status FW download");
@@ -9378,6 +9384,25 @@ private:
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
+     /*****************************************************************************/
+    /*  function upconverterRW                                                     */
+    /*****************************************************************************/
+    void  upconverterRW(const Rest::Request& request, Net::Http::ResponseWriter response){
+        Json::Value json;
+        Json::FastWriter fastWriter;  
+        int mainInterface =std::stoi(getParameter(request.body(),"mainInterface"));
+        int value =std::stoi(getParameter(request.body(),"value"));
+        int cs =std::stoi(getParameter(request.body(),"cs"));
+        int address =std::stoi(getParameter(request.body(),"address"));
+        write32bCPU(0,0,(mainInterface<<1));
+        // write32bI2C(cs, address ,value);
+        json["VLAUE"] = read32bI2C(cs,address);
+        std::cout<<value<<"\n";
+        json["message"] = "upconverterRW!";
+        json["mainInterface<<1"] = mainInterface<<1;
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
 //CAS commands
 
     /*****************************************************************************/
@@ -10288,19 +10313,19 @@ private:
         Json::Value json,NewService_names,NewService_ids,network_details,lcn_json,high_prior_ser,pmt_alarm_json,active_progs,locked_progs,freeca_progs,input_mode_json,fifo_flags,table_ver_json,table_timeout_json,dvb_output_json,psisi_interval,serv_provider_json,nit_mode;
         printf("\n\n Downloding Mxl 1 \n");
         downloadMxlFW(1,0);
-        usleep(1000000);
+        //usleep(1000000);
         printf("\n\n Downloding Mxl 2 \n");
         downloadMxlFW(2,0);
-        usleep(1000000);
+        //usleep(1000000);
         printf("\n\n Downloding Mxl 3 \n");
         downloadMxlFW(3,0);
-        usleep(1000000);
+        //usleep(1000000);
         printf("\n\n Downloding Mxl 4 \n");
         downloadMxlFW(4,0);
-        usleep(1000000);
+        //usleep(1000000);
         printf("\n\n Downloding Mxl 5 \n");
         downloadMxlFW(5,0);
-        usleep(1000000);
+        //usleep(1000000);
         printf("\n\n Downloding Mxl 6 \n");
         downloadMxlFW(6,0);
         printf("\n\n MXL Downlod Completed! \n\n");
@@ -10312,6 +10337,7 @@ private:
 		            std::cout<<"-----------Services has been restored from channel RMX "<<rmx<<">---------------->CH "<<input<<std::endl;
 		    }
 		}
+
         for (int i = 0; i <= RMX_COUNT; ++i)
         {
             for (int j = 0; j <= INPUT_COUNT; ++j)
@@ -10323,7 +10349,7 @@ private:
                         std::cout<<active_progs["list"].size();
                         Json::Value json = callSetKeepProg(active_progs["list"],std::to_string(j),std::to_string(k),i+1);
                         if(json["error"]==false){
-                            std::cout<<"------------------Active Prog has been restored--------------------- "<<active_progs["list"][i]["input"].asString()<<std::endl;
+                            std::cout<<"------------------Active Prog has been restored--------------------- "<<std::endl;
                         }
                     }   
                 }
