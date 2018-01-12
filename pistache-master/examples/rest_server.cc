@@ -874,7 +874,7 @@ private:
          std::string para[] = {"auth_bit"};   
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){   
-            int value =std::stoi(auth_bit =getParameter(request.body(),"auth_bit"));
+            int value =std::stoi(getParameter(request.body(),"auth_bit"));
 
             write32bCPU(0,0,12);
             write32bI2C(32, 0 ,value);
