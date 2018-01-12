@@ -110,7 +110,7 @@ public:
         // forkEMMChannels();
         // forkChannels();
         // forkCWthread();
-        runBootupscript();
+        //runBootupscript();
     }
     void start() {
         
@@ -356,14 +356,14 @@ private:
         int uLen;        
         Json::Value json,injson;
         Json::FastWriter fastWriter;   
-        std::string rangeMsg[] = {"Required integer between 1-6!","Required integer between 1-6!","Required integer between 0-7!","Required integer between 0-3!","Required integer between 0-2!","Required integer!","Required integer!","Required integer between 0-2!","Required integer between 0-10!","Required integer between 0-3!","Required integer between 0-2!","Required integer between 0-2!","Required integer!","Required integer!","Required integer!"};
-        std::string para[] = {"mxl_id","rmx_no","demod_id","lnb_id","dvb_standard","frequency","symbol_rate","mod","fec","rolloff","pilots","spectrum","scr_index","search_range","auth_bit"};
+        std::string rangeMsg[] = {"Required integer between 1-6!","Required integer between 1-6!","Required integer between 0-7!","Required integer between 0-3!","Required integer between 0-2!","Required integer!","Required integer!","Required integer between 0-2!","Required integer between 0-10!","Required integer between 0-3!","Required integer between 0-2!","Required integer between 0-2!","Required integer between 3650-11475!","Required integer !","Required integer between 0-1!"};
+        std::string para[] = {"mxl_id","rmx_no","demod_id","lnb_id","dvb_standard","frequency","symbol_rate","mod","fec","rolloff","pilots","spectrum","lo_frequency","polarization","auth_bit"};
         int error[ sizeof(para) / sizeof(para[0])];
         bool all_para_valid=true;   
         addToLog("setMxlTuner",request.body());
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){
-        	std::string str_mxl_id,str_rmx_no,str_demod_id,str_lnb_id,str_dvb_standard,str_frequency,str_symbol_rate,str_mod,str_fec,str_rolloff,str_pilots,str_spectrum,str_scr_index,str_search_range,auth_bit;        
+        	std::string str_mxl_id,str_rmx_no,str_demod_id,str_lnb_id,str_dvb_standard,str_frequency,str_symbol_rate,str_mod,str_fec,str_rolloff,str_pilots,str_spectrum,str_lo_frequency,str_polarization,auth_bit;        
             str_mxl_id = getParameter(request.body(),"mxl_id");
             str_rmx_no = getParameter(request.body(),"rmx_no");
             str_demod_id = getParameter(request.body(),"demod_id");
@@ -376,8 +376,8 @@ private:
             str_rolloff = getParameter(request.body(),"rolloff");
             str_pilots = getParameter(request.body(),"pilots");
             str_spectrum = getParameter(request.body(),"spectrum");
-            str_scr_index = getParameter(request.body(),"scr_index");
-            str_search_range = getParameter(request.body(),"search_range");
+            str_lo_frequency = getParameter(request.body(),"lo_frequency");
+            str_polarization = getParameter(request.body(),"polarization");
             auth_bit =getParameter(request.body(),"auth_bit");
             
 			error[0] = verifyInteger(str_mxl_id,1,1,6,1);
@@ -392,8 +392,8 @@ private:
             error[9] = verifyInteger(str_rolloff,1,1,3);
             error[10] = verifyInteger(str_pilots,1,1,2);
             error[11] = verifyInteger(str_spectrum,1,1,2);
-            error[12] = verifyInteger(str_scr_index);
-            error[13] = verifyInteger(str_search_range);
+            error[12] = verifyInteger(str_lo_frequency);
+            error[13] = verifyInteger(str_polarization);
             error[14] = verifyInteger(auth_bit);
             for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
             {
@@ -405,7 +405,7 @@ private:
                 json[para[i]]= rangeMsg[i];
             }
             if(all_para_valid){
-            	int lnb_id,rmx_no,mxl_id,dvb_standard,demod_id,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range;
+            	int lnb_id,rmx_no,mxl_id,dvb_standard,demod_id,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,lo_frequency,polarization;
             	lnb_id = std::stoi(str_lnb_id);
             	rmx_no = std::stoi(str_rmx_no);
             	mxl_id = std::stoi(str_mxl_id);
@@ -418,59 +418,69 @@ private:
             	rolloff = std::stoi(str_rolloff);
             	pilots = std::stoi(str_pilots);
             	spectrum = std::stoi(str_spectrum);
-            	scr_index = std::stoi(str_scr_index);
-            	search_range = std::stoi(str_search_range);
+            	lo_frequency = std::stoi(str_lo_frequency);
+            	polarization = std::stoi(str_polarization);
 
 	            MXL_STATUS_E mxlStatus;
-	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-	            if(connectI2Clines(target)){
-	            	Json::Value fwJson = downloadMxlFW(mxl_id,rmx_no);
-	            	if(fwJson["error"]==true){
-	            		json["error"]= true;
-                    	json["message"]= "Download FW failed!";
-	            	}
-	               //Configuring allgro 
-    	           	if(dvb_standard==2){
-    	           		if(lnb_id==0 || lnb_id==1){
-    	           			json["allegro"] = confAllegro(8,1,5,1,5);
-    	           			callReadAllegro(8);
-    	           			printf("callReadAllegro(8) DVB S2\n");
-    	           		}
-    	           		else{
-    	           			json["allegro"] = confAllegro(9,1,5,1,5);
-    	           			callReadAllegro(9);
-    	           		}
-    	           	}else{
-    	           		if(lnb_id==0 || lnb_id==1){
-    	           			json["allegro"] = confAllegro(8,1,0,1,0);
-    	           			callReadAllegro(8);
-    	           			printf("callReadAllegro(8) DVB S\n");
-    	           		}
-    	           		else{
-    	           			json["allegro"] = confAllegro(9,1,0,1,0);
-    	           			callReadAllegro(9);
-    	           		}
-    	           	}
-    	           	//Set demod 
-    	           	usleep(1000000);
-    	           	json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
-    	        	//get Demod
-    	        	usleep(1000000);
-    	        	unsigned char locked=0,modulation=MXL_HYDRA_MOD_AUTO,standard= MXL_HYDRA_DVBS,Fec=MXL_HYDRA_FEC_AUTO,roll_off=MXL_HYDRA_ROLLOFF_AUTO,pilot=MXL_HYDRA_PILOTS_AUTO,spectrums= MXL_HYDRA_SPECTRUM_AUTO;
-    				unsigned int freq,RxPwr,rate,SNR;
-    				mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &Fec, &roll_off, &pilot,&spectrums, &RxPwr,&SNR);
-    	        	json["locked"]=locked;
-    	        	//Set Output
-    	        	usleep(1000000);
-    	        	setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
-    	        	//Set RF authorization
-    	        	usleep(1000000);
-    	        	
-			        write32bCPU(0,0,12);
-			        write32bI2C(32, 0 ,std::stoi(auth_bit));
-                }else{
+                int ifrequency = calculateIfrequency(frequency,lo_frequency); 
+                if(ifrequency==-1){
                     json["error"]= true;
-                    json["message"]= "Connection error!";
+                    json["message"]= "Invalid frequency range!";
+                }else{
+    	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
+    	            if(connectI2Clines(target)){
+    	            	Json::Value fwJson = downloadMxlFW(mxl_id,rmx_no);
+    	            	if(fwJson["error"]==true){
+    	            		json["error"]= true;
+                        	json["message"]= "Download FW failed!";
+    	            	}
+                        usleep(500000);
+    	               //Configuring allgro 
+        	           	if(polarization==1){
+        	           		if(lnb_id==0 || lnb_id==1){
+        	           			json["allegro"] = confAllegro(8,1,5,1,5);
+        	           			callReadAllegro(8);
+        	           			std::cout<<"callReadAllegro(8) H LNB 0,1\n";
+        	           		}
+        	           		else{
+        	           			json["allegro"] = confAllegro(9,1,5,1,5);
+        	           			callReadAllegro(9);
+                                std::cout<<"callReadAllegro(9) H LNB 2,3\n";
+        	           		}
+        	           	}else{
+        	           		if(lnb_id==0 || lnb_id==1){
+        	           			json["allegro"] = confAllegro(8,1,0,1,0);
+        	           			callReadAllegro(8);
+        	           			printf("callReadAllegro(8) DVB S\n");
+                                std::cout<<"callReadAllegro(8) V LNB 0,1\n";
+        	           		}
+        	           		else{
+        	           			json["allegro"] = confAllegro(9,1,0,1,0);
+        	           			callReadAllegro(9);
+                                std::cout<<"callReadAllegro(8) V LNB 2,3\n";
+        	           		}
+        	           	}
+        	           	//Set demod 
+        	           	usleep(1000000);
+        	           	json = tuneMxl(demod_id,lnb_id,dvb_standard,ifrequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,lo_frequency);
+        	        	//get Demod
+        	        	usleep(1000000);
+        	        	unsigned char locked=0,modulation=MXL_HYDRA_MOD_AUTO,standard= MXL_HYDRA_DVBS,Fec=MXL_HYDRA_FEC_AUTO,roll_off=MXL_HYDRA_ROLLOFF_AUTO,pilot=MXL_HYDRA_PILOTS_AUTO,spectrums= MXL_HYDRA_SPECTRUM_AUTO;
+        				unsigned int freq,RxPwr,rate,SNR;
+        				mxlStatus = getTuneInfo(demod_id,&locked,&standard,&freq, &rate, &modulation, &Fec, &roll_off, &pilot,&spectrums, &RxPwr,&SNR);
+        	        	json["locked"]=locked;
+        	        	//Set Output
+        	        	usleep(1000000);
+        	        	setMpegMode(demod_id,1,MXL_HYDRA_MPEG_CLK_CONTINUOUS,MXL_HYDRA_MPEG_CLK_IN_PHASE,50,MXL_HYDRA_MPEG_CLK_PHASE_SHIFT_0_DEG,1,1,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_ACTIVE_HIGH,MXL_HYDRA_MPEG_MODE_SERIAL_3_WIRE,MXL_HYDRA_MPEG_ERR_INDICATION_DISABLED);
+        	        	//Set RF authorization
+        	        	usleep(1000000);
+        	        	
+    			        write32bCPU(0,0,12);
+    			        write32bI2C(32, 0 ,std::stoi(auth_bit));
+                    }else{
+                        json["error"]= true;
+                        json["message"]= "Connection error!";
+                    }
                 }
 	        }
         }else{
@@ -489,14 +499,14 @@ private:
         int uLen;        
         Json::Value json,injson;
         Json::FastWriter fastWriter;        
-        std::string rangeMsg[] = {"Required integer between 1-6!","Required integer between 1-6!","Required integer between 0-7!","Required integer between 0-3!","Required integer between 0-2!","Required integer!","Required integer!","Required integer between 0-2!","Required integer between 0-10!","Required integer between 0-3!","Required integer between 0-2!","Required integer between 0-2!","Required integer!","Required integer!"};
-        std::string para[] = {"mxl_id","rmx_no","demod_id","lnb_id","dvb_standard","frequency","symbol_rate","mod","fec","rolloff","pilots","spectrum","scr_index","search_range"};
+        std::string rangeMsg[] = {"Required integer between 1-6!","Required integer between 1-6!","Required integer between 0-7!","Required integer between 0-3!","Required integer between 0-2!","Required integer!","Required integer!","Required integer between 0-2!","Required integer between 0-10!","Required integer between 0-3!","Required integer between 0-2!","Required integer between 0-2!","Required integer between 3650-11475!"};
+        std::string para[] = {"mxl_id","rmx_no","demod_id","lnb_id","dvb_standard","frequency","symbol_rate","mod","fec","rolloff","pilots","spectrum","lo_frequency"};
         int error[ sizeof(para) / sizeof(para[0])];
         bool all_para_valid=true;   
         addToLog("setDemodMxl",request.body());
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){        
-           std::string str_mxl_id,str_rmx_no,str_demod_id,str_lnb_id,str_dvb_standard,str_frequency,str_symbol_rate,str_mod,str_fec,str_rolloff,str_pilots,str_spectrum,str_scr_index,str_search_range;        
+           std::string str_mxl_id,str_rmx_no,str_demod_id,str_lnb_id,str_dvb_standard,str_frequency,str_symbol_rate,str_mod,str_fec,str_rolloff,str_pilots,str_spectrum,str_lo_frequency;        
             str_mxl_id = getParameter(request.body(),"mxl_id");
             str_rmx_no = getParameter(request.body(),"rmx_no");
             str_demod_id = getParameter(request.body(),"demod_id");
@@ -509,8 +519,7 @@ private:
             str_rolloff = getParameter(request.body(),"rolloff");
             str_pilots = getParameter(request.body(),"pilots");
             str_spectrum = getParameter(request.body(),"spectrum");
-            str_scr_index = getParameter(request.body(),"scr_index");
-            str_search_range = getParameter(request.body(),"search_range");
+            str_lo_frequency= getParameter(request.body(),"lo_frequency");
             
 			error[0] = verifyInteger(str_mxl_id,1,1,6,1);
             error[1] = verifyInteger(str_rmx_no,1,1,6,1);
@@ -524,8 +533,7 @@ private:
             error[9] = verifyInteger(str_rolloff,1,1,3);
             error[10] = verifyInteger(str_pilots,1,1,2);
             error[11] = verifyInteger(str_spectrum,1,1,2);
-            error[12] = verifyInteger(str_scr_index);
-            error[13] = verifyInteger(str_search_range);
+            error[12] = verifyInteger(str_lo_frequency,0,0,11475,3650);
             for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
             {
                if(error[i]!=0){
@@ -536,7 +544,7 @@ private:
                 json[para[i]]= rangeMsg[i];
             }
             if(all_para_valid){
-            	int lnb_id,rmx_no,mxl_id,dvb_standard,demod_id,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range;
+            	int lnb_id,rmx_no,mxl_id,dvb_standard,demod_id,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,lo_frequency;
             	lnb_id = std::stoi(str_lnb_id);
             	rmx_no = std::stoi(str_rmx_no);
             	mxl_id = std::stoi(str_mxl_id);
@@ -549,17 +557,21 @@ private:
             	rolloff = std::stoi(str_rolloff);
             	pilots = std::stoi(str_pilots);
             	spectrum = std::stoi(str_spectrum);
-            	scr_index = std::stoi(str_scr_index);
-            	search_range = std::stoi(str_search_range);
-
-	            // MXL_STATUS_E mxlStatus = MXL_SUCCESS;
-	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
-	           
-	            if(connectI2Clines(target)){
-                    json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
-                }else{
+            	lo_frequency = std::stoi(str_lo_frequency);
+                int ifrequency =calculateIfrequency(frequency,lo_frequency);
+                if(ifrequency==-1){
                     json["error"]= true;
-                    json["message"]= "Connection error!";
+                    json["message"]= "Invalid frequency range!";
+                }else{
+    	            // MXL_STATUS_E mxlStatus = MXL_SUCCESS;
+    	            int target =((0&0x3)<<8) | (((rmx_no-1)&0x7)<<5) | (((mxl_id+6)&0xF)<<1) | (0&0x1);
+    	           
+    	            if(connectI2Clines(target)){
+                        json = tuneMxl(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,lo_frequency);
+                    }else{
+                        json["error"]= true;
+                        json["message"]= "Connection error!";
+                    }
                 }
 	        }
         }else{
@@ -570,15 +582,16 @@ private:
         response.send(Http::Code::Ok, resp);
     }
 
-    Json::Value tuneMxl(int demod_id,int lnb_id,int dvb_standard,int frequency,int symbol_rate,int mod,int fec,int rolloff,int pilots,int spectrum,int scr_index,int search_range){
+    Json::Value tuneMxl(int demod_id,int lnb_id,int dvb_standard,int frequency,int symbol_rate,int mod,int fec,int rolloff,int pilots,int spectrum,int lo_frequency){
     	unsigned char enable=1,low_hihg=1;
     	Json::Value json;
     	MXL_STATUS_E mxlStatus;
-
+        //int Ifrequency =  (lo_frequency -frequency)*1000000;
+        int symbol_rate_hrz = symbol_rate*1000; 
         mxlStatus = configureLNB(0,enable,low_hihg);
         mxlStatus = getLNB(0,&enable,&low_hihg);
         // mxlStatus = setTuner(demod_id,1,2,1274000000,14300000,0,0,0,2,0,0,0);
-        mxlStatus = setTuner(demod_id,lnb_id,dvb_standard,frequency,symbol_rate,mod,fec,rolloff,pilots,spectrum,scr_index,search_range);
+        mxlStatus = setTuner(demod_id,lnb_id,dvb_standard,frequency,symbol_rate_hrz,mod,fec,rolloff,pilots,spectrum,0,0);
         if(mxlStatus == MXL_SUCCESS){
             printf("\nStatus Set demode success");
             json["error"] = false;
@@ -589,6 +602,21 @@ private:
             json["message"] = "Set demode failed!";
         }
         return json;
+    }
+    int calculateIfrequency(int frequency,int lo_frequency){
+        if(frequency<=4800 && frequency>=2500){
+            if(lo_frequency > frequency)
+                return ((lo_frequency -frequency)*1000000);    
+            else
+                return -1;
+        }else if(frequency<= 12750 && frequency>=10950){
+            if(frequency > lo_frequency)
+                return ((frequency - lo_frequency)*1000000);
+            else
+                return -1;
+        }else
+            return -1;
+        
     }
     /*****************************************************************************/
     /*  function getDemodMxl                           						    */
@@ -843,13 +871,20 @@ private:
     void  authorizeRFout(const Rest::Request& request, Net::Http::ResponseWriter response){
         Json::Value json;
         Json::FastWriter fastWriter;  
-        int value =std::stoi(getParameter(request.body(),"value"));
-        write32bCPU(0,0,12);
-        write32bI2C(32, 0 ,value);
-        json["VLAUE"] = read32bI2C(32,0);
-        std::cout<<value<<"\n";
-        json["message"] = "Authorize RF out!";
-		
+         std::string para[] = {"auth_bit"};   
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){   
+            int value =std::stoi(auth_bit =getParameter(request.body(),"auth_bit"));
+
+            write32bCPU(0,0,12);
+            write32bI2C(32, 0 ,value);
+            json["VLAUE"] = read32bI2C(32,0);
+            std::cout<<value<<"\n";
+            json["message"] = "Authorize RF out!";
+		}else{
+            json["error"]= true;
+            json["message"]= res;
+        }
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
@@ -1306,7 +1341,7 @@ private:
     void getFirmwareVersions(const Rest::Request& request, Net::Http::ResponseWriter response){
         Json::Value json,iojson;
         Json::FastWriter fastWriter;        
-        std::string para[] = {"rmx_no","input","output"};
+        std::string para[] = {"rmx_no"};
         int error[ sizeof(para) / sizeof(para[0])];
         bool all_para_valid=true;
         addToLog("getFirmwareVersion",request.body());
@@ -1314,11 +1349,11 @@ private:
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){
             str_rmx_no = getParameter(request.body(),"rmx_no");
-            input = getParameter(request.body(),"input");
-            output = getParameter(request.body(),"output");
+            // input = getParameter(request.body(),"input");
+            // output = getParameter(request.body(),"output");
             error[0] = verifyInteger(str_rmx_no,1,1,RMX_COUNT,1);
-            error[1] = verifyInteger(input,1,1,INPUT_COUNT);
-            error[2] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            // error[1] = verifyInteger(input,1,1,INPUT_COUNT);
+            // error[2] = verifyInteger(output,1,1,OUTPUT_COUNT);
             for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
             {
                if(error[i]!=0){
@@ -1329,12 +1364,12 @@ private:
                 json[para[i]]= (i!=0)? "Require Integer between 0-3!" : "Require Integer between 1-6!";
             }
             if(all_para_valid){
-                iojson=callSetInputOutput(input,output,std::stoi(str_rmx_no));
-                if(iojson["error"]==false){
+                // iojson=callSetInputOutput(input,output,std::stoi(str_rmx_no));
+                // if(iojson["error"]==false){
                     json = callGetFirmwareVersion(std::stoi(str_rmx_no));
-                }else{
-                    json = iojson;
-                }
+                // }else{
+                //     json = iojson;
+                // }
             }      
         }else{
             json["error"]= true;
@@ -1409,7 +1444,7 @@ private:
     void getHardwareVersions(const Rest::Request& request, Net::Http::ResponseWriter response){
         Json::Value json,iojson;
         Json::FastWriter fastWriter;        
-        std::string para[] = {"rmx_no","input","output"};
+        std::string para[] = {"rmx_no"};
         int error[ sizeof(para) / sizeof(para[0])];
         bool all_para_valid=true;
         addToLog("getHardwareVersion",request.body());
@@ -1417,11 +1452,11 @@ private:
         std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
         if(res=="0"){
             str_rmx_no = getParameter(request.body(),"rmx_no");
-            input = getParameter(request.body(),"input");
-            output = getParameter(request.body(),"output");
+            // input = getParameter(request.body(),"input");
+            // output = getParameter(request.body(),"output");
             error[0] = verifyInteger(str_rmx_no,1,1,RMX_COUNT,1);
-            error[1] = verifyInteger(input,1,1,INPUT_COUNT);
-            error[2] = verifyInteger(output,1,1,OUTPUT_COUNT);
+            // error[1] = verifyInteger(input,1,1,INPUT_COUNT);
+            // error[2] = verifyInteger(output,1,1,OUTPUT_COUNT);
             for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
             {
                if(error[i]!=0){
@@ -1432,12 +1467,7 @@ private:
                 json[para[i]]= (i!=0)? "Require Integer between 0-3!" : "Require Integer between 1-6!";
             }
             if(all_para_valid){
-                iojson=callSetInputOutput(input,output,std::stoi(str_rmx_no));
-                if(iojson["error"]==false){
-                    json = callGetHardwareVersion(std::stoi(str_rmx_no));
-                }else{
-                    json = iojson;
-                }
+                json = callGetHardwareVersion(std::stoi(str_rmx_no));
             }      
         }else{
             json["error"]= true;
