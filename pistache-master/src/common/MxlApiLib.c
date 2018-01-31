@@ -238,8 +238,9 @@ MXL_STATUS_E MxL_GetVersion(MXL_HYDRA_VER_INFO_T *versionInfo) {
 int setEthernet_MULT(unsigned int cCs) {
     int i=0;
     for  ( i=0 ;i < 4;i++){
-        //destination ip
+        //destination ip    
         write32bI2C (cCs,36,4026466561+i);
+        printf(" ============= %ld\n",4026466561+i);
         usleep(1000);
         //Source Port
         write32bI2C(cCs,40, 10001+i);

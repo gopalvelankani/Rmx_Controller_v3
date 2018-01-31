@@ -29,7 +29,7 @@ public:
 	Json::Value getActivePrograms(int input,int output);
 	int addLcnNumbers(std::string program_number,std::string channel_number,std::string input,int rmx_no);
 	int addPmtAlarm(std::string program_number,std::string alarm,std::string input,int rmx_no);
-	int addFrequency(int frequency);
+	int addFrequency(std::string center_frequency,std::string str_rmx_no);
 	int addChannelname(int channel_number,std::string channel_name,int rmx_no);
 	int flushServiceNames();
 	int addServiceId(int channel_number,int service_id,int rmx_no);
@@ -68,7 +68,7 @@ public:
 	int addDVBspiOutputMode(std::string output,std::string bit_rate,std::string falling,std::string mode,int rmx_no);  
 	int addPsiSiInterval(std::string patint,std::string sdtint,std::string nitint,std::string output,int rmx_no);
 	int addRmxRegisterData(std::string cs,std::string address ,std::string data,int rmx_no);
-	int getIFrequency();
+	Json::Value getCenterFrequency();
 	int getServiceInputChannel(std::string service_no);
 	Json::Value getServiceNewnames();
 	Json::Value getServiceIds();
@@ -102,9 +102,14 @@ public:
 	int isECMStreamExists(int channel_id,int stream_id);
 	int isECMExists(int channel_id);
 	int isEMMExists(int channel_id);
-	
-	
-	
+
+	int addTunerDetails(int mxl_id,int rmx_no,int demod_id,int lnb_id,int dvb_standard,int frequency,int symbol_rate,int mod,int fec,int rolloff,int pilots,int spectrum,int lo_frequency);
+	Json::Value getTunerDetails();
+	int addConfAllegro(int mxl_id, int address,int enable1,int volt1,int enable2,int volt2);
+	Json::Value getConfAllegro();
+	Json::Value getConfAllegro(int mxl_id, int address);
+	int addRFauthorization(int rmx_no, int enable);
+	Json::Value getRFauthorizedRmx();
 	
 };
 // This is the content of the .h file, which is where the declarations go

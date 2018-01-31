@@ -101,9 +101,9 @@ using namespace std;
 		return mysql_affected_rows(connect);
 	}
 	
-	int dbHandler :: addFrequency(int frequency) 
+	int dbHandler :: addFrequency(std::string center_frequency,std::string str_rmx_no) 
 	{
-		string query = "Insert into Ifrequency (ifrequency) VALUES ('"+std::to_string(frequency)+"') ON DUPLICATE KEY UPDATE ifrequency = '"+std::to_string(frequency)+"';";  
+		string query = "Insert into Ifrequency (rmx_id,ifrequency) VALUES ('"+str_rmx_no+"','"+center_frequency+"') ON DUPLICATE KEY UPDATE ifrequency = '"+center_frequency+"';";  
 		mysql_query (connect,query.c_str());
 		return mysql_affected_rows(connect);
 	}
@@ -241,6 +241,26 @@ using namespace std;
 		mysql_query (connect,query.c_str());
 		return mysql_affected_rows(connect);
 	}
+
+	int dbHandler :: addTunerDetails(int mxl_id,int rmx_no,int demod_id,int lnb_id,int dvb_standard,int frequency,int symbol_rate,int mod,int fec,int rolloff,int pilots,int spectrum,int lo_frequency){
+		string query = "Insert into tuner_details (mxl_id,rmx_no,demod_id,lnb_id,dvb_standard,frequency,symbol_rate,modulation,fec,rolloff,pilots,spectrum,lo_frequency) VALUES ('"+std::to_string(mxl_id)+"','"+std::to_string(rmx_no)+"','"+std::to_string(demod_id)+"','"+std::to_string(lnb_id)+"','"+std::to_string(dvb_standard)+"','"+std::to_string(frequency)+"','"+std::to_string(symbol_rate)+"','"+std::to_string(mod)+"','"+std::to_string(fec)+"','"+std::to_string(rolloff)+"','"+std::to_string(pilots)+"','"+std::to_string(spectrum)+"','"+std::to_string(lo_frequency)+"') ON DUPLICATE KEY UPDATE lnb_id = '"+std::to_string(lnb_id)+"', dvb_standard = '"+std::to_string(dvb_standard)+"',frequency = '"+std::to_string(frequency)+"', symbol_rate = '"+std::to_string(symbol_rate)+"', modulation = '"+std::to_string(mod)+"', fec = '"+std::to_string(fec)+"', rolloff = '"+std::to_string(rolloff)+"', pilots = '"+std::to_string(pilots)+"', spectrum = '"+std::to_string(spectrum)+"', lo_frequency = '"+std::to_string(lo_frequency)+"';";
+		mysql_query (connect,query.c_str());
+		return mysql_affected_rows(connect);	
+	}
+	int dbHandler :: addConfAllegro(int mxl_id, int address,int enable1,int volt1,int enable2,int volt2){
+		string query = "Insert into config_allegro (mxl_id,address,enable1,volt1,enable2,volt2) VALUES ('"+std::to_string(mxl_id)+"','"+std::to_string(address)+"','"+std::to_string(enable1)+"','"+std::to_string(volt1)+"','"+std::to_string(enable2)+"','"+std::to_string(volt2)+"') ON DUPLICATE KEY UPDATE enable1 = '"+std::to_string(enable1)+"', volt1 = '"+std::to_string(volt1)+"', enable2 = '"+std::to_string(enable2)+"', volt2 = '"+std::to_string(volt2)+"';";  
+		mysql_query (connect,query.c_str());
+		return mysql_affected_rows(connect);	
+	}
+	int dbHandler :: addRFauthorization(int rmx_no, int enable){
+		string query = "Insert into rf_authorization (rmx_no,enable) VALUES ('"+std::to_string(rmx_no)+"','"+std::to_string(enable)+"') ON DUPLICATE KEY UPDATE enable = '"+std::to_string(enable)+"';";  
+		mysql_query (connect,query.c_str());
+		return mysql_affected_rows(connect);	
+	}
+
+
+
+
 
 	int dbHandler :: deleteLockedPrograms() 
 	{
@@ -732,18 +752,31 @@ using namespace std;
 		}
 	 	return jsonArray;
 	}
-	int dbHandler :: getIFrequency()
+	Json::Value dbHandler :: getCenterFrequency()
 	{
-		string query = "select ifrequency from Ifrequency;";
+		MYSQL_RES *res_set;
+		MYSQL_ROW row;
+		Json::Value jsonList,jsonArray;
+		string query = "select ifrequency,rmx_id from Ifrequency;";
 		mysql_query (connect,query.c_str());
+		unsigned int i =0;
 		res_set = mysql_store_result(connect);
 		if(mysql_num_rows(res_set))
 		{
-			row= mysql_fetch_row(res_set);
-		 	return atoi(row[0]);
+			jsonArray["error"] = false;
+			while (((row= mysql_fetch_row(res_set)) !=NULL ))
+			{ 
+				Json::Value jsonObj;
+				jsonObj["center_frequency"]=row[i];
+				jsonObj["rmx_no"]=row[i+1];
+				jsonList.append(jsonObj);
+			}
+			jsonArray["list"] = jsonList;
 	 	}else{
-	 		return -1;
+	 		jsonArray["true"] = true;
+	 		jsonArray["message"] = "No Records";
 	 	}
+	 	return jsonArray;
 	}
 	Json::Value dbHandler :: getInputMode(){
 		MYSQL_RES *res_set;
@@ -1325,4 +1358,142 @@ using namespace std;
 			jsonArray["message"] = "No records found!";
 		}
 	 	return jsonArray;
+	}
+
+	Json::Value dbHandler :: getConfAllegro(){
+		MYSQL_RES *res_set;
+		MYSQL_ROW row;
+		Json::Value jsonList;
+
+		std::string query="SELECT mxl_id,address,enable1,volt1,enable2,volt2 FROM config_allegro;";
+		mysql_query (connect,query.c_str());
+		unsigned int i =0;
+		res_set = mysql_store_result(connect);
+		if(res_set){
+			unsigned int numrows = mysql_num_rows(res_set);
+			if(numrows>0)
+			{
+				jsonArray["error"] = false;
+				while (((row= mysql_fetch_row(res_set)) !=NULL ))
+				{ 
+					Json::Value jsonObj;
+					jsonObj["mxl_id"]=row[i];
+					jsonObj["address"]=row[i+1];
+					jsonObj["enable1"]=row[i+2];
+					jsonObj["volt1"]=row[i+3];
+					jsonObj["enable2"]=row[i+4];
+					jsonObj["volt2"]=row[i+5];
+					jsonList.append(jsonObj);
+				}
+			}else{	
+				jsonArray["error"] = true;
+				jsonArray["message"] = "NO record found!";
+			}
+			jsonArray["list"]=jsonList;
+		}else{ 		
+			jsonArray["error"] = true;
+		}
+		return jsonArray;
+	}
+	Json::Value dbHandler :: getConfAllegro(int mxl_id, int address){
+		MYSQL_RES *res_set;
+		MYSQL_ROW row;
+		Json::Value jsonArray;
+
+		std::string query="SELECT enable1,volt1,enable2,volt2 FROM config_allegro WHERE mxl_id = '"+std::to_string(mxl_id)+"' AND address = '"+std::to_string(address)+"';";
+		mysql_query (connect,query.c_str());
+		unsigned int i =0;
+		res_set = mysql_store_result(connect);
+		if(res_set){
+			unsigned int numrows = mysql_num_rows(res_set);
+			if(numrows>0)
+			{
+				jsonArray["error"] = false;
+				while (((row= mysql_fetch_row(res_set)) !=NULL ))
+				{ 
+					jsonArray["enable1"]=row[i];
+					jsonArray["volt1"]=row[i+1];
+					jsonArray["enable2"]=row[i+2];
+					jsonArray["volt2"]=row[i+3];
+				}
+			}else{	
+				jsonArray["error"] = true;
+				jsonArray["message"] = "NO record found!";
+			}
+		}else{ 		
+			jsonArray["error"] = true;
+		}
+		return jsonArray;
+	}
+	Json::Value dbHandler :: getTunerDetails(){
+		MYSQL_RES *res_set;
+		MYSQL_ROW row;
+		Json::Value jsonList;
+
+		std::string query="SELECT * FROM tuner_details;";
+		mysql_query (connect,query.c_str());
+		unsigned int i =0;
+		res_set = mysql_store_result(connect);
+		if(res_set){
+			unsigned int numrows = mysql_num_rows(res_set);
+			if(numrows>0)
+			{
+				jsonArray["error"] = false;
+				while (((row= mysql_fetch_row(res_set)) !=NULL ))
+				{ 
+					Json::Value jsonObj;
+					jsonObj["mxl_id"]=row[i];
+					jsonObj["rmx_no"]=row[i+1];
+					jsonObj["demod_id"]=row[i+2];
+					jsonObj["lnb_id"]=row[i+3];
+					jsonObj["dvb_standard"]=row[i+4];
+					jsonObj["frequency"]=row[i+5];
+					jsonObj["symbol_rate"]=row[i+6];
+					jsonObj["modulation"]=row[i+7];
+					jsonObj["fec"]=row[i+8];
+					jsonObj["rolloff"]=row[i+9];
+					jsonObj["pilots"]=row[i+10];
+					jsonObj["spectrum"]=row[i+11];
+					jsonObj["lo_frequency"]=row[i+12];
+					jsonList.append(jsonObj);
+				}
+			}else{	
+				jsonArray["error"] = true;
+				jsonArray["message"] = "NO record found!";
+			}
+			jsonArray["list"]=jsonList;
+		}else{ 		
+			jsonArray["error"] = true;
+			jsonArray["message"] = "ERROR!";
+		}
+		return jsonArray;
+	}
+Json::Value dbHandler :: getRFauthorizedRmx(){
+		MYSQL_RES *res_set;
+		MYSQL_ROW row;
+		Json::Value jsonList;
+
+		std::string query="SELECT rmx_no FROM rf_authorization WHERE enable = 1;";
+		mysql_query (connect,query.c_str());
+		unsigned int i =0;
+		res_set = mysql_store_result(connect);
+		if(res_set){
+			unsigned int numrows = mysql_num_rows(res_set);
+			if(numrows>0)
+			{
+				jsonArray["error"] = false;
+				while (((row= mysql_fetch_row(res_set)) !=NULL ))
+				{ 
+					jsonList.append(row[i]);
+				}
+			}else{	
+				jsonArray["error"] = true;
+				jsonArray["message"] = "NO record found!";
+			}
+			jsonArray["list"]=jsonList;
+		}else{ 		
+			jsonArray["error"] = true;
+			jsonArray["message"] = "ERROR!";
+		}
+		return jsonArray;
 	}
