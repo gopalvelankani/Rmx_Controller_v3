@@ -7429,53 +7429,17 @@ private:
 	                hex_ip_part4 = getDecToHex(ip_part4);
 	                hex_ip_part4 = (hex_ip_part4.length() ==2)? hex_ip_part4 : "0"+hex_ip_part4;
 	                hex_ip = hex_ip_part1 +""+hex_ip_part2+""+hex_ip_part3+""+hex_ip_part4;
-	                long long int ip_addr = getHexToLongDec(hex_ip);
-	                json["dec"] =std::to_string(ip_addr);
-	                //Multicast IP
-	                json["message"]= "successfully assigned IP OUT!";
-		            if (write32bI2C (2,36,ip_addr) == -1) {
-	                    json["error"]= true;
-	                    json["message"]= "STATUS COMMAND ERROR!";
-	                    addToLog("setEthernetOut IP","Error");
-	                }else{
-	                    json["error"]= false;
-	                    addToLog("setEthernetOut","Success");
-	                }
-			        usleep(1000);
-			        //Source Port
-			        if (write32bI2C(2,40, std::stoi(port)) == -1) {
-	                    json["error"]= true;
-	                    json["message"]= "STATUS COMMAND ERROR!";
-	                    addToLog("setEthernetOut IP source port","Error");
-	                }else{
-	                    json["error"]= false;
-	                    addToLog("setEthernetOut","Success");
-	                }
-			        usleep(1000);
-			        // Destination Port
-			        if ( write32bI2C(2,44,std::stoi(port)) == -1) {
-	                    json["error"]= true;
-	                    json["message"]= "STATUS COMMAND ERROR!";
-	                    addToLog("setEthernetOut IP destination port","Error");
-	                }else{
-	                    json["error"]= false;
-	                    addToLog("setEthernetOut","Success");
-	                }
-			        usleep(1000);
-			        //Validation
-			        if (write32bI2C(2,48,std::stoi(channel_no)) == -1) {
-	                    json["error"]= true;
-	                    json["message"]= "STATUS COMMAND ERROR!";
-	                    addToLog("setEthernetOut IP channel","Error");
-	                }else{
-	                    json["error"]= false;
-	                    addToLog("setEthernetOut","Success");
-	                }
-	                  
+	                unsigned long int ip_addr = getHexToLongDec(hex_ip);
+	                json = callSetEthernetOut(ip_addr,std::stoi(port),std::stoi(channel_no));
+	                
 	                json["sreadport"] = read32bI2C(2,40);
+	                 usleep(1000);
 	                json["dreadport"] = read32bI2C(2,44);
+	                 usleep(1000);
 	                json["readch"] = read32bI2C(2,48);
+	                 usleep(1000);
 	                json["readip"] = read32bI2C(2,36);
+	                 usleep(1000);
 	            }else{
 	        		json["error"]= true;
             		json["message"]= "Error while connection!";    	
@@ -7487,6 +7451,49 @@ private:
         }
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
+    }
+    Json::Value callSetEthernetOut(unsigned long int ip_addr, int port,int channel_no ){
+    	Json::Value json;
+    	json["message"]= "successfully assigned IP OUT!";
+        if (write32bI2C (2,36,ip_addr) == -1) {
+            json["error"]= true;
+            json["message"]= "STATUS COMMAND ERROR!";
+            addToLog("setEthernetOut IP","Error");
+        }else{
+            json["error"]= false;
+            addToLog("setEthernetOut","Success");
+        }
+        usleep(1000);
+        //Source Port
+        if (write32bI2C(2,40, port) == -1) {
+            json["error"]= true;
+            json["message"]= "STATUS COMMAND ERROR!";
+            addToLog("setEthernetOut IP source port","Error");
+        }else{
+            json["error"]= false;
+            addToLog("setEthernetOut","Success");
+        }
+        usleep(1000);
+        // Destination Port
+        if ( write32bI2C(2,44,port) == -1) {
+            json["error"]= true;
+            json["message"]= "STATUS COMMAND ERROR!";
+            addToLog("setEthernetOut IP destination port","Error");
+        }else{
+            json["error"]= false;
+            addToLog("setEthernetOut","Success");
+        }
+        usleep(1000);
+        //Validation
+        if (write32bI2C(2,48,channel_no) == -1) {
+            json["error"]= true;
+            json["message"]= "STATUS COMMAND ERROR!";
+            addToLog("setEthernetOut IP channel","Error");
+        }else{
+            json["error"]= false;
+            addToLog("setEthernetOut","Success");
+        }
+        return json;
     }
     /*****************************************************************************/
     /*  UDP Ip Stack Command 0x24,0x30   function setEthernetOutOff                      */
@@ -7511,25 +7518,7 @@ private:
             	int control_fpga =ceil(double(rmx_no)/2);
             	int target =((0&0x3)<<8) | ((0&0x7)<<5) | (((control_fpga-1)&0xF)<<1) | (0&0x1);
         		if(write32bCPU(0,0,target) != -1){
-	                json["message"]= "Ethernet Out torned off!";
-	                if(write32bI2C (2,36,0) == -1){
-	                    json["error"]= true;
-	                    json["message"]= "Error while torning off ethernet out!";
-	                    addToLog("setEthernetOutOff ChannelNumber","Error");
-	                }else{
-	                    json["error"]= false;
-	                    addToLog("setEthernetOutOff ChannelNumber","Success");
-	                } 
-			        usleep(1000);
-			        //Validation
-			        if(write32bI2C(2,48,(std::stoi(channel_no)-127)) == -1){
-	                    json["error"]= true;
-	                    json["message"]= "Error while torning off ethernet out!";
-	                    addToLog("setEthernetOutOff","Error");
-	                }else{
-	                    json["error"]= false;
-	                    addToLog("setEthernetOutOff","Success");
-	                }
+        			json = callSetEthernetOutOff(std::stoi(channel_no));
 	            }else{
 	            	json["error"]= true;
             		json["message"]= "Error while connection!"; 
@@ -7545,7 +7534,29 @@ private:
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
-
+    Json::Value callSetEthernetOutOff(int channel_no ){
+    	Json::Value json;
+      	json["message"]= "Ethernet Out torned off!";
+        if(write32bI2C (2,36,0) == -1){
+            json["error"]= true;
+            json["message"]= "Error while torning off ethernet out!";
+            addToLog("setEthernetOutOff ChannelNumber","Error");
+        }else{
+            json["error"]= false;
+            addToLog("setEthernetOutOff ChannelNumber","Success");
+        } 
+        usleep(1000);
+        //Validation
+        if(write32bI2C(2,48,channel_no) == -1){
+            json["error"]= true;
+            json["message"]= "Error while torning off ethernet out!";
+            addToLog("setEthernetOutOff","Error");
+        }else{
+            json["error"]= false;
+            addToLog("setEthernetOutOff","Success");
+        }
+        return json;
+    }
      /*****************************************************************************/
     /*  UDP Ip Stack Command    function setEthernetIn                      */
     /*****************************************************************************/
