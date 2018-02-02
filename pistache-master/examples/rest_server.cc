@@ -110,7 +110,7 @@ public:
         // forkEMMChannels();
         // forkChannels();
         // forkCWthread();
-        runBootupscript();
+        // runBootupscript();
     }
     void start() {
         
@@ -259,6 +259,7 @@ private:
         
         //UDP IP STACK Commands
         Routes::Post(router, "/readWrite32bUdpCpu", Routes::bind(&StatsEndpoint::readWrite32bUdpCpu, this));
+        Routes::Post(router, "/readWrite32bUdpI2C", Routes::bind(&StatsEndpoint::readWrite32bUdpI2C, this));
         // Routes::Post(router, "/setTuner", Routes::bind(&StatsEndpoint::setTuners, this));
         Routes::Get(router, "/getVersionofcore", Routes::bind(&StatsEndpoint::getVersionofcore, this));
         Routes::Post(router, "/setIpdestination", Routes::bind(&StatsEndpoint::setIpdestination, this));
@@ -287,6 +288,7 @@ private:
         Routes::Post(router, "/setIGMPChannelNumber", Routes::bind(&StatsEndpoint::setIGMPChannelNumber, this));
         Routes::Post(router, "/setEthernetOut", Routes::bind(&StatsEndpoint::setEthernetOut, this));
         Routes::Post(router, "/setEthernetOutOff", Routes::bind(&StatsEndpoint::setEthernetOutOff, this));
+        Routes::Post(router, "/setEthernetIn", Routes::bind(&StatsEndpoint::setEthernetIn, this));
 
         //Maxlinear api's
         Routes::Post(router, "/connectMxl", Routes::bind(&StatsEndpoint::connectMxl, this));
@@ -1233,6 +1235,57 @@ private:
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
+    /*****************************************************************************/
+    /*  function readWrite32bUdpI2C                           						    */
+    /*****************************************************************************/
+    void  readWrite32bUdpI2C(const Rest::Request& request, Net::Http::ResponseWriter response){
+        unsigned char RxBuffer[20]={0};
+        
+        int uLen;
+        Json::Value json,injson;
+        Json::FastWriter fastWriter;        
+        std::string para[] = {"address","data","cs","mode"};
+        addToLog("readWrite32bUdpI2C",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){        
+            std::string address = getParameter(request.body(),"address"); 
+            std::string data = getParameter(request.body(),"data"); 
+            std::string cs = getParameter(request.body(),"cs"); 
+            std::string mode = getParameter(request.body(),"mode"); 
+            injson["address"] = address;
+            injson["data"] = data;
+            injson["cs"] = cs;
+            write32bCPU(0,0,0);
+            if(std::stoi(mode) == 1){
+            	if(write32bI2C(std::stoi(cs),std::stoi(address),std::stoi(data)) != -1){
+            		std::cout<<"SC => "<<cs<<"ADDRESS => "<<address<<"DATA => "<<data;
+            		json["error"]= false;
+                	json["message"]= "Success!";
+            	}
+            }else{
+               	json["resp"]=read32bI2C(std::stoi(cs),std::stoi(address));
+               	std::cout<<"CS => "<<cs<<"ADDRESS => "<<address;
+            }
+            // uLen = c2.callCommand(90,RxBuffer,20,20,injson,std::stoi(mode));
+            // if (RxBuffer[0] != STX1 || RxBuffer[1] != STX2 || RxBuffer[2] != STX3 || uLen != 12 ) {
+            //     json["error"]= true;
+            //     json["message"]= "STATUS COMMAND ERROR!";
+            //     addToLog("readWrite32bUdpI2C","Error");
+            // }else{
+            //     json["done"] = RxBuffer[6];
+            //     json["error"]= false;
+            //     json["message"]= "set up IP destination!";
+            //     json["data"] =  RxBuffer[8]<<24 | RxBuffer[9]<<16 | RxBuffer[8]<<8 | RxBuffer[9];
+            //      addToLog("readWrite32bUdpI2C","Success");
+            // }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    
     // void  setTuners(const Rest::Request& request, Net::Http::ResponseWriter response){
     //     unsigned char RxBuffer[20]={0};
         
@@ -7380,7 +7433,7 @@ private:
 	                json["dec"] =std::to_string(ip_addr);
 	                //Multicast IP
 	                json["message"]= "successfully assigned IP OUT!";
-		            if (write32bI2C (2,36,(ip_addr-127)) == -1) {
+		            if (write32bI2C (2,36,ip_addr) == -1) {
 	                    json["error"]= true;
 	                    json["message"]= "STATUS COMMAND ERROR!";
 	                    addToLog("setEthernetOut IP","Error");
@@ -7390,7 +7443,7 @@ private:
 	                }
 			        usleep(1000);
 			        //Source Port
-			        if (write32bI2C(2,40, std::stoi(port)-127) == -1) {
+			        if (write32bI2C(2,40, std::stoi(port)) == -1) {
 	                    json["error"]= true;
 	                    json["message"]= "STATUS COMMAND ERROR!";
 	                    addToLog("setEthernetOut IP source port","Error");
@@ -7400,7 +7453,7 @@ private:
 	                }
 			        usleep(1000);
 			        // Destination Port
-			        if ( write32bI2C(2,44,std::stoi(port)-127) == -1) {
+			        if ( write32bI2C(2,44,std::stoi(port)) == -1) {
 	                    json["error"]= true;
 	                    json["message"]= "STATUS COMMAND ERROR!";
 	                    addToLog("setEthernetOut IP destination port","Error");
@@ -7410,7 +7463,7 @@ private:
 	                }
 			        usleep(1000);
 			        //Validation
-			        if (write32bI2C(2,48,std::stoi(channel_no)-127) == -1) {
+			        if (write32bI2C(2,48,std::stoi(channel_no)) == -1) {
 	                    json["error"]= true;
 	                    json["message"]= "STATUS COMMAND ERROR!";
 	                    addToLog("setEthernetOut IP channel","Error");
@@ -7418,6 +7471,11 @@ private:
 	                    json["error"]= false;
 	                    addToLog("setEthernetOut","Success");
 	                }
+	                  
+	                json["sreadport"] = read32bI2C(2,40);
+	                json["dreadport"] = read32bI2C(2,44);
+	                json["readch"] = read32bI2C(2,48);
+	                json["readip"] = read32bI2C(2,36);
 	            }else{
 	        		json["error"]= true;
             		json["message"]= "Error while connection!";    	
@@ -7487,6 +7545,153 @@ private:
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
+
+     /*****************************************************************************/
+    /*  UDP Ip Stack Command    function setEthernetIn                      */
+    /*****************************************************************************/
+    void  setEthernetIn(const Rest::Request& request, Net::Http::ResponseWriter response){
+        unsigned char RxBuffer[20]={0};
+        
+        int uLen;
+        Json::Value json,jsonMsg;
+        Json::FastWriter fastWriter;        
+        std::string para[] = {"ip_address","port","channel_no","rmx_no","type"};  
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;      
+        addToLog("setEthernetIn",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){        
+	            
+            std::string ip_address = getParameter(request.body(),"ip_address"); 
+            std::string port = getParameter(request.body(),"port"); 
+            std::string channel_no= getParameter(request.body(),"channel_no");
+            std::string str_rmx_no = getParameter(request.body(),"rmx_no");
+            std::string str_type = getParameter(request.body(),"type");
+            error[0] = isValidIpAddress(ip_address.c_str());
+            error[1] = verifyInteger(port,0,0,65535,1000);
+            error[2] = verifyInteger(channel_no,0,0,16,1);
+            error[3] = verifyInteger(str_rmx_no,1,1,RMX_COUNT,1);
+            error[4] = verifyInteger(str_type,1,1,1);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i == 0)? "Invalid IP address!" :((i == 2)?"Require Integer between 1 to 9!":((i==1)? "Require Integer between 1000 to 65535!":"Required Integer between 0-1"));
+            }
+            if(all_para_valid){
+            	int rmx_no = std::stoi(str_rmx_no);
+            	int control_fpga =ceil(double(rmx_no)/2);
+            	int target =((0&0x3)<<8) | ((0&0x7)<<5) | (((control_fpga-1)&0xF)<<1) | (0&0x1);
+        		if(write32bCPU(0,0,target) != -1){
+	                std::string hex_ip_part1,hex_ip_part2,hex_ip_part3,hex_ip_part4,hex_ip; 
+	                std::stringstream split_str(ip_address);
+					unsigned int ip_part1,ip_part2,ip_part3,ip_part4; //to store the 4 ints
+					unsigned char ch; //to temporarily store the '.'
+					split_str >> ip_part1 >> ch >> ip_part2 >> ch >> ip_part3 >> ch >> ip_part4;
+	                hex_ip_part1 = getDecToHex(ip_part1);
+	                hex_ip_part1 = (hex_ip_part1.length() ==2)? hex_ip_part1 : "0"+hex_ip_part1;
+	                hex_ip_part2 = getDecToHex(ip_part2);
+	                hex_ip_part2 = (hex_ip_part2.length() ==2)? hex_ip_part2 : "0"+hex_ip_part2;
+	                hex_ip_part3 = getDecToHex(ip_part3);
+	                hex_ip_part3 = (hex_ip_part3.length() ==2)? hex_ip_part3 : "0"+hex_ip_part3;
+	                hex_ip_part4 = getDecToHex(ip_part4);
+	                hex_ip_part4 = (hex_ip_part4.length() ==2)? hex_ip_part4 : "0"+hex_ip_part4;
+	                hex_ip = hex_ip_part1 +""+hex_ip_part2+""+hex_ip_part3+""+hex_ip_part4;
+	                long long int ip_addr = getHexToLongDec(hex_ip);
+	                json["dec"] =std::to_string(ip_addr);
+	                //Multicast IP
+	                json["error"]= false;
+	                json["message"]= "successfully assigned IP OUT!";
+	                if(write32bI2C(6, 4,std::stoi(channel_no)) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Fail to set channel_no!";
+	                }
+				   	if(write32bI2C(6,8,(ip_addr-127)) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Fail to set IP address!";
+	                }
+				   	if(write32bI2C(6,12,(std::stoi(port)-127)) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Fail to set port!";
+	                }
+				   	if(write32bI2C(6,16, 1) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Ethernet out failed!";
+	                }
+				  	usleep(1000);
+				   	// IGMP multicast ip
+				   	if(write32bI2C(2,28,ip_addr) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Failed IGMP multicast ip!";
+	                }
+				   	// IGMP Channel Number
+				   	if(write32bI2C(2,32,std::stoi(channel_no)-127) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Failed IGMP Channel Number!";
+	                }
+
+				   	if(write32bI2C(4,0,std::stoi(channel_no)-127) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Failed IGMP Channel Number!";
+	                }
+	                // json = callSetEthernetIn(channel_no,std::to_string(ip_addr),port,str_type)
+	            }else{
+	        		json["error"]= true;
+            		json["message"]= "Error while connection!";    	
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
+    // Json::Value callSetEthernetIn(std::string channel_no,std::string ip_addr,std::string port, std::string str_type){
+    // 	Json::Value json;
+    // 	json["error"]= false;
+    //     json["message"]= "successfully assigned IP OUT!";
+    //     if(write32bI2C(6, 4,std::stoi(channel_no)) == -1){
+    //     	json["error"]= true;
+    //     	json["message"]= "Fail to set channel_no!";
+    //     }
+	   // 	if(write32bI2C(6,8,(ip_addr-127)) == -1){
+    //     	json["error"]= true;
+    //     	json["message"]= "Fail to set IP address!";
+    //     }
+	   // 	if(write32bI2C(6,12,(std::stoi(port)-127)) == -1){
+    //     	json["error"]= true;
+    //     	json["message"]= "Fail to set port!";
+    //     }
+	   // 	if(write32bI2C(6,16, 1) == -1){
+    //     	json["error"]= true;
+    //     	json["message"]= "Ethernet out failed!";
+    //     }
+	  	// usleep(1000);
+	  	// if(std::stoi(str_type) == 1)//If Multicat 
+	  	// {
+		  //  	// IGMP multicast ip
+		  //  	if(write32bI2C(2,28,ip_addr) == -1){
+	   //      	json["error"]= true;
+	   //      	json["message"]= "Failed IGMP multicast ip!";
+	   //      }
+		  //  	// IGMP Channel Number
+		  //  	if(write32bI2C(2,32,std::stoi(channel_no)-127) == -1){
+	   //      	json["error"]= true;
+	   //      	json["message"]= "Failed IGMP Channel Number!";
+	   //      }
+	   //  }
+	   //  usleep(1000);
+	   //  if(write32bI2C(4,0,std::stoi(channel_no)-127) == -1){
+    //     	json["error"]= true;
+    //     	json["message"]= "Failed IGMP Channel Number!";
+    //     }
+    //     return json;
+    // }
+
     /*****************************************************************************/
     /*  UDP Ip Stack Command 0x24   function setIpdestination                      */
     /*****************************************************************************/
