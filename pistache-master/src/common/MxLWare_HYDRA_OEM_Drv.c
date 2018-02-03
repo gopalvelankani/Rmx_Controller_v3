@@ -580,7 +580,7 @@ unsigned int read32bCPU(unsigned char ucCs, unsigned char ucUaddress)
             printf("%d",RxBuffer[i]);
           }*/
           status = RxBuffer[8]<<24 | RxBuffer[9]<<16 | RxBuffer[10]<<8 | RxBuffer[11];
-          //printf("Read data %d\n",status);
+          printf("Read data %d\n",status);
           x=1;
     }
       close(socketHandle);

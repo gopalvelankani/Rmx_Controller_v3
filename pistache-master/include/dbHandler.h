@@ -110,7 +110,9 @@ public:
 	Json::Value getConfAllegro(int mxl_id, int address);
 	int addRFauthorization(int rmx_no, int enable);
 	Json::Value getRFauthorizedRmx();
-	
+	int addIPOutputChannels(int rmx_no, int out_channel, std::string ip_address,int port);
+	int removeIPOutputChannels(int rmx_no, int out_channel);
+	Json::Value getIPOutputChannels();
 };
 // This is the content of the .h file, which is where the declarations go
 

@@ -243,6 +243,9 @@ using namespace std;
 	}
 
 	int dbHandler :: addTunerDetails(int mxl_id,int rmx_no,int demod_id,int lnb_id,int dvb_standard,int frequency,int symbol_rate,int mod,int fec,int rolloff,int pilots,int spectrum,int lo_frequency){
+		// string query = "UPDATE ip_input_channels SET is_enable = 0 WHERE rmx_no = '"+std::to_string(rmx_no)+"' AND output_channel = '"+std::to_string(demod_id+1)+"';";  
+		// mysql_query (connect,query.c_str());
+
 		string query = "Insert into tuner_details (mxl_id,rmx_no,demod_id,lnb_id,dvb_standard,frequency,symbol_rate,modulation,fec,rolloff,pilots,spectrum,lo_frequency) VALUES ('"+std::to_string(mxl_id)+"','"+std::to_string(rmx_no)+"','"+std::to_string(demod_id)+"','"+std::to_string(lnb_id)+"','"+std::to_string(dvb_standard)+"','"+std::to_string(frequency)+"','"+std::to_string(symbol_rate)+"','"+std::to_string(mod)+"','"+std::to_string(fec)+"','"+std::to_string(rolloff)+"','"+std::to_string(pilots)+"','"+std::to_string(spectrum)+"','"+std::to_string(lo_frequency)+"') ON DUPLICATE KEY UPDATE lnb_id = '"+std::to_string(lnb_id)+"', dvb_standard = '"+std::to_string(dvb_standard)+"',frequency = '"+std::to_string(frequency)+"', symbol_rate = '"+std::to_string(symbol_rate)+"', modulation = '"+std::to_string(mod)+"', fec = '"+std::to_string(fec)+"', rolloff = '"+std::to_string(rolloff)+"', pilots = '"+std::to_string(pilots)+"', spectrum = '"+std::to_string(spectrum)+"', lo_frequency = '"+std::to_string(lo_frequency)+"';";
 		mysql_query (connect,query.c_str());
 		return mysql_affected_rows(connect);	
@@ -258,7 +261,21 @@ using namespace std;
 		return mysql_affected_rows(connect);	
 	}
 
+	int dbHandler :: addIPOutputChannels(int rmx_no, int out_channel, std::string ip_address,int port){
+		// string query = "UPDATE tuner_details SET is_enable = 0 WHERE rmx_no = '"+std::to_string(rmx_no)+"' AND demod_id = '"+std::to_string(out_channel-1)+"';";  
+		// std::cout<<query<<std::endl;
+		// mysql_query (connect,query.c_str());
 
+		string  query = "Insert into ip_output_channels (rmx_no,output_channel,ip_address,port,is_enable) VALUES ('"+std::to_string(rmx_no)+"','"+std::to_string(out_channel)+"','"+ip_address+"','"+std::to_string(port)+"',1) ON DUPLICATE KEY UPDATE ip_address = '"+ip_address+"',port = '"+std::to_string(port)+"' , is_enable = 1;";  
+		mysql_query (connect,query.c_str());
+		return mysql_affected_rows(connect);		
+	}
+
+	int dbHandler :: removeIPOutputChannels(int rmx_no, int out_channel){
+		string query = "UPDATE ip_output_channels SET is_enable = 0 WHERE rmx_no = '"+std::to_string(rmx_no)+"' AND output_channel = '"+std::to_string(out_channel)+"';";  
+		mysql_query (connect,query.c_str());
+		return mysql_affected_rows(connect);		
+	}
 
 
 
@@ -1430,7 +1447,7 @@ using namespace std;
 		MYSQL_ROW row;
 		Json::Value jsonList;
 
-		std::string query="SELECT * FROM tuner_details;";
+		std::string query="SELECT * FROM tuner_details WHERE is_enable = 1;";
 		mysql_query (connect,query.c_str());
 		unsigned int i =0;
 		res_set = mysql_store_result(connect);
@@ -1485,6 +1502,40 @@ Json::Value dbHandler :: getRFauthorizedRmx(){
 				while (((row= mysql_fetch_row(res_set)) !=NULL ))
 				{ 
 					jsonList.append(row[i]);
+				}
+			}else{	
+				jsonArray["error"] = true;
+				jsonArray["message"] = "NO record found!";
+			}
+			jsonArray["list"]=jsonList;
+		}else{ 		
+			jsonArray["error"] = true;
+			jsonArray["message"] = "ERROR!";
+		}
+		return jsonArray;
+	}
+Json::Value dbHandler :: getIPOutputChannels(){
+		MYSQL_RES *res_set;
+		MYSQL_ROW row;
+		Json::Value jsonList;
+
+		std::string query="SELECT rmx_no,output_channel,ip_address,port FROM ip_output_channels WHERE is_enable = 1;";
+		mysql_query (connect,query.c_str());
+		unsigned int i =0;
+		res_set = mysql_store_result(connect);
+		if(res_set){
+			unsigned int numrows = mysql_num_rows(res_set);
+			if(numrows>0)
+			{
+				jsonArray["error"] = false;
+				while (((row= mysql_fetch_row(res_set)) !=NULL ))
+				{ 
+					Json::Value jsonObj;
+					jsonObj["rmx_no"]=row[i];
+					jsonObj["output_channel"]=row[i+1];
+					jsonObj["ip_address"]=row[i+2];
+					jsonObj["port"]=row[i+3];
+					jsonList.append(jsonObj);
 				}
 			}else{	
 				jsonArray["error"] = true;

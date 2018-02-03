@@ -287,8 +287,10 @@ private:
         Routes::Post(router, "/setUDPChannelNumber", Routes::bind(&StatsEndpoint::setUDPChannelNumber, this));
         Routes::Post(router, "/setIGMPChannelNumber", Routes::bind(&StatsEndpoint::setIGMPChannelNumber, this));
         Routes::Post(router, "/setEthernetOut", Routes::bind(&StatsEndpoint::setEthernetOut, this));
+        Routes::Post(router, "/getEthernetOut", Routes::bind(&StatsEndpoint::getEthernetOut, this));
         Routes::Post(router, "/setEthernetOutOff", Routes::bind(&StatsEndpoint::setEthernetOutOff, this));
         Routes::Post(router, "/setEthernetIn", Routes::bind(&StatsEndpoint::setEthernetIn, this));
+        Routes::Post(router, "/setEthernetInOff", Routes::bind(&StatsEndpoint::setEthernetInOff, this));
 
         //Maxlinear api's
         Routes::Post(router, "/connectMxl", Routes::bind(&StatsEndpoint::connectMxl, this));
@@ -7430,8 +7432,11 @@ private:
 	                hex_ip_part4 = (hex_ip_part4.length() ==2)? hex_ip_part4 : "0"+hex_ip_part4;
 	                hex_ip = hex_ip_part1 +""+hex_ip_part2+""+hex_ip_part3+""+hex_ip_part4;
 	                unsigned long int ip_addr = getHexToLongDec(hex_ip);
-	                json = callSetEthernetOut(ip_addr,std::stoi(port),std::stoi(channel_no));
-	                
+	                int ch_no = ((rmx_no-1)*8)+std::stoi(channel_no);
+	                json = callSetEthernetOut(ip_addr,std::stoi(port),ch_no);
+	                if(json["error"] == false){
+	                	db->addIPOutputChannels(rmx_no,std::stoi(channel_no),std::to_string(ip_addr),std::stoi(port));
+	                }
 	                json["sreadport"] = read32bI2C(2,40);
 	                 usleep(1000);
 	                json["dreadport"] = read32bI2C(2,44);
@@ -7495,6 +7500,95 @@ private:
         }
         return json;
     }
+
+    void  getEthernetOut(const Rest::Request& request, Net::Http::ResponseWriter response){
+        unsigned char RxBuffer[20]={0};
+        
+        int uLen;
+        Json::Value json,jsonMsg;
+        Json::FastWriter fastWriter;        
+        std::string para[] = {"channel_no","rmx_no"};  
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;      
+        addToLog("getEthernetOut",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){        
+            
+           std::string channel_no= getParameter(request.body(),"channel_no");
+            std::string str_rmx_no = getParameter(request.body(),"rmx_no");
+            error[0] = verifyInteger(channel_no,0,0,16,1);
+            error[1] = verifyInteger(str_rmx_no,1,1,RMX_COUNT,1);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i == 0)? "Require Integer between 1 to 8!" :"Require Integer between 1 to 6!";
+            }
+            if(all_para_valid){
+            	int rmx_no = std::stoi(str_rmx_no);
+            	int control_fpga =ceil(double(rmx_no)/2);
+            	int target =((0&0x3)<<8) | ((0&0x7)<<5) | (((control_fpga-1)&0xF)<<1) | (0&0x1);
+        		if(write32bCPU(0,0,target) != -1){
+	                int ch_no = ((rmx_no-1)*8)+std::stoi(channel_no);
+	                //Validation
+			        if (write32bI2C(2,48,ch_no) == -1) {
+			            json["error"]= true;
+			            json["message"]= "STATUS COMMAND ERROR!";
+			            addToLog("setEthernetOut IP channel","Error");
+			        }else{
+			            json["error"]= false;
+			            addToLog("setEthernetOut","Success");
+			        }
+			       //  unsigned long int ip_addr= read32bI2C(2,36);
+	         //        if (ip_addr == -1) {
+			       //      json["error"]= true;
+			       //      json["message"]= "STATUS COMMAND ERROR!";
+			       //      addToLog("setEthernetOut IP","Error");
+			       //  }else{
+			       //  	json["ip"]=std::to_string(ip_addr);
+			       //      json["error"]= false;
+			       //      addToLog("setEthernetOut","Success");
+			       //  }
+			        // usleep(1000);
+			        // // Destination Port
+			        // int port = read32bI2C(2,44);
+			        // if (  port == -1) {
+			        //     json["error"]= true;
+			        //     json["message"]= "STATUS COMMAND ERROR!";
+			        //     addToLog("setEthernetOut IP destination port","Error");
+			        // }else{
+			        // 	json["port"] = port;
+			        //     json["error"]= false;
+			        //     addToLog("setEthernetOut","Success");
+			        // }
+			        //  json["readch"] = read32bI2C(2,48);
+			        // usleep(1000);
+			        
+	                // json["sreadport"] = read32bI2C(2,40);
+	                //  usleep(1000);
+	                // json["dreadport"] = read32bI2C(2,44);
+	                //  usleep(1000);
+	                // json["readch"] = read32bI2C(2,48);
+	                //  usleep(1000);
+	                long unsigned int ip =read32bI2C(2,36);
+	                ip = ip&0xFFFFFFFF; 
+	                json["readip"] = std::to_string(ip);
+	                 usleep(1000);
+ 	            }else{
+	        		json["error"]= true;
+            		json["message"]= "Error while connection!";    	
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
     /*****************************************************************************/
     /*  UDP Ip Stack Command 0x24,0x30   function setEthernetOutOff                      */
     /*****************************************************************************/
@@ -7518,7 +7612,11 @@ private:
             	int control_fpga =ceil(double(rmx_no)/2);
             	int target =((0&0x3)<<8) | ((0&0x7)<<5) | (((control_fpga-1)&0xF)<<1) | (0&0x1);
         		if(write32bCPU(0,0,target) != -1){
-        			json = callSetEthernetOutOff(std::stoi(channel_no));
+        			int ch_no = ((rmx_no-1)*8)+std::stoi(channel_no);
+        			json = callSetEthernetOutOff(ch_no);
+        			if(json["error"] == false){
+        				db->removeIPOutputChannels(rmx_no,std::stoi(channel_no));
+        			}
 	            }else{
 	            	json["error"]= true;
             		json["message"]= "Error while connection!"; 
@@ -7611,44 +7709,53 @@ private:
 	                hex_ip_part4 = getDecToHex(ip_part4);
 	                hex_ip_part4 = (hex_ip_part4.length() ==2)? hex_ip_part4 : "0"+hex_ip_part4;
 	                hex_ip = hex_ip_part1 +""+hex_ip_part2+""+hex_ip_part3+""+hex_ip_part4;
-	                long long int ip_addr = getHexToLongDec(hex_ip);
+	                unsigned long int ip_addr = getHexToLongDec(hex_ip);
 	                json["dec"] =std::to_string(ip_addr);
 	                //Multicast IP
 	                json["error"]= false;
 	                json["message"]= "successfully assigned IP OUT!";
-	                if(write32bI2C(6, 4,std::stoi(channel_no)) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Fail to set channel_no!";
-	                }
-				   	if(write32bI2C(6,8,(ip_addr-127)) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Fail to set IP address!";
-	                }
-				   	if(write32bI2C(6,12,(std::stoi(port)-127)) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Fail to set port!";
-	                }
-				   	if(write32bI2C(6,16, 1) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Ethernet out failed!";
-	                }
-				  	usleep(1000);
-				   	// IGMP multicast ip
-				   	if(write32bI2C(2,28,ip_addr) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Failed IGMP multicast ip!";
-	                }
-				   	// IGMP Channel Number
-				   	if(write32bI2C(2,32,std::stoi(channel_no)-127) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Failed IGMP Channel Number!";
-	                }
+	      //           if(write32bI2C(6, 4,std::stoi(channel_no)) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Fail to set channel_no!";
+	      //           }
+				   // 	if(write32bI2C(6,8,(ip_addr-127)) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Fail to set IP address!";
+	      //           }
+				   // 	if(write32bI2C(6,12,(std::stoi(port)-127)) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Fail to set port!";
+	      //           }
+				   // 	if(write32bI2C(6,16, 1) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Ethernet out failed!";
+	      //           }
+				  	// usleep(1000);
+				   // 	// IGMP multicast ip
+				   // 	if(write32bI2C(2,28,ip_addr) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Failed IGMP multicast ip!";
+	      //           }
+				   // 	// IGMP Channel Number
+				   // 	if(write32bI2C(2,32,std::stoi(channel_no)-127) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Failed IGMP Channel Number!";
+	      //           }
 
-				   	if(write32bI2C(4,0,std::stoi(channel_no)-127) == -1){
-	                	json["error"]= true;
-	                	json["message"]= "Failed IGMP Channel Number!";
-	                }
-	                // json = callSetEthernetIn(channel_no,std::to_string(ip_addr),port,str_type)
+				   // 	if(write32bI2C(4,0,std::stoi(channel_no)-127) == -1){
+	      //           	json["error"]= true;
+	      //           	json["message"]= "Failed IGMP Channel Number!";
+	      //           }
+
+	                json = callSetEthernetIn(std::stoi(channel_no),ip_addr,std::stoi(port),std::stoi(str_type));
+	                json["channel_no"] = read32bI2C(6,4);
+	                json["ip"] = (read32bI2C(6,8))&0xFFFFFFFF;
+	                json["port"] = read32bI2C(6,12);
+	                json["channel"] = read32bI2C(6,16);
+	                usleep(1000);
+	                json["igmpip"] = (read32bI2C(2,28))&0xFFFFFFFF;
+	                json["igmpch"] = read32bI2C(2,32);
+	                json["input"] = read32bI2C(4,0);
 	            }else{
 	        		json["error"]= true;
             		json["message"]= "Error while connection!";    	
@@ -7661,48 +7768,119 @@ private:
         std::string resp = fastWriter.write(json);
         response.send(Http::Code::Ok, resp);
     }
-    // Json::Value callSetEthernetIn(std::string channel_no,std::string ip_addr,std::string port, std::string str_type){
-    // 	Json::Value json;
-    // 	json["error"]= false;
-    //     json["message"]= "successfully assigned IP OUT!";
-    //     if(write32bI2C(6, 4,std::stoi(channel_no)) == -1){
-    //     	json["error"]= true;
-    //     	json["message"]= "Fail to set channel_no!";
-    //     }
-	   // 	if(write32bI2C(6,8,(ip_addr-127)) == -1){
-    //     	json["error"]= true;
-    //     	json["message"]= "Fail to set IP address!";
-    //     }
-	   // 	if(write32bI2C(6,12,(std::stoi(port)-127)) == -1){
-    //     	json["error"]= true;
-    //     	json["message"]= "Fail to set port!";
-    //     }
-	   // 	if(write32bI2C(6,16, 1) == -1){
-    //     	json["error"]= true;
-    //     	json["message"]= "Ethernet out failed!";
-    //     }
-	  	// usleep(1000);
-	  	// if(std::stoi(str_type) == 1)//If Multicat 
-	  	// {
-		  //  	// IGMP multicast ip
-		  //  	if(write32bI2C(2,28,ip_addr) == -1){
-	   //      	json["error"]= true;
-	   //      	json["message"]= "Failed IGMP multicast ip!";
-	   //      }
-		  //  	// IGMP Channel Number
-		  //  	if(write32bI2C(2,32,std::stoi(channel_no)-127) == -1){
-	   //      	json["error"]= true;
-	   //      	json["message"]= "Failed IGMP Channel Number!";
-	   //      }
-	   //  }
-	   //  usleep(1000);
-	   //  if(write32bI2C(4,0,std::stoi(channel_no)-127) == -1){
-    //     	json["error"]= true;
-    //     	json["message"]= "Failed IGMP Channel Number!";
-    //     }
-    //     return json;
-    // }
+    Json::Value callSetEthernetIn(int channel_no,unsigned long int ip_addr,int port, int str_type){
+    	Json::Value json;
+    	json["error"]= false;
+        json["message"]= "successfully assigned IP OUT!";
+        if(write32bI2C(6, 4,channel_no) == -1){
+        	json["error"]= true;
+        	json["message"]= "Fail to set channel_no!";
+        }
+	   	if(write32bI2C(6,8,ip_addr-127) == -1){
+        	json["error"]= true;
+        	json["message"]= "Fail to set IP address!";
+        }
+	   	if(write32bI2C(6,12,port-127) == -1){
+        	json["error"]= true;
+        	json["message"]= "Fail to set port!";
+        }
+	   	if(write32bI2C(6,16, 1) == -1){
+        	json["error"]= true;
+        	json["message"]= "Ethernet out failed!";
+        }
+	  	usleep(1000);
+	  	if(str_type == 1)//If Multicat 
+	  	{
+		   	// IGMP multicast ip
+		   	if(write32bI2C(2,28,ip_addr) == -1){
+	        	json["error"]= true;
+	        	json["message"]= "Failed IGMP multicast ip!";
+	        }
+		   	// IGMP Channel Number
+		   	if(write32bI2C(2,32,channel_no-127) == -1){
+	        	json["error"]= true;
+	        	json["message"]= "Failed IGMP Channel Number!";
+	        }
+	    }
+	    usleep(1000);
+	    if(write32bI2C(4,0,channel_no) == -1){
+        	json["error"]= true;
+        	json["message"]= "Failed IGMP Channel Number!";
+        }
+        return json;
+    }
 
+     /*****************************************************************************/
+    /*  UDP Ip Stack Command    function setEthernetInOff                      */
+    /*****************************************************************************/
+    void  setEthernetInOff(const Rest::Request& request, Net::Http::ResponseWriter response){
+        unsigned char RxBuffer[20]={0};
+        
+        int uLen;
+        Json::Value json,jsonMsg;
+        Json::FastWriter fastWriter;        
+        std::string para[] = {"channel_no","rmx_no"};  
+        int error[ sizeof(para) / sizeof(para[0])];
+        bool all_para_valid=true;      
+        addToLog("setEthernetInOff",request.body());
+        std::string res=validateRequiredParameter(request.body(),para, sizeof(para) / sizeof(para[0]));
+        if(res=="0"){        
+	            
+            std::string channel_no= getParameter(request.body(),"channel_no");
+            std::string str_rmx_no = getParameter(request.body(),"rmx_no");
+            error[0] = verifyInteger(channel_no,0,0,8,1);
+            error[1] = verifyInteger(str_rmx_no,1,1,RMX_COUNT,1);
+            for (int i = 0; i < sizeof(error) / sizeof(error[0]); ++i)
+            {
+               if(error[i]!=0){
+                    continue;
+                }
+                all_para_valid=false;
+                json["error"]= true;
+                json[para[i]]= (i == 0)? "Require Integer between 1 to 8!" :"Required Integer between 1 to 6";
+            }
+            if(all_para_valid){
+            	int rmx_no = std::stoi(str_rmx_no);
+            	int control_fpga =ceil(double(rmx_no)/2);
+            	int target =((0&0x3)<<8) | ((0&0x7)<<5) | (((control_fpga-1)&0xF)<<1) | (0&0x1);
+        		if(write32bCPU(0,0,target) != -1){
+	               
+	                //Multicast IP
+	                json["error"]= false;
+	                json["message"]= "successfully assigned IP OUT!";
+				   	// IGMP multicast ip
+				   	if(write32bI2C(2,28,0) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Failed IGMP multicast ip!";
+	                }
+				   	// IGMP Channel Number
+				   	if(write32bI2C(2,32,std::stoi(channel_no)) == -1){
+	                	json["error"]= true;
+	                	json["message"]= "Failed IGMP Channel Number!";
+	                }
+
+				
+	                // json = callSetEthernetIn(std::stoi(channel_no),ip_addr,std::stoi(port),std::stoi(str_type));
+	                // json["channel_no"] = read32bI2C(6,4);
+	                // json["ip"] = read32bI2C(6,8);
+	                // json["port"] = read32bI2C(6,12);
+	                // json["channel"] = read32bI2C(6,16);
+	                // usleep(1000);
+	                // json["igmpip"] = read32bI2C(2,28);
+	                // json["igmpch"] = read32bI2C(2,32);
+	                // json["input"] = read32bI2C(4,0);
+	            }else{
+	        		json["error"]= true;
+            		json["message"]= "Error while connection!";    	
+	            }
+            }
+        }else{
+            json["error"]= true;
+            json["message"]= res;
+        }
+        std::string resp = fastWriter.write(json);
+        response.send(Http::Code::Ok, resp);
+    }
     /*****************************************************************************/
     /*  UDP Ip Stack Command 0x24   function setIpdestination                      */
     /*****************************************************************************/
@@ -10622,7 +10800,7 @@ private:
         Json::Value json,NewService_names,NewService_ids,network_details,lcn_json,high_prior_ser,pmt_alarm_json,active_progs,locked_progs,freeca_progs,input_mode_json,fifo_flags,table_ver_json,table_timeout_json,dvb_output_json,psisi_interval,serv_provider_json,nit_mode;
         printf("\n\n Downloding Mxl 1 \n");
         downloadMxlFW(1,0);
-        // usleep(1000000);
+        usleep(1000000);
         printf("\n\n Downloding Mxl 2 \n");
         downloadMxlFW(2,0);
         // usleep(1000000);
@@ -10661,6 +10839,30 @@ private:
         	}	
         }
         usleep(1000000);
+        Json::Value jsonIPOUT = db->getIPOutputChannels();
+        if(jsonIPOUT["error"] == false){
+        	std::cout<<jsonIPOUT["list"].size()<<std::endl;
+	        for(int i=0;i<jsonIPOUT["list"].size();i++ ){
+	        	int rmx_no = std::stoi(jsonIPOUT["list"][i]["rmx_no"].asString());
+	        	int channel_no  = std::stoi(jsonIPOUT["list"][i]["output_channel"].asString());
+	        	int port  = std::stoi(jsonIPOUT["list"][i]["port"].asString());
+	        	int ch_no = ((rmx_no-1)*8)+channel_no;
+	        	unsigned long int ip_address = std::stoul(jsonIPOUT["list"][i]["ip_address"].asString());
+            	int control_fpga =ceil(double(rmx_no)/2);
+            	int target =((0&0x3)<<8) | ((0&0x7)<<5) | (((control_fpga-1)&0xF)<<1) | (0&0x1);
+        		if(write32bCPU(0,0,target) != -1){
+        			std::cout<<ch_no<<port<<ip_address;
+		        	Json::Value jsonipout = callSetEthernetOut(ip_address,port,ch_no);
+		        	if(jsonipout["error"] == false){
+		                 std::cout<<"IP OUT Success"<<std::endl;
+		        	}else{
+		        		std::cout<<"IP OUT FAILED"<<std::endl;
+		        	}
+		        }
+			}
+	    }
+
+	    usleep(1000000);
         Json::Value jsonRfauth = db->getRFauthorizedRmx();
         int rmx_no =0;
         if(jsonRfauth["error"] == false){
@@ -10669,7 +10871,7 @@ private:
 	        	 rmx_no = std::stoi(jsonRfauth["list"][0].asString());
 			}
 	    }
-	    Json::Value test= RFauthorization(rmx_no);
+	    RFauthorization(rmx_no);
 
         for (int rmx = 1; rmx <= RMX_COUNT; rmx++)
         {
